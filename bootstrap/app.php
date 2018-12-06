@@ -41,6 +41,10 @@ $app->singleton(
     PaladinsNinja\Exceptions\Handler::class
 );
 
+$app->singleton('PaladinsAPI', function($app) {
+    return PaladinsNinja\PaladinsAPI\PaladinsAPI::getInstance(env('PALADINS_DEVID'), env('PALADINS_AUTHKEY'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
