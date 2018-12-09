@@ -5,6 +5,7 @@ namespace PaladinsNinja\PaladinsAPI;
 use Carbon\Carbon;
 use PaladinsNinja\PaladinsAPI\PaladinsException;
 use Illuminate\Support\Facades\Cache;
+use function GuzzleHttp\json_decode;
 
 class PaladinsAPI
 {
@@ -63,7 +64,7 @@ class PaladinsAPI
      */
     public function getPlayerLoadouts(int $playerId)
     {
-        $response = $this->guzzleClient->get($this->buildUrl('getplayerloadouts', $playerId));
+        $response = $this->guzzleClient->get($this->buildUrl('getplayerloadouts', $playerId, 1));
 
         return json_decode($response->getBody(), true);
     }
@@ -124,7 +125,7 @@ class PaladinsAPI
         return json_decode($response->getBody(), true); 
     }
 
-    public function getMatchPlayerDetails(int $matchId)
+    public function getActiveMatchDetails(int $matchId)
     {
         $response = $this->guzzleClient->get($this->buildUrl('getmatchplayerdetails', null, null, $matchId));
 
@@ -138,8 +139,17 @@ class PaladinsAPI
         return json_decode($response->getBody(), true);
     }
 
+    public function getMatchIdsByQueue(string $hour, $date, int $queue = 424)
+    {
+        $url = $this->apiUrl . '/getmatchidsbyqueueJson/' . $this->devId . '/' . $this->getSignature('getmatchidsbyqueue') . '/' . $this->getSession() . '/' . $this->getTimestamp() . '/' . $queue . '/' . $date . '/' . $hour;
+        $response = $this->guzzleClient->get($url);
+
+        return json_decode($response->getBody(), true);
+    }
+
     private function getSession() 
     {
+        // TODO: Check and see if this will be affected on a multi-sever/loadbalanced network.
         if (!Cache::has('paladins.api.sessionId')) {
             try {
                 $response = $this->guzzleClient->get($this->apiUrl . '/createsessionJson/' . $this->devId . '/' . $this->getSignature('createsession') . '/' . $this->getTimestamp());
