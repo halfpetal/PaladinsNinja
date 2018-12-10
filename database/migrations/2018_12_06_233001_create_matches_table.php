@@ -16,17 +16,17 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('match_id')->unique();
-            $table->integer('queue_id');
-            $table->timestamp('match_date');
-            $table->string('region');
-            $table->integer('match_time_seconds');
-            $table->string('map_game');
-            $table->string('gamemode');
-            $table->integer('winning_task_force');
-            $table->integer('task_force_1_score');
-            $table->integer('task_force_2_score');
-            $table->json('task_force_1');
-            $table->json('task_force_2');
+            $table->integer('queue_id')->nullable();
+            $table->timestamp('match_date')->nullable();
+            $table->string('region')->nullable();
+            $table->integer('match_time_seconds')->nullable();
+            $table->string('map_game')->nullable();
+            $table->string('gamemode')->nullable();
+            $table->integer('winning_task_force')->nullable();
+            $table->integer('task_force_1_score')->nullable();
+            $table->integer('task_force_2_score')->nullable();
+            $table->json('task_force_1')->nullable();
+            $table->json('task_force_2')->nullable();
             $table->timestamps();
         });
     }

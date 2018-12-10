@@ -21,7 +21,9 @@ Route::get('player/{player}', 'HomeController@getPlayer')->name('player');
 
 Route::get('/t', function() {
     // return resolve('PaladinsAPI')->getDataUsage();
-    return resolve('PaladinsAPI')->getMatchIdsByQueue('0', \Carbon\Carbon::now()->format('Y-m-d'), 445);
+    //return resolve('PaladinsAPI')->getMatchIdsByQueue('0', \Carbon\Carbon::now()->format('Y-m-d'), 445);
+    return resolve('PaladinsAPI')->getItems();
+    // return resolve('PaladinsAPI')->getChampionSkins(2481);
     // $team1 = [];
     // $team2 = [];
     // $players = resolve('PaladinsAPI')->getMatchDetails(614224093);
@@ -43,6 +45,6 @@ Route::get('/q', function() {
     return 'dispatched';
 });
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -15,26 +15,26 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('player_id');
+            $table->integer('player_id')->nullable();
             $table->timestamp('registered_at')->nullable();
             $table->timestamp('last_login_at')->nullable();
-            $table->integer('hours_played');
-            $table->integer('leaves');
-            $table->integer('level');
-            $table->integer('losses');
-            $table->integer('mastery_level');
-            $table->string('name');
-            $table->string('platform');
-            $table->string('region');
-            $table->integer('tier_conquest');
-            $table->integer('total_achievements');
-            $table->integer('total_xp');
-            $table->integer('wins');
-            $table->json('ranked_conquest');
-            $table->json('match_history');
-            $table->json('friends');
-            $table->json('loadouts');
-            $table->json('champion_ranks');
+            $table->integer('hours_played')->nullable();
+            $table->integer('leaves')->nullable();
+            $table->integer('level')->nullable();
+            $table->integer('losses')->nullable();
+            $table->integer('mastery_level')->nullable();
+            $table->string('name')->nullable();
+            $table->string('platform')->nullable();
+            $table->string('region')->nullable()->nullable();
+            $table->integer('tier_conquest')->nullable();
+            $table->integer('total_achievements')->nullable();
+            $table->integer('total_xp')->nullable();
+            $table->integer('wins')->nullable();
+            $table->json('ranked_conquest')->nullable();
+            $table->json('match_history')->nullable();
+            $table->json('friends')->nullable();
+            $table->json('loadouts')->nullable();
+            $table->json('champion_ranks')->nullable();
             $table->timestamps();
         });
     }

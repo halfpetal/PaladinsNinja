@@ -2,6 +2,11 @@
 
 @section('head')
 <style>
+    .container-fluid
+    {
+        padding-right: 150px !important;
+        padding-left: 150px !important;
+    }
 
     nav > .nav.nav-tabs
     {
@@ -34,7 +39,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <nav>
@@ -48,11 +53,11 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
 
                 <div class="tab-pane fade show" id="nav-champions" role="tabpanel" aria-labelledby="nav-champions-tab">
-                    <player-champions></player-champions>
+                    <player-champions v-bind:player="'{{ $player->name }}'"></player-champions>
                 </div>
 
                 <div class="tab-pane fade show" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
-                    <player-matches></player-matches>
+                    <player-matches v-bind:player="'{{ $player->name }}'"></player-matches>
                 </div>
             </div>
         </div>

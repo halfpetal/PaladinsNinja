@@ -20,4 +20,17 @@ class Player extends Model
         'ranked_conquest', 'match_history', 'friends',
         'loadouts', 'champion_ranks'
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'ranked_conquest' => 'array',
+        'match_history' => 'array',
+        'friends' => 'array',
+        'loadouts' => 'array',
+        'champion_ranks' => 'array',
+    ];
 }

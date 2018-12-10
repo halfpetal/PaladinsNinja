@@ -46,7 +46,7 @@ class HomeController extends Controller
 
             return view('player', ['player' => $playerModel]);
         } else if(Player::where('player_id', $player)->exists()) {
-            $playerModel = Player::where('name', $player)->first();
+            $playerModel = Player::where('player_id', $player)->first();
 
             return view('player', ['player' => $playerModel]);
         } else {

@@ -4,7 +4,7 @@ namespace PaladinsNinja\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Match extends Model
+class Champion extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,19 +12,18 @@ class Match extends Model
      * @var array
      */
     protected $fillable = [
-        'match_id', 'queue_id', 'match_date',
-        'match_time_seconds', 'map_game', 'gamemode',
-        'winning_task_force', 'task_force_1_score', 'task_force_2_score',
-        'task_force_1', 'task_force_2', 'region'
+        'champion_id', 'health', 'speed',
+        'onfreerotation', 'name', 'role',
+        'title', 'icon_url', 'data', 'cards'
     ];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [
-        'task_force_1' => 'array',
-        'task_force_2' => 'array',
+        'data' => 'array',
+        'cards' => 'array',
     ];
 }

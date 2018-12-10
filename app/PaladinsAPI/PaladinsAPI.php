@@ -90,6 +90,27 @@ class PaladinsAPI
         return json_decode($response->getBody(), true);
     }
 
+    public function getItems()
+    {
+        $response = $this->guzzleClient->get($this->buildUrl('getitems', null, 1)); // 1 = ENGLISH
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function getChampionCards(int $championId)
+    {
+        $response = $this->guzzleClient->get($this->buildUrl('getchampioncards', null, 1, null, $championId));
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function getChampionSkins(int $championId)
+    {
+        $response = $this->guzzleClient->get($this->buildUrl('getchampionskins', null, 1, null, $championId));
+
+        return json_decode($response->getBody(), true);
+    }
+
     public function getPlayer(string $playerName)
     {
         $response = $this->guzzleClient->get($this->buildUrl('getplayer', $playerName));
@@ -150,17 +171,21 @@ class PaladinsAPI
     private function getSession() 
     {
         // TODO: Check and see if this will be affected on a multi-sever/loadbalanced network.
-        if (!Cache::has('paladins.api.sessionId')) {
+        if (!Cache::has('paladins.api.sessionId') || Cache::get('paladins.api.sessionId') == null) {
             try {
                 $response = $this->guzzleClient->get($this->apiUrl . '/createsessionJson/' . $this->devId . '/' . $this->getSignature('createsession') . '/' . $this->getTimestamp());
-
+                \Log::info('Getting new session');
+                \Log::info(json_decode($response->getBody(), true));
                 Cache::put('paladins.api.sessionId', json_decode($response->getBody(), true)['session_id'], Carbon::now()->addMinutes(12));
+
+                return Cache::get('paladins.api.sessionId');
             } catch (\Exception $e) {
+                \Log::error($e->getMessage());
                 throw new PaladinsException($e->getMessage());
             }
+        } else {
+            return Cache::get('paladins.api.sessionId');
         }
-
-        return Cache::get('paladins.api.sessionId');
     }
 
     private function getSignature(string $method)
