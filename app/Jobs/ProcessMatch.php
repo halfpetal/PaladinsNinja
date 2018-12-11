@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use PaladinsNinja\Models\Match;
+use PaladinsNinja\Models\MatchPlayer;
 
 class ProcessMatch implements ShouldQueue
 {
@@ -43,6 +44,8 @@ class ProcessMatch implements ShouldQueue
             } else {
                 array_push($taskForce2, $player);
             }
+
+            MatchPlayer::create($player);
         }
 
         $gameInfo = array_add($gameInfo, 'match_id', $matchData[0]['Match']);
