@@ -19,6 +19,3 @@ Route::get('/', function () {
 Route::post('search', 'HomeController@search')->name('search');
 Route::get('player/{player}', 'HomeController@getPlayer')->name('player');
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
