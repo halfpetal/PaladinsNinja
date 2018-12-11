@@ -111,8 +111,12 @@ class PaladinsAPI
         return json_decode($response->getBody(), true);
     }
 
-    public function getPlayer(string $playerName)
+    public function getPlayer(string $playerName, int $platform = null)
     {
+        // if ($platform) {
+        //     $this->getPlayerIdByPortalUserId($playerName, $platform);
+        // }
+
         $response = $this->guzzleClient->get($this->buildUrl('getplayer', $playerName));
 
         return json_decode($response->getBody(), true);
@@ -125,16 +129,24 @@ class PaladinsAPI
         return json_decode($response->getBody(), true);
     }
 
-    public function getPlayerStatus(string $playerName)
+    public function getPlayerIdByPortalUserId(string $playerName, int $platform)
     {
-        $response = $this->guzzleClient->get($this->buildUrl('getplayerstatus', $playerName));
+        $response = $this->guzzleClient->get($this->buildUrl('getplayeridbyportaluserid', $playerName, null, null, null, null, null, null, $platform));
+
+        \Log::info($response->getBody());
+        return json_decode($response->getBody(), true);
+    }
+
+    public function getPlayerStatus(int $playerId)
+    {
+        $response = $this->guzzleClient->get($this->buildUrl('getplayerstatus', $playerId));
 
         return json_decode($response->getBody(), true);
     }
 
-    public function getMatchHistory(string $playerName)
+    public function getMatchHistory(int $playerId)
     {
-        $response = $this->guzzleClient->get($this->buildUrl('getmatchhistory', $playerName));
+        $response = $this->guzzleClient->get($this->buildUrl('getmatchhistory', $playerId));
 
         return json_decode($response->getBody(), true);
     }
@@ -198,10 +210,11 @@ class PaladinsAPI
         return Carbon::now('UTC')->format('YmdHis');
     }
 
-    private function buildUrl(string $method = null, $player = null, int $lang = null, int $match_id = null, int $champ_id = null, int $queue = null, int $tier = null, int $season = null)
+    private function buildUrl(string $method = null, $player = null, int $lang = null, int $match_id = null, int $champ_id = null, int $queue = null, int $tier = null, int $season = null, int $platform = null)
     {
         $baseUrl = $this->apiUrl . '/' . $method . 'Json/' . $this->devId . '/' . $this->getSignature($method) . '/' . $this->getSession() . '/' . $this->getTimestamp();
 
+        $platform ? ($baseUrl .= '/' . $platform) : null;
         $player ? ($baseUrl .= '/' . $player) : null;
         $champ_id ? ($baseUrl .= '/' . $champ_id) : null;
         $lang ? ($baseUrl .= '/' . $lang) : null;
@@ -209,6 +222,10 @@ class PaladinsAPI
         $queue ? ($baseUrl .= '/' . $queue) : null;
         $tier ? ($baseUrl .= '/' . $tier) : null;
         $season ? ($baseUrl .= '/' . $season) : null;
+        
+        
+
+        \Log::info($baseUrl);
 
         return $baseUrl;
     }

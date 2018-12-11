@@ -162,6 +162,31 @@
                 </div>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cards</h5>
+                <div class="card-text">
+                    @foreach(array_where($champion->cards, function($value, $key) { return ($value['rarity'] != 'Legendary') && ($value['rank'] != 0);}) as $card)
+                    <div class="row w-100">
+                        <div class="col-sm col-sm-auto pr-0">
+                            <img class="card-img-left mt-4" src="{{ $card['championCard_URL'] }}" height="80px"/>
+                        </div>
+
+                        <div class="col-sm px-0">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $card['card_name'] }}</h4>
+                                <p class="card-text">
+                                    {{ delete_all_between('[', '] ', $card['card_description']) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

@@ -14,15 +14,30 @@ class ProcessPlayer implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $playerName;
+    protected $platform;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(string $playerName)
+    public function __construct(string $playerName, string $platform = null)
     {
         $this->playerName = $playerName;
+        
+        switch(strtolower($platform)) {
+            case 'nintendo':
+                $this->platform = 22;
+                break;
+            case 'psn':
+                $this->platform = 9;
+                break;
+            case 'xbl':
+                $this->platform = 10;
+                break;
+            default:
+                $this->platform = null;
+        }
     }
 
     /**
@@ -32,7 +47,7 @@ class ProcessPlayer implements ShouldQueue
      */
     public function handle()
     {
-        $playerData = resolve('PaladinsAPI')->getPlayer($this->playerName);
+        $playerData = resolve('PaladinsAPI')->getPlayer($this->playerName, $this->platform);
 
         if (empty($playerData)) {
             return;
@@ -41,7 +56,7 @@ class ProcessPlayer implements ShouldQueue
         $playerData = $playerData[0];
         $playerLoadouts = resolve('PaladinsAPI')->getPlayerLoadouts($playerData['Id']);
         $playerFriends = resolve('PaladinsAPI')->getPlayerFriends($playerData['Id']);
-        $playerMatchHistory = resolve('PaladinsAPI')->getMatchHistory($this->playerName);
+        $playerMatchHistory = resolve('PaladinsAPI')->getMatchHistory($playerData['Id']);
         $playerChampionRanks = resolve('PaladinsAPI')->getChampionRanks($playerData['Id']);
         $player = [];
         $matchHistory = [];
@@ -71,6 +86,7 @@ class ProcessPlayer implements ShouldQueue
         $player = array_add($player, 'total_achievements', $playerData['Total_Achievements']);
         $player = array_add($player, 'total_xp', $playerData['Total_Worshippers']);
         $player = array_add($player, 'wins', $playerData['Wins']);
+        $player = array_add($player, 'data', $playerData);
 
         $playerModel = Player::updateOrCreate(['player_id' => $player['player_id']], $player);
     }

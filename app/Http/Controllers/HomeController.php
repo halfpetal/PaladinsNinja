@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PaladinsNinja\Models\Player;
 use PaladinsNinja\Jobs\ProcessPlayer;
 use PaladinsNinja\Models\Champion;
+use PaladinsNinja\Http\Requests\SearchPlayer;
 
 class HomeController extends Controller
 {
@@ -29,12 +30,14 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function search(Request $request)
+    public function search(SearchPlayer $request)
     {
         if(Player::where('name', $request->get('name'))->exists()) {
             return redirect()->route('player', ['player' => $request->get('name')]);
+        } else if(Player::where('player_id', $request->get('name'))->exists()) {
+            return redirect()->route('player', ['player' => $request->get('name')]);
         } else {
-            ProcessPlayer::dispatch($request->get('name'))->onQueue('players');
+            ProcessPlayer::dispatch($request->get('name'), $request->get('platform'))->onQueue('players');
 
             return view('errors.playernotfound');
         }
@@ -45,13 +48,13 @@ class HomeController extends Controller
         if (Player::where('name', $player)->exists()) {
             $playerModel = Player::where('name', $player)->first();
 
-            return view('player', ['player' => $playerModel]);
+            return redirect()->route('player', ['player' => $playerModel->player_id]);
         } else if(Player::where('player_id', $player)->exists()) {
             $playerModel = Player::where('player_id', $player)->first();
 
             return view('player', ['player' => $playerModel]);
         } else {
-            ProcessPlayer::dispatch($player)->onQueue('players');
+            ProcessPlayer::dispatch($player, 'PC')->onQueue('players');
 
             return view('errors.playernotfound');
         }
@@ -68,5 +71,10 @@ class HomeController extends Controller
         }
 
         return view('champion', ['champion' => $championModel]);
+    }
+
+    public function getAllChampions()
+    {
+        return view('champions', ['champions' => Champion::all()]);
     }
 }

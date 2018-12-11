@@ -15,7 +15,7 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('player_id')->nullable();
+            $table->bigInteger('player_id')->nullable();
             $table->timestamp('registered_at')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->integer('hours_played')->nullable();
@@ -35,6 +35,7 @@ class CreatePlayersTable extends Migration
             $table->json('friends')->nullable();
             $table->json('loadouts')->nullable();
             $table->json('champion_ranks')->nullable();
+            $table->json('data')->nullable();
             $table->timestamps();
         });
     }

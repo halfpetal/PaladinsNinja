@@ -77,7 +77,7 @@ class CreateMatchPlayersTable extends Migration
             $table->integer('League_Points')->nullable();
             $table->integer('League_Tier')->nullable();
             $table->integer('League_Wins')->nullable();
-            $table->integer('Match')->nullable();
+            $table->bigInteger('Match')->nullable();
             $table->integer('Multi_kill_Max')->nullable();
             $table->integer('Objective_Assists')->nullable();
             $table->integer('PartyId')->nullable();
@@ -93,7 +93,7 @@ class CreateMatchPlayersTable extends Migration
             $table->integer('Towers_Destroyed')->nullable();
             $table->integer('Wards_Placed')->nullable();
             $table->integer('Winning_TaskForce')->nullable();
-            $table->integer('playerId')->nullable();
+            $table->bigInteger('playerId')->nullable();
             $table->integer('match_queue_id')->nullable();
             $table->string('Entry_Datetime')->nullable();
             $table->string('Map_Game')->nullable();

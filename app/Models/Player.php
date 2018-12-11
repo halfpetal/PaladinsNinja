@@ -18,7 +18,7 @@ class Player extends Model
         'platform', 'region', 'tier_conquest',
         'total_achievements', 'total_xp', 'wins',
         'ranked_conquest', 'match_history', 'friends',
-        'loadouts', 'champion_ranks'
+        'loadouts', 'champion_ranks', 'data'
     ];
 
     /**
@@ -32,6 +32,7 @@ class Player extends Model
         'friends' => 'array',
         'loadouts' => 'array',
         'champion_ranks' => 'array',
+        'data' => 'array',
     ];
 
     public function matches()

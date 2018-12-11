@@ -61,8 +61,8 @@ class ProcessMatch implements ShouldQueue
         $gameInfo = array_add($gameInfo, 'winning_task_force', $matchData[0]['Winning_TaskForce']);
         $gameInfo = array_add($gameInfo, 'task_force_1_score', $matchData[0]['Team1Score']);
         $gameInfo = array_add($gameInfo, 'task_force_2_score', $matchData[0]['Team2Score']);
-        $gameInfo = array_add($gameInfo, 'task_force_1', json_encode($taskForce1));
-        $gameInfo = array_add($gameInfo, 'task_force_2', json_encode($taskForce2));
+        $gameInfo = array_add($gameInfo, 'task_force_1', $taskForce1);
+        $gameInfo = array_add($gameInfo, 'task_force_2', $taskForce2);
 
         $match = Match::updateOrCreate(['match_id' => $gameInfo['match_id']], $gameInfo);
     }

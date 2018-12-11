@@ -15,7 +15,7 @@ class CreateMatchesTable extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('match_id')->unique();
+            $table->bigInteger('match_id')->unique();
             $table->integer('queue_id')->nullable();
             $table->timestamp('match_date')->nullable();
             $table->string('region')->nullable();

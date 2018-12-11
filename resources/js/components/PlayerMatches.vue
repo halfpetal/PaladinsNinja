@@ -19,7 +19,7 @@
                             <div v-if="match.winning_task_force == 1" class="col-12 p-3 m-2 bg-success text-white text-center"><h3>WIN</h3></div>
                             <div v-else class="col-12 p-3 m-2 bg-danger text-white text-center"><h3>LOST</h3></div>    
 
-                            <div class="col-12 card border-0 d-flex flex-row" v-for="player in JSON.parse(match.task_force_1)" v-bind:key="player.playerId">
+                            <div class="col-12 card border-0 d-flex flex-row" v-for="player in match.task_force_1" v-bind:key="player.playerId">
                                 <div class="row w-100">
                                     <div class="col-sm col-sm-auto pr-0">
                                         <img class="card-img-left mt-4" :src="getChampion(player.ChampionId).icon_url" height="65px"/>
@@ -82,7 +82,7 @@
                         <div class="col row ml-2">
                             <div v-if="match.winning_task_force == 2" class="col-12 p-3 m-2 bg-success text-white text-center"><h3>WIN</h3></div>
                             <div v-else class="col-12 p-3 m-2 bg-danger text-white text-center"><h3>LOST</h3></div>
-                            <div class="col-12 card border-0 d-flex flex-row" v-for="player in JSON.parse(match.task_force_2)" v-bind:key="player.playerId">
+                            <div class="col-12 card border-0 d-flex flex-row" v-for="player in match.task_force_2" v-bind:key="player.playerId">
                                 <div class="row w-100">
                                     <div class="col-sm col-sm-auto pr-0">
                                         <img class="card-img-left mt-4" :src="getChampion(player.ChampionId).icon_url" height="65px"/>

@@ -50,7 +50,51 @@
                 </div>
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="card-columns">{{-- 
+                        <div class="card">
+                            <div class="card-header"></div>
+
+                            <div class="card-body text-center">
+                                <p class="card-text">
+                                    
+                                </p>
+                            </div>
+                        </div>
+                        --}}
+                        <div class="card">
+                            <div class="card-header">Playtime</div>
+                            <div class="text-center">
+                                <p class="card-text">
+                                    <h3>{{ $player->hours_played }}H</h3>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Matches</div>
+                            <div class="text-center">
+                                <p class="card-text">
+                                    <h3>{{ $player->losses + $player->wins }} ({{ $player->wins }}W - {{ $player->losses }}L)</h3>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Matches</div>
+                            <div class="text-center">
+                                <p class="card-text">
+                                    <h3>
+                                        {{ $player->matches()->where('champion_role', 'Damage')->count()  }} 
+                                        | 
+                                        {{ $player->matches()->where('champion_role', 'Damage')->average('Damage_Player') }} 
+                                        - 
+                                        {{ $player->matches()->where('champion_role', 'Damage')->sum('Damage_Player') }}</h3>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="tab-pane fade show" id="nav-champions" role="tabpanel" aria-labelledby="nav-champions-tab">
                     <player-champions v-bind:player="'{{ $player->name }}'"></player-champions>
