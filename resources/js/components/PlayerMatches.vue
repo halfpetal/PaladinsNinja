@@ -157,7 +157,6 @@
             return {
                 matches: [],
                 champions: [],
-                currentCard: [],
             };
         },
 
@@ -182,7 +181,7 @@
 
             getChampionCard(championId, cardId) {
                 let champ = this.getChampion(championId);
-                let cards = JSON.parse(champ.cards);
+                let cards = champ.cards;
 
                 return cards.find(el => {
                     return (cardId == el.card_id1) || (cardId == el.card_id2);

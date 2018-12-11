@@ -48,8 +48,10 @@ class ProcessAllChampions implements ShouldQueue
             $championModel = array_add($championModel, 'role', str_replace('Paladins ', '', $champion['Roles']));
             $championModel = array_add($championModel, 'title', $champion['Title']);
             $championModel = array_add($championModel, 'icon_url', $champion['ChampionIcon_URL']);
-            $championModel = array_add($championModel, 'data', json_encode($champion));
-            $championModel = array_add($championModel, 'cards', json_encode(resolve('PaladinsAPI')->getChampionCards($champion['id'])));
+            $championModel = array_add($championModel, 'data', $champion);
+            $championModel = array_add($championModel, 'cards', resolve('PaladinsAPI')->getChampionCards($champion['id']));
+
+            \Log::info($champion);
 
             Champion::updateOrCreate(['champion_id' => $champion['id']], $championModel);
 

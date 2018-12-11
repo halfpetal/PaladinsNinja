@@ -9,7 +9,7 @@ Route::get('champion/{champion}', function(Reqest $request, $champion) {
     return Champion::firstOrFail(['champion_id' => $champion]);
 });
 
-Route::geT('player/{player}/champions', function(Request $request, $player) {
+Route::get('player/{player}/champions', function(Request $request, $player) {
     $playerModel;
 
     if (Player::where('name', $player)->exists()) {
@@ -39,7 +39,7 @@ Route::get('player/{player}/matches', function(Request $request, $player) {
 
     $matches = [];
 
-    foreach(json_decode($playerModel->match_history) as $match) {
+    foreach($playerModel->match_history as $match) {
         if (Match::where('match_id', $match)->exists()) {
             array_push($matches, Match::where('match_id', $match)->first());
         } else {

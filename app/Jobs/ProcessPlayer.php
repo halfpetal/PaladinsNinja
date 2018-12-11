@@ -51,11 +51,11 @@ class ProcessPlayer implements ShouldQueue
             array_push($matchHistory, $match['Match']);
         }
 
-        $player = array_add($player, 'loadouts', json_encode($playerLoadouts));
-        $player = array_add($player, 'friends', json_encode($playerFriends));
-        $player = array_add($player, 'match_history', json_encode($matchHistory));
-        $player = array_add($player, 'ranked_conquest', json_encode($playerData['RankedConquest']));
-        $player = array_add($player, 'champion_ranks', json_encode($playerChampionRanks));
+        $player = array_add($player, 'loadouts', $playerLoadouts);
+        $player = array_add($player, 'friends', $playerFriends);
+        $player = array_add($player, 'match_history', $matchHistory);
+        $player = array_add($player, 'ranked_conquest', $playerData['RankedConquest']);
+        $player = array_add($player, 'champion_ranks', $playerChampionRanks);
         $player = array_add($player, 'player_id', $playerData['Id']);
         $player = array_add($player, 'registered_at',  \Carbon\Carbon::parse($playerData['Created_Datetime']));
         $player = array_add($player, 'last_login_at',  \Carbon\Carbon::parse($playerData['Last_Login_Datetime']));

@@ -75,7 +75,7 @@
             getChampionRanks() {
                  axios.get('/api/player/' + this.player + '/champions')
                     .then(r => {
-                        this.championRanks = JSON.parse(r.data.championRanks);
+                        this.championRanks = r.data.championRanks;
                         this.champions = r.data.champions;
                     });
             },
