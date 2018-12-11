@@ -5,6 +5,7 @@ namespace PaladinsNinja\Http\Controllers;
 use Illuminate\Http\Request;
 use PaladinsNinja\Models\Player;
 use PaladinsNinja\Jobs\ProcessPlayer;
+use PaladinsNinja\Models\Champion;
 
 class HomeController extends Controller
 {
@@ -54,5 +55,18 @@ class HomeController extends Controller
 
             return view('errors.playernotfound');
         }
+    }
+
+    public function getChampion($champion)
+    {
+        if (Champion::where('champion_id', $champion)->exists()) {
+            $championModel = Champion::where('champion_id', $champion)->first();
+        } else if (Champion::where('name', $champion)->exists()) {
+            $championModel = Champion::where('name', $champion)->first();
+        } else {
+            return abort(404);
+        }
+
+        return view('champion', ['champion' => $championModel]);
     }
 }
