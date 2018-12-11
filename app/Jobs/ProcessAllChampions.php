@@ -45,7 +45,7 @@ class ProcessAllChampions implements ShouldQueue
             $championModel = array_add($championModel, 'speed', $champion['Speed']);
             $championModel = array_add($championModel, 'onfreerotation', $champion['OnFreeRotation'] ? true : false);
             $championModel = array_add($championModel, 'name', $champion['Name']);
-            $championModel = array_add($championModel, 'role', str_replace('Paladins', '', $champion['Roles']));
+            $championModel = array_add($championModel, 'role', str_replace('Paladins ', '', $champion['Roles']));
             $championModel = array_add($championModel, 'title', $champion['Title']);
             $championModel = array_add($championModel, 'icon_url', $champion['ChampionIcon_URL']);
             $championModel = array_add($championModel, 'data', json_encode($champion));

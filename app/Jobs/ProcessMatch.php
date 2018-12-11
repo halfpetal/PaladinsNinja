@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use PaladinsNinja\Models\Match;
 use PaladinsNinja\Models\MatchPlayer;
+use PaladinsNinja\Models\Champion;
 
 class ProcessMatch implements ShouldQueue
 {
@@ -44,6 +45,8 @@ class ProcessMatch implements ShouldQueue
             } else {
                 array_push($taskForce2, $player);
             }
+
+            $player = array_add($player, 'champion_role', Champion::where('name', $player['Reference_Name'])->first()->role);
 
             MatchPlayer::create($player);
         }

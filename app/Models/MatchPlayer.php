@@ -40,6 +40,6 @@ class MatchPlayer extends Model
         'Towers_Destroyed', 'Wards_Placed', 'Winning_TaskForce', 
         'playerId', 'match_queue_id','Entry_Datetime', 
         'Map_Game', 'Platform', 'Reference_Name', 
-        'Region', 'Skin', 'Win_Status'
+        'Region', 'Skin', 'Win_Status', 'champion_role'
     ];
 }

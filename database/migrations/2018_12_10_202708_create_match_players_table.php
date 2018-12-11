@@ -102,6 +102,7 @@ class CreateMatchPlayersTable extends Migration
             $table->string('Region')->nullable();
             $table->string('Skin')->nullable();
             $table->string('Win_Status')->nullable();
+            $table->string('champion_role')->nullable();
             $table->timestamps();
         });
     }

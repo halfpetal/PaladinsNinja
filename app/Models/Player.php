@@ -33,4 +33,9 @@ class Player extends Model
         'loadouts' => 'array',
         'champion_ranks' => 'array',
     ];
+
+    public function matches()
+    {
+        return $this->hasMany(MatchPlayer::class, 'playerId', 'player_id');
+    }
 }
