@@ -133,7 +133,6 @@ class PaladinsAPI
     {
         $response = $this->guzzleClient->get($this->buildUrl('getplayeridbyportaluserid', $playerName, null, null, null, null, null, null, $platform));
 
-        \Log::info($response->getBody());
         return json_decode($response->getBody(), true);
     }
 
@@ -186,8 +185,7 @@ class PaladinsAPI
         if (!Cache::has('paladins.api.sessionId') || Cache::get('paladins.api.sessionId') == null) {
             try {
                 $response = $this->guzzleClient->get($this->apiUrl . '/createsessionJson/' . $this->devId . '/' . $this->getSignature('createsession') . '/' . $this->getTimestamp());
-                \Log::info('Getting new session');
-                \Log::info(json_decode($response->getBody(), true));
+                
                 Cache::put('paladins.api.sessionId', json_decode($response->getBody(), true)['session_id'], Carbon::now()->addMinutes(12));
 
                 return Cache::get('paladins.api.sessionId');
@@ -222,10 +220,6 @@ class PaladinsAPI
         $queue ? ($baseUrl .= '/' . $queue) : null;
         $tier ? ($baseUrl .= '/' . $tier) : null;
         $season ? ($baseUrl .= '/' . $season) : null;
-        
-        
-
-        \Log::info($baseUrl);
 
         return $baseUrl;
     }
