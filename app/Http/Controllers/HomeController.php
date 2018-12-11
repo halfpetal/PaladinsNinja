@@ -50,7 +50,7 @@ class HomeController extends Controller
 
             return view('player', ['player' => $playerModel]);
         } else {
-            ProcessPlayer::dispatch($request->get('name'))->onQueue('players');
+            ProcessPlayer::dispatch($player)->onQueue('players');
 
             return view('errors.playernotfound');
         }
