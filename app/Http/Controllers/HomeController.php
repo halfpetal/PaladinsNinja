@@ -54,10 +54,17 @@ class HomeController extends Controller
 
             return view('player', ['player' => $playerModel]);
         } else {
-            ProcessPlayer::dispatch($player, 'PC')->onQueue('players');
+            ProcessPlayer::dispatch($player)->onQueue('players');
 
             return view('errors.playernotfound');
         }
+    }
+
+    public function updatePlayer($player)
+    {
+        ProcessPlayer::dispatch($player)->onQueue('players');
+
+        return redirect()->route('player', ['player' => $player])->with('status', 'Player update has been requested. It will be updated shortly.');
     }
 
     public function getChampion($champion)

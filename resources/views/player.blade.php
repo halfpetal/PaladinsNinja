@@ -40,6 +40,15 @@
 
 @section('content')
 <div class="container-fluid">
+    @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-12">
             <nav>
@@ -134,8 +143,6 @@
                             </div>
                         </div>
 
-                        
-
                         {{-- Ranked Card --}}
                         <div class="card">
                             <div class="card-header">Ranked <span class="text-muted">Season {{ $player->ranked_conquest['Season'] }}</span></div>
@@ -169,6 +176,20 @@
                                 <p class="card-text">
                                     <h3>{{ number_format(collect($player->champion_ranks)->sum('Kills')) }} / {{ number_format(collect($player->champion_ranks)->sum('Deaths')) }} / {{ number_format(collect($player->champion_ranks)->sum('Assists')) }}</h3>
                                     <h5 class="text-muted">{{ round((collect($player->champion_ranks)->sum('Kills') + (collect($player->champion_ranks)->sum('Assists') / 2)) / collect($player->champion_ranks)->sum('Deaths'), 2) }} RATIO</h5>
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Profile Actions Card --}}
+                        <div class="card">
+                            <div class="card-header">Profile Actions</div>
+
+                            <div class="card-body text-center">
+                                <p class="card-text">
+                                    <form method="POST" action="{{ route('player.update', ['player' => $player->player_id]) }}">
+                                        {{ csrf_field() }}
+                                        <button role="submit" class="btn btn-outline-primary">Request Profile Update</button>
+                                    </form>
                                 </p>
                             </div>
                         </div>
