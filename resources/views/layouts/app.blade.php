@@ -21,6 +21,15 @@
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/tarkhov/postboot/v1.0.0-beta1/dist/css/postboot.min.css"/>
     <script src="https://cdn.rawgit.com/tarkhov/postboot/v1.0.0-beta1/dist/js/postboot.min.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6691059885236141",
+        enable_page_level_ads: true
+        });
+    </script>
     
     @yield('head')
 </head>
@@ -42,8 +51,22 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    {{-- <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('champions') }}">Champion List</a>
+                        </li>
+
+                        <li class="nav-item divider-vertical"></li>
+
+                        <li class="nav-item">
+                            <a class="nav-link navbar-brand" href="https://discord.gg/C6zQ6Yj"><i class="fab fa-discord"></i></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link navbar-brand" href="https://twitter.com/Paladins_Ninja"><i class="fab fa-twitter"></i></a>
+                        </li>
+
+                    {{-- <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -71,8 +94,8 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul> --}}
+                        @endguest --}}
+                    </ul>
                 </div>
             </div>
         </nav>

@@ -41,7 +41,11 @@
                                     <td class="text-center align-middle">{{ c.Rank }}</td>
                                     <td class="text-center align-middle">{{ numberWithCommas(c.Wins + c.Losses) }} ({{ numberWithCommas(c.Wins) }}W - {{ numberWithCommas(c.Losses) }}L)</td>
                                     <td class="text-center align-middle">{{ Math.max( Math.round((c.Wins / (c.Wins + c.Losses) * 100) * 10) / 10, 2.8 ).toFixed(2) }}%</td>
-                                    <td class="text-center align-middle">{{ numberWithCommas(c.Kills) }} / {{ numberWithCommas(c.Deaths) }} / {{ numberWithCommas(c.Assists) }}</td>
+                                    <td class="text-center align-middle">
+                                        {{ numberWithCommas(c.Kills) }} / {{ numberWithCommas(c.Deaths) }} / {{ numberWithCommas(c.Assists) }}
+                                        <br/>
+                                        <span class="text-muted">{{ ((c.Kills + (c.Assists / 2)) / c.Deaths).toFixed(2) }} RATIO</span>
+                                    </td>
                                     <td class="text-center align-middle">{{ numberWithCommas(c.Gold) }} (~{{ Math.floor(c.Gold / c.Deaths) }} CPL)</td>
                                     <td class="text-center align-middle">{{ minutesToHours(c.Minutes) }}</td>
                                     <td class="text-center align-middle">{{  c.LastPlayed | moment('from', 'now') }}</td>

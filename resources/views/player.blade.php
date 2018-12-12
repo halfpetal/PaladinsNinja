@@ -62,6 +62,59 @@
                             </div>
                         </div>
                         --}}
+
+                        {{-- General Card --}}
+                        <div class="card">
+                            <div class="card-header">Player Info</div>
+
+                            <div class="card-body text-center">
+                                <p class="card-text">
+                                    <div class="row">
+                                        <p class="col-6">
+                                            <strong class="text-muted">Player Name</strong> <br/>
+                                            <strong>{{ $player->name }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Platform</strong> <br/>
+                                            <strong>{{ $player->platform }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Account Level</strong> <br/>
+                                            <strong>{{ $player->level }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Region</strong> <br/>
+                                            <strong>{{ $player->region }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Unlocked Champions</strong> <br/>
+                                            <strong>{{ $player->mastery_level }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Last Seen</strong> <br/>
+                                            <strong>{{ \Carbon\Carbon::parse($player->last_login_at)->diffForHumans() }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Registered</strong> <br/>
+                                            <strong>{{ \Carbon\Carbon::parse($player->registered_at)->diffForHumans() }}</strong>
+                                        </p>
+
+                                        <p class="col-6">
+                                            <strong class="text-muted">Last Profile Update</strong> <br/>
+                                            <strong>{{ \Carbon\Carbon::parse($player->updated_at)->diffForHumans() }}</strong>
+                                        </p>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Playtime Card --}}
                         <div class="card">
                             <div class="card-header">Playtime</div>
                             <div class="text-center">
@@ -71,6 +124,7 @@
                             </div>
                         </div>
 
+                        {{-- Matches Card --}}
                         <div class="card">
                             <div class="card-header">Matches</div>
                             <div class="text-center">
@@ -80,17 +134,79 @@
                             </div>
                         </div>
 
+                        
+
+                        {{-- Ranked Card --}}
                         <div class="card">
-                            <div class="card-header">Matches</div>
-                            <div class="text-center">
+                            <div class="card-header">Ranked <span class="text-muted">Season {{ $player->ranked_conquest['Season'] }}</span></div>
+                                
+                            <div class="card-body">
+                                <div class="card-text d-flex justify-content-start">
+                                    <img src="{{ asset('images/ranked/' . $player->tier_conquest . '.png') }}" class="mr-0">
+                                    <div class="text-left">
+                                        <h3>{{ ranked_tier_display($player->tier_conquest) }}</h3>
+                                        <div class="d-flex justify-content-around">
+                                            <p class="pr-3 text-center">
+                                                <strong class="text-muted">Current TP</strong> <br/>
+                                                <strong>{{ $player->ranked_conquest['Points'] }}</strong>
+                                            </p>
+
+                                            <p class="text-center">
+                                                <strong class="text-muted">Wins / Losses</strong> <br/>
+                                                <strong>{{ $player->ranked_conquest['Wins'] }}W / {{ $player->ranked_conquest['Losses'] }}L</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- KDA Card --}}
+                        <div class="card">
+                            <div class="card-header">Kills / Deaths / Assists</div>
+
+                            <div class="card-body text-center">
                                 <p class="card-text">
-                                    <h3>
-                                        {{ $player->matches()->where('champion_role', 'Damage')->count()  }} 
-                                        | 
-                                        {{ $player->matches()->where('champion_role', 'Damage')->average('Damage_Player') }} 
-                                        - 
-                                        {{ $player->matches()->where('champion_role', 'Damage')->sum('Damage_Player') }}</h3>
+                                    <h3>{{ number_format(collect($player->champion_ranks)->sum('Kills')) }} / {{ number_format(collect($player->champion_ranks)->sum('Deaths')) }} / {{ number_format(collect($player->champion_ranks)->sum('Assists')) }}</h3>
+                                    <h5 class="text-muted">{{ round((collect($player->champion_ranks)->sum('Kills') + (collect($player->champion_ranks)->sum('Assists') / 2)) / collect($player->champion_ranks)->sum('Deaths'), 2) }} RATIO</h5>
                                 </p>
+                            </div>
+                        </div>
+
+                        {{-- Top Champion Card --}}
+                        <div class="card">
+                            <div class="card-header">Top 5 Champions</div>
+
+                            <div class="card-body text-center">
+                                <div class="card-text d-flex flex-column justify-content-around">
+                                    @for ($i = 0; $i < 5; $i++)
+                                    @php
+                                        $champion = \PaladinsNinja\Models\Champion::where('champion_id', $player->champion_ranks[$i]['champion_id'])->first();
+                                    @endphp
+                                    <div class="row w-100">
+                                        <div class="col-sm col-sm-auto pr-0">
+                                            <img class="card-img-left mt-4" src="{{ $champion->icon_url }}" height="75px"/>
+                                        </div>
+
+                                        <div class="col-sm px-0 text-left">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $champion->name }}</h5>
+                                                <div class="card-text row">
+                                                    <p class="col-6 text-center">
+                                                        <strong class="text-muted">Level</strong> <br/>
+                                                        <strong>{{ $player->champion_ranks[$i]['Rank'] }}</strong>
+                                                    </p>
+
+                                                    <p class="col-6 text-center">
+                                                        <strong class="text-muted">Playtime</strong> <br/>
+                                                        <strong>{{ floor($player->champion_ranks[$i]['Minutes'] / 60) }}H {{ $player->champion_ranks[$i]['Minutes'] % 60 }}M</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
                     </div>
