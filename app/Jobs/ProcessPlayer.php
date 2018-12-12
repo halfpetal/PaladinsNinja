@@ -64,7 +64,10 @@ class ProcessPlayer implements ShouldQueue
         foreach ($playerMatchHistory as $match)
         {
             array_push($matchHistory, $match['Match']);
-            ProcessMatch::dispatch($match['Match'])->onQueue('matches');
+            
+            if ($match['Match']) {
+                ProcessMatch::dispatch($match['Match'])->onQueue('matches');
+            }
         }
 
         $player = array_add($player, 'loadouts', $playerLoadouts);
