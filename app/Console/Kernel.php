@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(GetMatchesInQueue::class, [469])->cron('*/10 * * * *')->onOneServer();
         $schedule->command(GetMatchesInQueue::class, [437])->cron('*/10 * * * *')->onOneServer();
         $schedule->command(GetMatchesInQueue::class, [445])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetAllChampions::class)->weekly()->onOneServer();
+        $schedule->command(GetAllChampions::class)->daily()->onOneServer();
     }
 
     /**
