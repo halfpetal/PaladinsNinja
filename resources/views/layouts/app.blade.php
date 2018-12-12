@@ -47,7 +47,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <form class="form-inline" role="form" action="{{ route('search') }}" method="POST">
+                            {{  csrf_field() }}
+                            <div class="row no-gutters">
+                                <input name="platform" id="platform" type="hidden" value="pc">
+                                <div class="col">
+                                    <input class="form-control form-control rounded-0" type="text" id="name" name="name" placeholder="Find a Player">
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-success rounded-0" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -56,6 +56,7 @@
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
                     <a class="nav-item nav-link" id="nav-champions-tab" data-toggle="tab" href="#nav-champions" role="tab" aria-controls="nav-champions" aria-selected="false">Champions</a>
                     <a class="nav-item nav-link" id="nav-matches-tab" data-toggle="tab" href="#nav-matches" role="tab" aria-controls="nav-matches" aria-selected="false">Matches</a>
+                    <a class="nav-item nav-link" id="nav-friends-tab" data-toggle="tab" href="#nav-friends" role="tab" aria-controls="nav-friends" aria-selected="true">Friends</a>
                 </div>
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -180,6 +181,15 @@
                             </div>
                         </div>
 
+                        {{-- Player Status Card --}}
+                        <div class="card">
+                            <div class="card-header">Player Status</div>
+
+                            <div class="card-body">
+                                <player-status v-bind:playername="'{{ $player->name }}'" v-bind:playerid="'{{ $player->player_id }}'"></player-status>
+                            </div>
+                        </div>
+
                         {{-- Profile Actions Card --}}
                         <div class="card">
                             <div class="card-header">Profile Actions</div>
@@ -239,6 +249,22 @@
 
                 <div class="tab-pane fade show" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
                     <player-matches v-bind:player="'{{ $player->name }}'"></player-matches>
+                </div>
+
+                <div class="tab-pane fade show" id="nav-friends" role="tabpanel" aria-labelledby="nav-friends-tab">
+                    <div class="card">
+                        <div class="card-header">Friends List</div>
+                        
+                        <div class="card-text p-4 row align-items-center">
+                            @forelse ($player->friends as $friend)
+                            <div class="col m-4">
+                                <span><a href="{{ route('player', ['player' => $friend['player_id']]) }}" class="btn btn-outline-dark btn-lg">{{ $friend['name'] }}</a></span>
+                            </div>
+                            @empty
+                            <h4>Account has no friends. Note: Console player friends list are not given to us.</h4>
+                            @endforelse
+                        </div>    
+                    </div>
                 </div>
             </div>
         </div>
