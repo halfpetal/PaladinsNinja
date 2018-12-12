@@ -28,14 +28,12 @@ Route::get('player/{player}/champions', function(Request $request, $player) {
 });
 
 Route::get('player/{player}/status', function(Request $request, $player) {
-    Cache::forget('player' . $player . 'status');
     return Cache::remember('player' . $player . 'status', 1, function() use ($player) {
         return resolve('PaladinsAPI')->getPlayerStatus($player);
     });
 });
 
 Route::get('player/{player}/{match}/live', function(Request $request, $player, $match) {
-    Cache::forget('player' . $player . 'live');
     return Cache::remember('player' . $player . 'live', 5, function() use ($player, $match) {
         return resolve('PaladinsAPI')->getActiveMatchDetails($match);
     });

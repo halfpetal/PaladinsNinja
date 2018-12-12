@@ -107,12 +107,12 @@
 
                                         <p class="col-6">
                                             <strong class="text-muted">Last Seen</strong> <br/>
-                                            <strong>{{ \Carbon\Carbon::parse($player->last_login_at)->diffForHumans() }}</strong>
+                                            <strong data-toggle="tooltip" title="" data-original-title="{{ \Carbon\Carbon::parse($player->last_login_at)->toDayDateTimeString() }} UTC">{{ \Carbon\Carbon::parse($player->last_login_at)->diffForHumans() }}</strong>
                                         </p>
 
                                         <p class="col-6">
                                             <strong class="text-muted">Registered</strong> <br/>
-                                            <strong>{{ \Carbon\Carbon::parse($player->registered_at)->diffForHumans() }}</strong>
+                                            <strong data-toggle="tooltip" title="" data-original-title="{{ \Carbon\Carbon::parse($player->registered_at)->toDayDateTimeString() }} UTC">{{ \Carbon\Carbon::parse($player->registered_at)->diffForHumans() }}</strong>
                                         </p>
 
                                         <p class="col-6">
