@@ -150,7 +150,7 @@
                                 
                             <div class="card-body">
                                 <div class="card-text d-flex justify-content-start">
-                                    <img src="{{ asset('images/ranked/' . $player->tier_conquest . '.png') }}" class="mr-0">
+                                    <img src="{{ asset('images/ranked/' . $player->tier_conquest . '.png') }}" class="mr-2">
                                     <div class="text-left">
                                         <h3>{{ ranked_tier_display($player->tier_conquest) }}</h3>
                                         <div class="d-flex justify-content-around">
