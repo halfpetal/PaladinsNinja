@@ -3,12 +3,33 @@
         <div v-if="this.match.length > 0">
             <h2>In Game</h2>
             <hr>
-            <div v-if="this.match.playerId != null">   
-                <h4>Team 1</h4>
-                <div v-for="player in match" v-bind:key="player.playerId">
-
+            <div v-if="this.match[0].playerId != null">   
+                <div class="mb-4">
+                    <h4>Team 1</h4>
+                    <div v-for="player in getTeamOne()" v-bind:key="player.playerId">
+                        <div class="row w-100 mb-3">
+                            <div class="col-8">
+                                <a :href="'/player/' + player.playerId">{{ player.playerName }}</a> (Lvl {{ player.Account_Level }})
+                            </div>
+                            <div class="col">
+                                {{ player.ChampionName }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h4>Team 2</h4>
+                <div>
+                    <h4>Team 2</h4>
+                    <div v-for="player in getTeamTwo()" v-bind:key="player.playerId">
+                        <div class="row w-100 mb-3">
+                            <div class="col-8">
+                                <a :href="'/player/' + player.playerId">{{ player.playerName }}</a> (Lvl {{ player.Account_Level }})
+                            </div>
+                            <div class="col">
+                                {{ player.ChampionName }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <h4 class="text-muted" v-else>
                 Currently in a match that we can not track.
@@ -55,9 +76,14 @@
             },
 
             getTeamOne() {
-                this.match.filter(el => { 
-                    console.log(el); 
-                    return el; 
+                return this.match.filter(el => { 
+                    return el.taskForce == 1; 
+                });
+            },
+
+            getTeamTwo() {
+                return this.match.filter(el => { 
+                    return el.taskForce == 2; 
                 });
             }
         }
