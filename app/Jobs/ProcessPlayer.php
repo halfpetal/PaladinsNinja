@@ -65,7 +65,7 @@ class ProcessPlayer implements ShouldQueue
         {   
             if ($match['Match']) {
                 array_push($matchHistory, $match['Match']);
-                \Log::info('Processing match for match history: ' . $match);
+                \Log::info('Processing match for match history: ' . $match['Match']);
                 ProcessMatch::dispatch($match['Match'])->onQueue('match-history');
             }
         }
