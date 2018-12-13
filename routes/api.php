@@ -56,7 +56,7 @@ Route::get('player/{player}/matches', function(Request $request, $player) {
         if (Match::where('match_id', $match)->exists()) {
             array_push($matches, Match::where('match_id', $match)->first());
         } else {
-            \PaladinsNinja\Jobs\ProcessMatch::dispatch($match)->onQueue('matches');
+            \PaladinsNinja\Jobs\ProcessMatch::dispatch($match)->onQueue('match-history');
         }
     } 
 
