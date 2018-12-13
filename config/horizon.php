@@ -103,7 +103,7 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
+                'queue' => ['default', 'matches', 'players', 'champions'],
                 'balance' => 'simple',
                 'processes' => 15,
                 'tries' => 3,
