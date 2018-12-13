@@ -5,6 +5,7 @@ use PaladinsNinja\Models\Player;
 use PaladinsNinja\Models\Match;
 use PaladinsNinja\Models\Champion;
 use Illuminate\Support\Facades\Cache;
+use PaladinsNinja\Jobs\ProcessMatch;
 
 Route::get('champion/{champion}', function(Reqest $request, $champion) {
     return Champion::firstOrFail(['champion_id' => $champion]);
@@ -56,7 +57,8 @@ Route::get('player/{player}/matches', function(Request $request, $player) {
         if (Match::where('match_id', $match)->exists()) {
             array_push($matches, Match::where('match_id', $match)->first());
         } else {
-            \PaladinsNinja\Jobs\ProcessMatch::dispatch($match)->onQueue('match-history');
+            \Log::info('Processing match for match history: ' . $match);
+            ProcessMatch::dispatch($match)->onQueue('match-history');
         }
     } 
 
