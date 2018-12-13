@@ -1,5 +1,6 @@
 <?php
-// Auth::routes(['verify' => true]);
+
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('home');
