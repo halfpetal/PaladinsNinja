@@ -183,9 +183,14 @@
                 let champ = this.getChampion(championId);
                 let cards = champ.cards;
 
-                return cards.find(el => {
+                let card = cards.find(el => {
                     return (cardId == el.card_id1) || (cardId == el.card_id2);
                 });
+
+                return card != undefined ? card : {
+                    card_name: "",
+                    championCard_URL: "",
+                };
             },
 
             numberWithCommas(numberToParse) {
