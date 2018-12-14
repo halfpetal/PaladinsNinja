@@ -39,7 +39,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show">
             {{ session('status') }}
@@ -59,7 +59,7 @@
                     <a class="nav-item nav-link" id="nav-friends-tab" data-toggle="tab" href="#nav-friends" role="tab" aria-controls="nav-friends" aria-selected="true">Friends</a>
                 </div>
             </nav>
-            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" role="tab-content">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="card-columns">{{-- 
                         <div class="card">
@@ -148,7 +148,7 @@
                         <div class="card">
                             <div class="card-header">Ranked <span class="text-muted">Season {{ $player->ranked_conquest['Season'] }}</span></div>
                                 
-                            <div class="card-body">
+                            <div class="card-body5">
                                 <div class="card-text d-flex justify-content-start">
                                     <img src="{{ asset('images/ranked/' . $player->tier_conquest . '.png') }}" class="mr-2">
                                     <div class="text-left">
