@@ -33,7 +33,7 @@
         background: #b2bec3;
         color:#fff;
         border-radius:0;
-        transition:background 0.20s linear;
+        transition:background 0.05s linear;
     }
 </style>
 @endsection
