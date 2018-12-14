@@ -24,7 +24,13 @@ class ProcessMatch implements ShouldQueue
      */
     public function __construct(int $matchId)
     {
-        $this->matchId = $matchId;
+        if (!is_null($matchId) && is_int($matchId)) {
+            $this->matchId = $matchId;
+        } else {
+            $this->matchId = -1;
+        }
+
+       
     }
 
     /**
@@ -34,12 +40,20 @@ class ProcessMatch implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->matchId < 0) {
+            return;
+        }
+
         $matchData = resolve('PaladinsAPI')->getMatchDetails($this->matchId);
         $taskForce1 = [];
         $taskForce2 = [];
         $gameInfo = [];
 
         foreach ($matchData as $player) {
+            if (is_null($player)) {
+                return;
+            }
+
             if ($player['TaskForce'] == 1) {
                 array_push($taskForce1, $player);
             } else {
