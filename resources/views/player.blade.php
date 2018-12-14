@@ -148,7 +148,7 @@
                         <div class="card">
                             <div class="card-header">Ranked <span class="text-muted">Season {{ $player->ranked_conquest['Season'] }}</span></div>
                                 
-                            <div class="card-body5">
+                            <div class="card-body">
                                 <div class="card-text d-flex justify-content-start">
                                     <img src="{{ asset('images/ranked/' . $player->tier_conquest . '.png') }}" class="mr-2">
                                     <div class="text-left">
