@@ -48,7 +48,9 @@ class GetMatchesInQueue extends Command
             }
         } else {
             foreach ($matches as $match) {
-                \PaladinsNinja\Jobs\ProcessMatch::dispatch($match['Match'])->onQueue('matches');
+                if (!is_null($match) && is_int($match['Match']) && $match['Match'] > 0) {
+                    \PaladinsNinja\Jobs\ProcessMatch::dispatch($match['Match'])->onQueue('matches');
+                }
             }
         }
     }
