@@ -40,7 +40,7 @@ class ProcessMatch implements ShouldQueue
      */
     public function handle()
     {
-        if ($this->matchId < 0) {
+        if ($this->matchId <= 0) {
             return;
         }
 
