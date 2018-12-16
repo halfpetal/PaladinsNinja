@@ -40,7 +40,7 @@ class GetMatchesInQueue extends Command
         $time = \Carbon\Carbon::now('UTC')->subHour()->format('H,i');
         $matches = resolve('PaladinsAPI')->getMatchIdsByQueue($time, \Carbon\Carbon::now()->format('Y-m-d'), $this->argument('queue'));
 
-        if($matches[0]['Match'] == null || $matches[0]['ret_msg'] == 'Invalid signature.') {
+        while(empty($matches) || $matches[0]['Match'] == null || $matches[0]['ret_msg'] == 'Invalid signature.') {
             $matches = resolve('PaladinsAPI')->getMatchIdsByQueue($time, \Carbon\Carbon::now()->format('Y-m-d'), $this->argument('queue'));
         }
 
