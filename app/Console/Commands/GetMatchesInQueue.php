@@ -40,7 +40,7 @@ class GetMatchesInQueue extends Command
         $time = \Carbon\Carbon::now('UTC')->subHour()->format('H,i');
         $matches = resolve('PaladinsAPI')->getMatchIdsByQueue($time, \Carbon\Carbon::now()->format('Y-m-d'), $this->argument('queue'));
 
-        while(empty($matches) || $matches[0]['Match'] == null || $matches[0]['ret_msg'] == 'Invalid signature.') {
+        while(!empty($matches) && ($matches[0]['Match'] == null || $matches[0]['ret_msg'] == 'Invalid signature.')) {
             $matches = resolve('PaladinsAPI')->getMatchIdsByQueue($time, \Carbon\Carbon::now()->format('Y-m-d'), $this->argument('queue'));
         }
 
@@ -52,7 +52,7 @@ class GetMatchesInQueue extends Command
             }
         } else {
             foreach ($matches as $match) {
-                if (!is_null($match) && is_int($match['Match']) && $match['Match'] > 0) {
+                if (!is_null($match) && $match['Match'] > 0) {
                     \PaladinsNinja\Jobs\ProcessMatch::dispatch($match['Match'])->onQueue('matches');
                 }
             }
