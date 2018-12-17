@@ -3,7 +3,7 @@
 @section('head')
 <style>
     body {
-        background: url('{{ asset('images/media/home/' . rand(1, 15) . '.png') }}');
+        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url('{{ asset('images/media/home/' . rand(1, 15) . '.png') }}');
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -53,17 +53,17 @@
         <div class="card text-white bg-dark mb-3">
             <div class="card-body d-flex justify-content-around text-center">
                 <div class="col">
-                    <h1>{{ \Cache::remember('site.totalmatches', 30, function() { return \PaladinsNinja\Models\Match::count(); }) }}+</h1>
+                    <h1>{{ number_format(\Cache::remember('site.totalmatches', 30, function() { return \PaladinsNinja\Models\Match::count(); })) }}+</h1>
                     <h5 class="text-muted">MATCHES STORED</h5>
                 </div>
 
                 <div class="col">
-                    <h1>{{ \Cache::remember('site.totalplayers', 30, function() { return \PaladinsNinja\Models\Player::count(); }) }}+</h1>
+                    <h1>{{ number_format(\Cache::remember('site.totalplayers', 30, function() { return \PaladinsNinja\Models\Player::count(); })) }}+</h1>
                     <h5 class="text-muted">PLAYERS STORED</h5>
                 </div>
 
                 <div class="col">
-                    <h1>{{ \Cache::remember('site.totalmatchestoday', 30, function() { return \PaladinsNinja\Models\Match::where('match_date', '>=', \Carbon\Carbon::today())->count(); }) }}+</h1>
+                    <h1>{{ number_format(\Cache::remember('site.totalmatchestoday', 30, function() { return \PaladinsNinja\Models\Match::where('match_date', '>=', \Carbon\Carbon::today())->count(); })) }}+</h1>
                     <h5 class="text-muted">MATCHES TODAY</h5>
                 </div>
             </div>
