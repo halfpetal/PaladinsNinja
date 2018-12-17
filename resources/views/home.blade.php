@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="col">
-                    <h1>{{ \Cache::remember('site.totalmatchestoday', 30, function() { return \PaladinsNinja\Models\Match::where('created_at', \Carbon\Carbon::today())->count(); }) }}+</h1>
+                    <h1>{{ \Cache::remember('site.totalmatchestoday', 30, function() { return \PaladinsNinja\Models\Match::where('match_date', '>=', \Carbon\Carbon::today())->count(); }) }}+</h1>
                     <h5 class="text-muted">MATCHES TODAY</h5>
                 </div>
             </div>
