@@ -65,8 +65,8 @@ class ProcessPlayer implements ShouldQueue
         {   
             if ($match['Match']) {
                 array_push($matchHistory, $match['Match']);
-                
-                if (!\PaladinsNinja\Models\Match::where('match_id'. $match['Match'])->exists()) {
+
+                if (!\PaladinsNinja\Models\Match::where('match_id', $match['Match'])->exists()) {
                     ProcessMatch::dispatch($match['Match'])->onQueue('match-history');
                 }
             }
