@@ -49,6 +49,10 @@ class ProcessMatch implements ShouldQueue
         $taskForce2 = [];
         $gameInfo = [];
 
+        if (is_empty($matchData) || $matchData[0]['playerId'] == null || $matchData[0]['Reference_Name'] == null) {
+            return;
+        }
+
         foreach ($matchData as $player) {
             if (is_null($player)) {
                 return;
@@ -67,7 +71,7 @@ class ProcessMatch implements ShouldQueue
 
         $gameInfo = array_add($gameInfo, 'match_id', $matchData[0]['Match']);
         $gameInfo = array_add($gameInfo, 'queue_id', $matchData[0]['match_queue_id']);
-        $gameInfo = array_add($gameInfo, 'match_date', \Carbon\Carbon::parse($matchData[0]['Entry_Datetime']));
+        $gameInfo = array_add($gameInfo, 'match_date', d\Carbon\Carbon::parse($matchData[0]['Entry_Datetime']));
         $gameInfo = array_add($gameInfo, 'region', $matchData[0]['Region']);
         $gameInfo = array_add($gameInfo, 'match_time_seconds', $matchData[0]['Time_In_Match_Seconds']);
         $gameInfo = array_add($gameInfo, 'map_game', $matchData[0]['Map_Game']);
