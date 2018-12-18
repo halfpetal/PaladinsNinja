@@ -49,7 +49,7 @@ class ProcessMatch implements ShouldQueue
         $taskForce2 = [];
         $gameInfo = [];
 
-        if (is_empty($matchData) || $matchData[0]['playerId'] == null || $matchData[0]['Reference_Name'] == null) {
+        if (empty($matchData) || $matchData[0]['playerId'] == null || $matchData[0]['Reference_Name'] == null) {
             return;
         }
 
