@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row justify-content-center">
+        <div v-if="champions.length > 0" class="row justify-content-center">
             <div class="col">
                 <div class="card">
                     <div class="card-header">Champion Statistics</div>
@@ -57,13 +57,23 @@
                 </div>
             </div>
         </div>
+
+        <div v-else>
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+
+            <h4 class="text-center">We're getting all the champions from the archives.</h4>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['player'],
-
         data() {
             return {
                 championRanks: [],
@@ -77,7 +87,7 @@
 
         methods: {
             getChampionRanks() {
-                 axios.get('/api/player/' + this.player + '/champions')
+                 axios.get('/api/player/' + this.$route.params.id + '/champions')
                     .then(r => {
                         this.championRanks = r.data.championRanks;
                         this.champions = r.data.champions;

@@ -27,4 +27,9 @@ class Match extends Model
         'task_force_1' => 'array',
         'task_force_2' => 'array',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'match_id';
+    }
 }

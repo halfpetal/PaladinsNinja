@@ -43,8 +43,6 @@
 
 <script>
     export default {
-        props: ['playername', 'playerid'],
-
         data() {
             return {
                 status: [],
@@ -57,7 +55,7 @@
 
         methods: {
             getStatus() {
-                axios.get('/api/player/' + this.playerid + '/status')
+                axios.get('/api/player/' + this.$route.params.id + '/status')
                     .then(r => {
                         this.status = r.data[0];
 
@@ -68,7 +66,7 @@
             },
 
             getMatch() {
-                axios.get('/api/player/' + this.playerid + '/' + this.status.Match + '/live')
+                axios.get('/api/player/' + this.$route.params.id + '/' + this.status.Match + '/live')
                     .then(r => {
                         this.match = r.data;
                         this.getTeamOne();

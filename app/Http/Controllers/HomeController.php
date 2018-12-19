@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PaladinsNinja\Models\Player;
 use PaladinsNinja\Jobs\ProcessPlayer;
 use PaladinsNinja\Models\Champion;
+use PaladinsNinja\Models\Match;
 use PaladinsNinja\Http\Requests\SearchPlayer;
 
 class HomeController extends Controller
@@ -32,15 +33,11 @@ class HomeController extends Controller
 
     public function search(SearchPlayer $request)
     {
-        if(Player::where('name', $request->get('name'))->exists()) {
-            return redirect()->route('player', ['player' => $request->get('name')]);
-        } else if(Player::where('player_id', $request->get('name'))->exists()) {
-            return redirect()->route('player', ['player' => $request->get('name')]);
-        } else {
+        if(!Player::where('name', $request->get('name'))->exists() && !Player::where('player_id', $request->get('name'))->exists()) {
             ProcessPlayer::dispatch($request->get('name'), $request->get('platform'))->onQueue('players');
-
-            return view('errors.playernotfound');
         }
+        
+        return redirect()->route('player', ['player' => $request->get('name')]);
     }
 
     public function getPlayer($player)
@@ -83,5 +80,10 @@ class HomeController extends Controller
     public function getAllChampions()
     {
         return view('champions', ['champions' => Champion::all()]);
+    }
+
+    public function getMatch(Match $match)
+    {
+        return view('match', ['match' => $match]);
     }
 }

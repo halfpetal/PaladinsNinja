@@ -11,6 +11,25 @@ Route::get('champion/{champion}', function(Reqest $request, $champion) {
     return Champion::firstOrFail(['champion_id' => $champion]);
 });
 
+Route::get('player/{player}/details', function(Request $request, $player) {
+    $player = Player::where('player_id', $player)->firstOrFail();
+
+    return response()->json([
+        'player' => $player,
+        'playerDetailDisplay' => [
+            'registered_at' => [
+                'exact' => \Carbon\Carbon::parse($player->registered_at)->toDayDateTimeString() . ' UTC',
+                'relative' => \Carbon\Carbon::parse($player->registered_at)->diffForHumans(),
+            ],
+            'last_login_at' => [
+                'exact' => \Carbon\Carbon::parse($player->last_login_at)->toDayDateTimeString() . ' UTC',
+                'relative' => \Carbon\Carbon::parse($player->last_login_at)->diffForHumans(),
+            ]
+        ],
+        'champions' => Champion::get()
+    ]);
+});
+
 Route::get('player/{player}/champions', function(Request $request, $player) {
     $playerModel;
 
