@@ -1,13 +1,15 @@
 <?php
 
+namespace PaladinsNinja\Enum;
+
 use MyCLabs\Enum\Enum;
 
 class ChampionRole extends Enum
 {
-    private const SUPPORT = 'support';
-    private const DAMAGE = 'damage';
-    private const FRONTLINE = 'frontline';
-    private const FLANK = 'flank';
+    public const SUPPORT = 'support';
+    public const DAMAGE = 'damage';
+    public const FRONTLINE = 'frontline';
+    public const FLANK = 'flank';
     
 
     public static function getChampionRole(int $championId)
