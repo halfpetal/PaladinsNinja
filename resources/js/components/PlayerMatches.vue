@@ -16,6 +16,10 @@
                 <div :id="'match-' + match.match_id" class="collapse">
                     <div class="card-block container mx-auto">
                         <div class="row">
+                            <div class="col-12">
+                                <a :href="'/match/' + match.match_id" class="btn btn-block btn-outline-dark">Preview Match Page</a>
+                            </div>
+
                             <div class="col row border-right">
                                 <div v-if="match.winning_task_force == 1" class="col-12 p-3 m-2 bg-success text-white text-center"><h3>WIN</h3></div>
                                 <div v-else class="col-12 p-3 m-2 bg-danger text-white text-center"><h3>LOST</h3></div>    
