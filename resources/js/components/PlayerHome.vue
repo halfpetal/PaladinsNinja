@@ -145,21 +145,21 @@
                         <div class="card-text d-flex flex-column justify-content-around">
                             <div v-for="index in 5" :key="index" class="row w-100">
                                 <div class="col-sm col-sm-auto pr-0">
-                                    <img class="card-img-left mt-4" :src="getChampion(player.champion_ranks[index].champion_id).icon_url" height="75px"/>
+                                    <img class="card-img-left mt-4" :src="getChampion(player.champion_ranks[index - 1].champion_id).icon_url" height="75px"/>
                                 </div>
 
                                 <div class="col-sm px-0 text-left">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ getChampion(player.champion_ranks[index].champion_id).name }}</h5>
+                                        <h5 class="card-title">{{ getChampion(player.champion_ranks[index - 1].champion_id).name }}</h5>
                                         <div class="card-text row">
                                             <p class="col-6 text-center">
                                                 <strong class="text-muted">Level</strong> <br/>
-                                                <strong>{{ player.champion_ranks[index].Rank }}</strong>
+                                                <strong>{{ player.champion_ranks[index - 1].Rank }}</strong>
                                             </p>
 
                                             <p class="col-6 text-center">
                                                 <strong class="text-muted">Playtime</strong> <br/>
-                                                <strong>{{ Math.floor(player.champion_ranks[index].Minutes / 60) }}H {{ player.champion_ranks[index].Minutes % 60 }}M</strong>
+                                                <strong>{{ Math.floor(player.champion_ranks[index - 1].Minutes / 60) }}H {{ player.champion_ranks[index - 1].Minutes % 60 }}M</strong>
                                             </p>
                                         </div>
                                     </div>
