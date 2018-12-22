@@ -77,9 +77,9 @@ class HomeController extends Controller
         return view('champion', ['champion' => $championModel]);
     }
 
-    public function getAllChampions()
+    public function getAllChampions(Request $request)
     {
-        return view('champions', ['champions' => Champion::all()]);
+        return view('champions', ['champions' => Champion::filter($request->all())->get()]);
     }
 
     public function getMatch(Match $match)

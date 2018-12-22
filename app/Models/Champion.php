@@ -2,10 +2,13 @@
 
 namespace PaladinsNinja\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Champion extends Model
 {
+    use Filterable;
+    
     /**
      * The attributes that are mass assignable.
      *
