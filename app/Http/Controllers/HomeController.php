@@ -49,7 +49,7 @@ class HomeController extends Controller
         } else if(Player::where('player_id', $player)->exists()) {
             $playerModel = Player::where('player_id', $player)->first();
 
-            return view('player', ['player' => $playerModel]);
+            return view('player', ['player' => $playerModel, 'pageTitle' => properize($playerModel->name) . ' Profile']);
         } else {
             ProcessPlayer::dispatch($player)->onQueue('players');
 
@@ -81,12 +81,12 @@ class HomeController extends Controller
             return abort(404);
         }
 
-        return view('champion', ['champion' => $championModel]);
+        return view('champion', ['champion' => $championModel, 'pageTitle' => $championModel->name]);
     }
 
     public function getAllChampions(Request $request)
     {
-        return view('champions', ['champions' => Champion::filter($request->all())->get()]);
+        return view('champions', ['champions' => Champion::filter($request->all())->get(), 'pageTitle' => 'Champion List']);
     }
 
     public function getMatch(Match $match)

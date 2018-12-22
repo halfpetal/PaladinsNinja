@@ -1,5 +1,11 @@
 <?php
 
+if (!function_exists('properize')) {
+    function properize($string) {
+        return $string.'\''.($string[strlen($string) - 1] != 's' ? 's' : '');
+    }
+}
+
 if (!function_exists('delete_all_between')) {
     function delete_all_between($beginning, $end, $string) {
         $beginningPos = strpos($string, $beginning);
