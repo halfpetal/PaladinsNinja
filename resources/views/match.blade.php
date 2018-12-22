@@ -4,6 +4,52 @@
 <div class="container">
     <h4 class="text-muted"><i>This page is a preview and is going under more testing and development. Please report any issues on the Discord server.</i></h4>
 
+    <div class="card mb-5">
+        <h5 class="card-header">Game Info</h5>
+
+        <div class="card-body row text-center">
+            <div class="col-3 mb-4">
+                <strong class="text-muted">GAMEMODE</strong> <br/>
+                <strong>{{ $match->gamemode }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">MATCH TIME</strong> <br/>
+                <strong>{{ floor($match->match_time_seconds / 60) }}M {{ $match->match_time_seconds % 60 }}S</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">MAP</strong> <br/>
+                <strong>{{ delete_all_between('(', ')', str_replace(['LIVE ', 'Practice ', 'Ranked ', 'WIP '], '', $match->map_game)) }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">Region</strong> <br/>
+                <strong>{{ $match->region }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">WINNING TEAM</strong> <br/>
+                <strong>Team {{ $match->winning_task_force }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">TEAM 1 SCORE</strong> <br/>
+                <strong>{{ $match->task_force_1_score }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">TEAM 2 SCORE</strong> <br/>
+                <strong>{{ $match->task_force_2_score }}</strong>
+            </div> 
+
+            <div class="col-3 mb-4">
+                <strong class="text-muted">MATCH DATE</strong> <br/>
+                <strong data-toggle="tooltip" title="" data-original-title="{{ \Carbon\Carbon::parse($match->match_date)->toDayDateTimeString() }} UTC">{{ \Carbon\Carbon::parse($match->match_date)->diffForHumans() }}</strong>
+            </div> 
+        </div>
+    </div>
+
     <h2>{!! ($match->winning_task_force == 1) ? '<span class="badge badge-success">Won</span>' : '<span class="badge badge-danger">Lost</span>' !!} Team 1 - {{ $match->task_force_1_score }} Points</h2>
 
     <div class="card-columns">
@@ -53,7 +99,7 @@
                             });
                         @endphp
                         <div class="col-3">
-                            <a href="#" title="{{ $card['card_name'] }}">
+                            <a href="#" data-toggle="tooltip" data-html="true" title="{{ $card['card_name'] }}<br/><br/><em>{{ delete_all_between('[', ']', $card['card_description']) }}</em>">
                                 <img class="img-fluid rounded" src="{{ $card['championCard_URL'] }}" />
                             </a>
                         </div>
@@ -70,9 +116,9 @@
                                             }
                                         });
                                     @endphp
-                                    
+
                                     <div class="col-4 mb-3">
-                                        <a href="#" title="{{ $card['card_name'] }} - Level {{ $p['ItemLevel' . $i] }}">
+                                        <a href="#" data-toggle="tooltip" data-html="true" title="{{ $card['card_name'] }} - Level {{ $p['ItemLevel' . $i] }}<br/><br/><em>{{ delete_all_between('[', ']', $card['card_description']) }}</em>">
                                             <img class="img-fluid rounded" src="{{ $card['championCard_URL'] }}" />
                                         </a>
                                     </div>
@@ -162,7 +208,7 @@
                             });
                         @endphp
                         <div class="col-3">
-                            <a href="#" title="{{ $card['card_name'] }}">
+                            <a href="#" data-toggle="tooltip" data-html="true" title="{{ $card['card_name'] }}<br/><br/><em>{{ delete_all_between('[', ']', $card['card_description']) }}</em>">
                                 <img class="img-fluid rounded" src="{{ $card['championCard_URL'] }}" />
                             </a>
                         </div>
@@ -179,9 +225,9 @@
                                             }
                                         });
                                     @endphp
-                                    
+
                                     <div class="col-4 mb-3">
-                                        <a href="#" title="{{ $card['card_name'] }} - Level {{ $p['ItemLevel' . $i] }}">
+                                        <a href="#" data-toggle="tooltip" data-html="true" title="{{ $card['card_name'] }} - Level {{ $p['ItemLevel' . $i] }}<br/><br/><em>{{ delete_all_between('[', ']', $card['card_description']) }}</em>">
                                             <img class="img-fluid rounded" src="{{ $card['championCard_URL'] }}" />
                                         </a>
                                     </div>
@@ -216,7 +262,7 @@
             </div>
         </div>
         @empty
-        <h4>No players on team 2.</h4>
+        <h4>No players on team 1.</h4>
         @endforelse
     </div>
 </div>
