@@ -61,7 +61,7 @@
 
             <div class="card-body">
                 <div class="card-title">
-                    <h4>{{ $p['playerName'] }} <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
+                    <h4><a href="/player/{{ $p['playerName'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
                 </div>
                 
                 <div class="card-body">
@@ -170,7 +170,7 @@
 
             <div class="card-body">
                 <div class="card-title">
-                    <h4>{{ $p['playerName'] }} <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
+                    <h4><a href="/player/{{ $p['playerName'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
                 </div>
                 
                 <div class="card-body">
