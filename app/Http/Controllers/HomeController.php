@@ -57,6 +57,13 @@ class HomeController extends Controller
         }
     }
 
+    public function deletePlayer($player)
+    {
+        Player::where('player_id', $player)->firstOrFail()->delete();
+        
+        return redirect()->route('player', ['player' => $player]);
+    }
+
     public function updatePlayer($player)
     {
         ProcessPlayer::dispatch($player)->onQueue('players');
