@@ -13,6 +13,7 @@ import VueRouter from 'vue-router'
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
 import PlayerChampionsView from './components/PlayerChampions'
+import PlayerFriendsView from './components/PlayerFriends'
 
 import moment from 'moment-timezone'
 
@@ -42,6 +43,11 @@ const router = new VueRouter({
             path: '/player/:id/champions',
             name: 'player.champions',
             component: PlayerChampionsView
+        },
+        {
+            path: '/player/:id/friends',
+            name: 'player.friends',
+            component: PlayerFriendsView
         }
     ],
 });

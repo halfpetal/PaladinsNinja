@@ -47,6 +47,20 @@ Route::get('player/{player}/champions', function(Request $request, $player) {
     ];
 });
 
+Route::get('player/{player}/friends', function(Request $request, $player) {
+    $playerModel;
+
+    if (Player::where('name', $player)->exists()) {
+        $playerModel = Player::where('name', $player)->first();
+    } else if(Player::where('player_id', $player)->exists()) {
+        $playerModel = Player::where('player_id', $player)->first();
+    } else {
+        return abort(404);
+    }
+
+    return $playerModel->friends;
+});
+
 Route::get('player/{player}/status', function(Request $request, $player) {
     return Cache::remember('player' . $player . 'status', 1, function() use ($player) {
         return resolve('PaladinsAPI')->getPlayerStatus($player);

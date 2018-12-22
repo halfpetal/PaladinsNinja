@@ -20,6 +20,10 @@
                     <li class="nav-item">
                         <router-link class="nav-link" :to="{ name: 'player.matches' }">Recent Matches</router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="{ name: 'player.friends' }">Friends</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>
