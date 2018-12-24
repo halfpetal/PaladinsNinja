@@ -68,7 +68,7 @@ class HomeController extends Controller
     {
         ProcessPlayer::dispatch($player)->onQueue('players');
 
-        return redirect()->route('player', ['player' => $player])->with('status', 'Player update has been requested. It will be updated shortly.');
+        return redirect()->route('player', ['player' => $player])->with('status', 'Player update has been requested. We\'ll refresh the page when it\'s been updated.');
     }
 
     public function getChampion($champion)
