@@ -88,8 +88,8 @@ Route::get('player/{player}/matches', function(Request $request, $player) {
     $matches = [];
 
     foreach($playerModel->match_history as $match) {
-        if (Match::where('match_id', $match)->exists()) {
-            array_push($matches, MatchPlayer::where('playerId', $playerModel->player_id)->where('Match', $match)->first());
+        if (MatchPlayer::where([['playerId', $playerModel->player_id],['Match', $match]])->exists()) {
+            array_push($matches, MatchPlayer::where([['playerId', $playerModel->player_id],['Match', $match]])->first());
         } else {
             \Log::info('Processing match for match history: ' . $match);
             ProcessMatch::dispatch($match)->onQueue('match-history');
