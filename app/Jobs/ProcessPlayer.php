@@ -41,7 +41,7 @@ class ProcessPlayer implements ShouldQueue
     }
 
     /**
-     * Execute the job.2481
+     * Execute the job.
      *
      * @return void
      */
@@ -95,5 +95,7 @@ class ProcessPlayer implements ShouldQueue
         $player = array_add($player, 'data', $playerData);
 
         $playerModel = Player::updateOrCreate(['player_id' => $player['player_id']], $player);
+
+        event(new \PaladinsNinja\Events\PlayerUpdated($playerModel->player_id));
     }
 }

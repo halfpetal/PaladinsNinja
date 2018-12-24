@@ -171,7 +171,7 @@ return [
          */
         PaladinsNinja\Providers\AppServiceProvider::class,
         PaladinsNinja\Providers\AuthServiceProvider::class,
-        // PaladinsNinja\Providers\BroadcastServiceProvider::class,
+        PaladinsNinja\Providers\BroadcastServiceProvider::class,
         PaladinsNinja\Providers\EventServiceProvider::class,
         PaladinsNinja\Providers\HorizonServiceProvider::class,
         PaladinsNinja\Providers\RouteServiceProvider::class,

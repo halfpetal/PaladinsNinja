@@ -57,6 +57,6 @@
         </form>
     </div>
 
-    <player-page playername="{{ $player->name }}"></player-page>
+    <player-page playername="{{ $player->name }}" playerid="{{ $player->player_id }}"></player-page>
 </div>
 @endsection

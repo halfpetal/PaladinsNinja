@@ -9,6 +9,7 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueEcho from 'vue-echo-laravel'
 
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
@@ -19,9 +20,29 @@ import moment from 'moment-timezone'
 
 moment.tz.setDefault('UTC')
 
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+
+import Echo from 'laravel-echo'
+
+window.Pusher = require('pusher-js');
+
+const EchoInstance = window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    encrypted: true,
+    namespace: 'PaladinsNinja.Events'
+});
+
+
 Vue.prototype.$moment = moment
 
 Vue.use(VueRouter);
+Vue.use(VueEcho, EchoInstance);
 
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)));

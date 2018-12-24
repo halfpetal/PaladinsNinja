@@ -36,7 +36,23 @@
 
 <script>
     export default {
-        props: ['playername'],
+        props: ['playername', 'playerid'],
+
+        mounted() {
+            this.mountEcho();
+        },
+
+        methods: {
+            mountEcho() {
+                console.log("mounting echo instance.");
+                this.$echo.channel('player.' + this.playerid)
+                    .listen('PlayerUpdated', this.reloadRouter);
+            },
+
+            reloadRouter(payload) {
+                this.$router.go();
+            }
+        }
     }
 </script>
 
