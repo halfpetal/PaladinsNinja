@@ -1,152 +1,115 @@
 <template>
     <div>
         <div v-if="matches.length > 0">
-            <div v-for="match in this.matches" v-bind:key="match.match_id" v-if="match.map_game.indexOf('Practice') < 0" class="card mb-3">
+            <div v-for="m in this.matches" :key="m.Match" v-if="m.Map_Game.indexOf('Practice') < 0" class="card mb-3">
                 <div class="card-header">
-                    <a data-toggle="collapse" :href="'#match-' + match.match_id" aria-expanded="false" role="button" :aria-controls="'match-' + match.match_id">
-                        <span class="float-left">
-                            {{ match.gamemode }} ( {{ match.map_game.replace('LIVE ', '').replace('WIP ', '').replace('Ranked ', '').replace('Practice ', '') }} ) - {{ match.region }} 
-                        </span>
+                    <span class="float-left">
+                        <span :class="'badge badge-' + (m.Win_Status === 'Winner' ? 'success' : 'danger')">{{ m.Win_Status }}</span>
+                        {{ m.Name }} ( {{ m.Map_Game.replace('LIVE ', '').replace('WIP ', '').replace('Ranked ', '').replace('Practice ', '') }} ) - {{ m.Region }}
+                    </span>
 
-                        <span class="float-right">
-                            {{ secondsToMinutes(match.match_time_seconds)  }} 
-                        </span>
-                    </a>
+                    <span class="float-right">
+                        {{ secondsToMinutes(m.Time_In_Match_Seconds)  }} 
+                    </span>
                 </div>
-                <div :id="'match-' + match.match_id" class="collapse">
-                    <div class="card-block container mx-auto">
-                        <div class="row">
-                            <div class="col-12">
-                                <a :href="'/match/' + match.match_id" class="btn btn-block btn-outline-dark">Preview Match Page</a>
+                
+                <div class="card-body">
+                    <div class="row mx-3">
+                        <div class="col-3">
+                            <div class="row w-100 mb-3">
+                                <div class="col-sm col-sm-auto pr-3">
+                                    <img class="card-img-left" :src="getChampion(m.ChampionId).icon_url" height="65px"/>
+                                </div>
+                                <div class="col-sm px-0">
+                                    <h4 class="card-title">{{ m.Reference_Name }}</h4>
+                                </div>
                             </div>
+                            <a :href="'/match/' + m.Match" class="btn btn-outline-primary btn-block">View Full Match Details</a>
+                        </div>
 
-                            <div class="col row border-right">
-                                <div v-if="match.winning_task_force == 1" class="col-12 p-3 m-2 bg-success text-white text-center"><h3>WIN</h3></div>
-                                <div v-else class="col-12 p-3 m-2 bg-danger text-white text-center"><h3>LOST</h3></div>    
+                        <div class="col">
+                            <p class="card-text">
+                                <div class="row text-center">
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Total Credits</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Gold_Earned) }} ({{ numberWithCommas(m.Gold_Per_Minute) }} CPM)</strong>
+                                    </div>
+                                    
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Damage Taken</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Damage_Taken) }}</strong>
+                                    </div>
 
-                                <div class="col-12 card border-0 d-flex flex-row" v-for="player in match.task_force_1" v-bind:key="player.playerId">
-                                    <div class="row w-100">
-                                        <div class="col-sm col-sm-auto pr-0">
-                                            <img class="card-img-left mt-4" :src="getChampion(player.ChampionId).icon_url" height="65px"/>
-                                        </div>
-                                        <div class="col-sm px-0">
-                                            <div class="card-body">
-                                                <h4 class="card-title"><a :href="'/player/' + player.playerId" class="btn btn-outline-dark">{{ player.playerName }}</a> - {{ player.Reference_Name }}</h4>
-                                                <p class="card-text">
-                                                    <div class="row">
-                                                        <div class="col-6 text-center">
-                                                            <strong class="text-muted">K / D / A</strong> <br/>
-                                                            <strong>{{ player.Kills_Player }} / {{ player.Deaths }} / {{ player.Assists }}</strong>
-                                                        </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Damage Done</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Damage_Player) }}</strong>
+                                    </div>
 
-                                                        <div class="col-6 text-center">
-                                                            <strong class="text-muted">CREDITS</strong> <br/>
-                                                            <strong>{{ numberWithCommas(player.Gold_Earned) }}</strong>
-                                                        </div>
-                                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Objective Time</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Objective_Assists) }}</strong>
+                                    </div>
 
-                                                    <div class="row mb-3">
-                                                        <div class="col-12">
-                                                            <strong class="text-muted">LOADOUT</strong>
-                                                        </div>
+                                    
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Shielding</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Damage_Mitigated) }}</strong>
+                                    </div>
 
-                                                        <div  v-if="player.ItemId6 > 0" class="col-3">
-                                                            <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId6).card_name"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId6).championCard_URL" /></a>
-                                                        </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Healing</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Healing) }}</strong>
+                                    </div>
 
-                                                        <div class="col">
-                                                            <div class="row">
-                                                                <div v-if="player.ItemId1 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId1).card_name + ' - Level ' + player.ItemLevel1"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId1).championCard_URL" /></a>
-                                                                </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Killing Streak</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Killing_Spree) }}</strong>
+                                    </div>
 
-                                                                <div v-if="player.ItemId2 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId2).card_name + ' - Level ' + player.ItemLevel2"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId2).championCard_URL" /></a>
-                                                                </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Kills / Assists</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Kills_Player) }} / {{ numberWithCommas(m.Assists) }}</strong>
+                                    </div>
 
-                                                                <div v-if="player.ItemId3 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId3).card_name + ' - Level ' + player.ItemLevel3"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId3).championCard_URL" /></a>
-                                                                </div>
+                                    <div class="col-4 mb-3">
+                                        <strong class="text-muted">Deaths</strong> <br/>
+                                        <strong>{{ numberWithCommas(m.Deaths) }}</strong>
+                                    </div>
+                                </div>
 
-                                                                <div v-if="player.ItemId4 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId4).card_name + ' - Level ' + player.ItemLevel4"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId4).championCard_URL" /></a>
-                                                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <strong class="text-muted">LOADOUT</strong>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div v-if="m.ItemId1 > 0" class="col mb-3">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId1).card_name + ' - Level ' + m.ItemLevel1"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId1).championCard_URL" /></a>
+                                            </div>
 
-                                                                <div v-if="player.ItemId5 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId5).card_name + ' - Level ' + player.ItemLevel5"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId5).championCard_URL" /></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
+                                            <div v-if="m.ItemId2 > 0" class="col mb-3">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId2).card_name + ' - Level ' + m.ItemLevel2"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId2).championCard_URL" /></a>
+                                            </div>
+
+                                            <div v-if="m.ItemId3 > 0" class="col mb-3">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId3).card_name + ' - Level ' + m.ItemLevel3"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId3).championCard_URL" /></a>
+                                            </div>
+
+                                            <div v-if="m.ItemId4 > 0" class="col mb-3">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId4).card_name + ' - Level ' + m.ItemLevel4"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId4).championCard_URL" /></a>
+                                            </div>
+
+                                            <div v-if="m.ItemId5 > 0" class="col mb-3">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId5).card_name + ' - Level ' + m.ItemLevel5"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId5).championCard_URL" /></a>
+                                            </div>
+
+                                            <div v-if="m.ItemId6 > 0" class="col">
+                                                <a href="#" :title="getChampionCard(m.ChampionId, m.ItemId6).card_name"><img class="img-fluid rounded" :src="getChampionCard(m.ChampionId, m.ItemId6).championCard_URL" /></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col row ml-2">
-                                <div v-if="match.winning_task_force == 2" class="col-12 p-3 m-2 bg-success text-white text-center"><h3>WIN</h3></div>
-                                <div v-else class="col-12 p-3 m-2 bg-danger text-white text-center"><h3>LOST</h3></div>
-                                <div class="col-12 card border-0 d-flex flex-row" v-for="player in match.task_force_2" v-bind:key="player.playerId">
-                                    <div class="row w-100">
-                                        <div class="col-sm col-sm-auto pr-0">
-                                            <img class="card-img-left mt-4" :src="getChampion(player.ChampionId).icon_url" height="65px"/>
-                                        </div>
-                                        <div class="col-sm px-0">
-                                            <div class="card-body">
-                                                <h4 class="card-title"><a :href="'/player/' + player.playerId" class="btn btn-outline-dark">{{ player.playerName }}</a> - {{ player.Reference_Name }}</h4>
-                                                <p class="card-text">
-                                                    <div class="row">
-                                                        <div class="col-6 text-center">
-                                                            <strong class="text-muted">K / D / A</strong> <br/>
-                                                            <strong>{{ player.Kills_Player }} / {{ player.Deaths }} / {{ player.Assists }}</strong>
-                                                        </div>
-
-                                                        <div class="col-6 text-center">
-                                                            <strong class="text-muted">CREDITS</strong> <br/>
-                                                            <strong>{{ numberWithCommas(player.Gold_Earned) }}</strong>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mb-3">
-                                                        <div class="col-12">
-                                                            <strong class="text-muted">LOADOUT</strong>
-                                                        </div>
-
-                                                        <div  v-if="player.ItemId6 > 0" class="col-3">
-                                                            <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId6).card_name"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId6).championCard_URL" /></a>
-                                                        </div>
-
-                                                        <div class="col">
-                                                            <div class="row">
-                                                                <div v-if="player.ItemId1 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId1).card_name + ' - Level ' + player.ItemLevel1"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId1).championCard_URL" /></a>
-                                                                </div>
-
-                                                                <div v-if="player.ItemId2 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId2).card_name + ' - Level ' + player.ItemLevel2"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId2).championCard_URL" /></a>
-                                                                </div>
-
-                                                                <div v-if="player.ItemId3 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId3).card_name + ' - Level ' + player.ItemLevel3"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId3).championCard_URL" /></a>
-                                                                </div>
-
-                                                                <div v-if="player.ItemId4 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId4).card_name + ' - Level ' + player.ItemLevel4"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId4).championCard_URL" /></a>
-                                                                </div>
-
-                                                                <div v-if="player.ItemId5 > 0" class="col-4 mb-3">
-                                                                    <a href="#" :title="getChampionCard(player.ChampionId, player.ItemId5).card_name + ' - Level ' + player.ItemLevel5"><img class="img-fluid rounded" :src="getChampionCard(player.ChampionId, player.ItemId5).championCard_URL" /></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -169,12 +132,11 @@
 
 <script>
     export default {
-        props: ['player'],
-
         data() {
             return {
                 matches: [],
                 champions: [],
+                player: [],
             };
         },
 
@@ -188,6 +150,7 @@
                     .then(r => {
                         this.matches = r.data.matches;
                         this.champions = r.data.champions;
+                        this.player = r.data.player;
                     });
             },
 
