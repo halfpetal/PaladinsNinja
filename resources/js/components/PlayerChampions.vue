@@ -5,19 +5,16 @@
                 <div class="card">
                     <div class="card-header">Champion Statistics</div>
 
-                    <div class="card-body">
-                        <table class="table table-hover" id="championRankingTable">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover" data-table="datatable" id="championRankingTable">
                             <thead>
                                 <tr class="text-center">
                                     <th>Champion</th>
                                     <th>Level</th>
                                     <th>Matches</th>
-                                    <th>W / L Ratio</th>
                                     <th>K / D / A</th>
                                     <th>Total Credits</th>
                                     <th>Playtime</th>
-                                    <th>Last Played</th>
-                                    <th>Total XP Earned</th>
                                 </tr>
                             </thead>
 
@@ -38,18 +35,23 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center align-middle">{{ c.Rank }}</td>
-                                    <td class="text-center align-middle">{{ numberWithCommas(c.Wins + c.Losses) }} ({{ numberWithCommas(c.Wins) }}W - {{ numberWithCommas(c.Losses) }}L)</td>
-                                    <td class="text-center align-middle">{{ Math.max( Math.round((c.Wins / (c.Wins + c.Losses) * 100) * 10) / 10, 2.8 ).toFixed(2) }}%</td>
+                                    <td class="text-center align-middle"><span data-toggle="tooltip" data-placement="top" :title="'Total XP - ' + numberWithCommas(c.Worshippers)">{{ c.Rank }}</span></td>
+                                    <td class="text-center align-middle">
+                                        {{ numberWithCommas(c.Wins + c.Losses) }} ({{ numberWithCommas(c.Wins) }}W - {{ numberWithCommas(c.Losses) }}L)
+                                        <br/>
+                                        <span class="text-muted">{{ Math.max( Math.round((c.Wins / (c.Wins + c.Losses) * 100) * 10) / 10, 2.8 ).toFixed(2) }}% W/L</span>
+                                    </td>
                                     <td class="text-center align-middle">
                                         {{ numberWithCommas(c.Kills) }} / {{ numberWithCommas(c.Deaths) }} / {{ numberWithCommas(c.Assists) }}
                                         <br/>
                                         <span class="text-muted">{{ ((c.Kills + (c.Assists / 2)) / c.Deaths).toFixed(2) }} RATIO</span>
                                     </td>
-                                    <td class="text-center align-middle">{{ numberWithCommas(c.Gold) }} (~{{ Math.floor(c.Gold / c.Deaths) }} CPL)</td>
-                                    <td class="text-center align-middle">{{ minutesToHours(c.Minutes) }}</td>
-                                    <td class="text-center align-middle">{{  c.LastPlayed | moment('from', 'now') }}</td>
-                                    <td class="text-center align-middle">{{ numberWithCommas(c.Worshippers) }}</td>
+                                    <td class="text-center align-middle">
+                                        {{ numberWithCommas(c.Gold) }}
+                                        <br/>
+                                        <span class="text-muted">~{{ Math.floor(c.Gold / c.Deaths) }} CPL</span>
+                                    </td>
+                                    <td class="text-center align-middle"><span data-toggle="tooltip" data-placement="top" :title="' Last Played - ' + c.LastPlayed">{{ minutesToHours(c.Minutes) }}</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -78,6 +80,10 @@
             return {
                 championRanks: [],
                 champions: [],
+                dataTableOpts: {
+                    paging: false,
+                    order: [[ 1, "desc" ]]
+                }
             };
         },
 
@@ -91,6 +97,10 @@
                     .then(r => {
                         this.championRanks = r.data.championRanks;
                         this.champions = r.data.champions;
+
+                        this.$nextTick(function() {
+                            window.$('#championRankingTable').DataTable(this.dataTableOpts);
+                        });
                     });
             },
 

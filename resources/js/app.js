@@ -58,5 +58,5 @@ const app = new Vue({
 });
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('body').tooltip({selector: '[data-toggle="tooltip"]'});
 });
