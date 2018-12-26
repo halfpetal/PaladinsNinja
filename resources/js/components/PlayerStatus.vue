@@ -36,7 +36,7 @@
             </h4>
         </div>
         <h2 class="text-center" v-else>
-            {{ this.status.status_string }}
+            {{ this.status.status_string.replace('God', 'Champion') }}
         </h2>
     </div>
 </template>
