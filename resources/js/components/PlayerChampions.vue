@@ -36,22 +36,24 @@
                                         </div>
                                     </td>
                                     <td class="text-center align-middle"><span data-toggle="tooltip" data-placement="top" :title="'Total XP - ' + numberWithCommas(c.Worshippers)">{{ c.Rank }}</span></td>
-                                    <td class="text-center align-middle">
+                                    <td class="text-center align-middle" :data-order="Math.max( Math.round((c.Wins / (c.Wins + c.Losses) * 100) * 10) / 10, 2.8 ).toFixed(2)">
                                         {{ numberWithCommas(c.Wins + c.Losses) }} ({{ numberWithCommas(c.Wins) }}W - {{ numberWithCommas(c.Losses) }}L)
                                         <br/>
                                         <span class="text-muted">{{ Math.max( Math.round((c.Wins / (c.Wins + c.Losses) * 100) * 10) / 10, 2.8 ).toFixed(2) }}% W/L</span>
                                     </td>
-                                    <td class="text-center align-middle">
+                                    <td class="text-center align-middle" :data-order="((c.Kills + (c.Assists / 2)) / c.Deaths).toFixed(2)">
                                         {{ numberWithCommas(c.Kills) }} / {{ numberWithCommas(c.Deaths) }} / {{ numberWithCommas(c.Assists) }}
                                         <br/>
                                         <span class="text-muted">{{ ((c.Kills + (c.Assists / 2)) / c.Deaths).toFixed(2) }} RATIO</span>
                                     </td>
-                                    <td class="text-center align-middle">
+                                    <td class="text-center align-middle" :data-order="c.Gold">
                                         {{ numberWithCommas(c.Gold) }}
                                         <br/>
                                         <span class="text-muted">~{{ Math.floor(c.Gold / c.Deaths) }} CPL</span>
                                     </td>
-                                    <td class="text-center align-middle"><span data-toggle="tooltip" data-placement="top" :title="' Last Played - ' + c.LastPlayed">{{ minutesToHours(c.Minutes) }}</span></td>
+                                    <td class="text-center align-middle" :data-order="c.Minutes">
+                                        <span data-toggle="tooltip" data-placement="top" :title="' Last Played - ' + c.LastPlayed">{{ minutesToHours(c.Minutes) }}</span>
+                                        </td>
                                 </tr>
                             </tbody>
                         </table>
