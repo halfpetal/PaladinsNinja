@@ -55,7 +55,7 @@ class ProcessAllChampions implements ShouldQueue
             $skins = resolve('PaladinsAPI')->getChampionSkins($champion['id']);
 
             foreach ($skins as $skin) {
-                ChampionSkin::updateOrCreate(['champion_id' => $skin['champion_id']], $skin);
+                ChampionSkin::updateOrCreate(['skin_id1' => $skin['skin_id1']], $skin);
             }
 
             Champion::updateOrCreate(['champion_id' => $champion['id']], $championModel);
