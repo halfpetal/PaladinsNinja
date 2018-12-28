@@ -29,4 +29,14 @@ class Champion extends Model
         'data' => 'array',
         'cards' => 'array',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'champion_id';
+    }
+
+    public function skins()
+    {
+        return $this->hasMany(ChampionSkin::class, 'champion_id', 'champion_id');
+    }
 }

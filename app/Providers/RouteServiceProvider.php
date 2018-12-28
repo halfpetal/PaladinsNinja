@@ -69,5 +69,11 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+
+        Route::prefix('api-champions/v1')
+             ->middleware('api')
+             ->namespace($this->namespace . '\API\Champions\v1')
+             ->name('api.champions.v1.')
+             ->group(base_path('routes/API/v1/Champions.php'));
     }
 }

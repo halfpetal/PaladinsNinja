@@ -13,4 +13,13 @@ class ChampionSkin extends Model
         'champion_id', 'rarity', 'skin_id1',
         'skin_id2', 'skin_name', 'skin_name_english'
     ];
+
+    protected $hidden = [
+        'id',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'skin_id1';
+    }
 }
