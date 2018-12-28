@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use PaladinsNinja\Models\Champion;
+use PaladinsNinja\Models\ChampionSkin;
 
 class ProcessAllChampions implements ShouldQueue
 {
@@ -51,7 +52,11 @@ class ProcessAllChampions implements ShouldQueue
             $championModel = array_add($championModel, 'data', $champion);
             $championModel = array_add($championModel, 'cards', resolve('PaladinsAPI')->getChampionCards($champion['id']));
 
-            \Log::info($champion);
+            $skins = resolve('PaladinsAPI')->getChampionSkins($champion['id']);
+
+            foreach ($skins as $skin) {
+                ChampionSkin::updateOrCreate(['champion_id' => $skin['champion_id']], $skin);
+            }
 
             Champion::updateOrCreate(['champion_id' => $champion['id']], $championModel);
 
