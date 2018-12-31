@@ -39,8 +39,23 @@ class Player extends Model
         'id'
     ];
 
+    protected $appends = [
+        'registered_at_relative',
+        'last_login_at_relative',
+    ];
+
     public function matches()
     {
         return $this->hasMany(MatchPlayer::class, 'playerId', 'player_id');
+    }
+
+    public function getRegisteredAtRelativeAttribute()
+    {
+        return \Carbon\Carbon::parse($this->registered_at)->diffForHumans();
+    }
+
+    public function getLastLoginAtRelativeAttribute()
+    {
+        return \Carbon\Carbon::parse($this->last_login_at)->diffForHumans();
     }
 }
