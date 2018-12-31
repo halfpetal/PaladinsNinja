@@ -54,7 +54,7 @@
 <body>
     <div id="app" onload="loaded">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/') }}" data-toggle="tooltip" title="{{ \Version::compact() }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
             

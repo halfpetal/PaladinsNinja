@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('search', 'HomeController@search')->name('search');
+Route::post('search', 'PlayerController@search')->name('search');
 Route::get('player/{player}/{any?}', 'HomeController@getPlayer')->name('player')->where('any', '.*');
 Route::post('player/{player}/update', 'HomeController@updatePlayer')->name('player.update');
 Route::delete('player/{player}', 'HomeController@deletePlayer')->name('player.delete');

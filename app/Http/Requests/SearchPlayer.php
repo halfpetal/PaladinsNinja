@@ -25,7 +25,6 @@ class SearchPlayer extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'platform' => 'required'
         ];
     }
 }
