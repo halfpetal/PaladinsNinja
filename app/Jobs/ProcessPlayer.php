@@ -21,9 +21,13 @@ class ProcessPlayer implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(string $playerName, string $platform = null)
+    public function __construct($playerName, string $platform = null)
     {
-        $this->playerName = $playerName;
+        if (is_numeric($playerName)) {
+            $this->playerName = intval($playerName);
+        } else {
+            $this->playerName = $playerName;
+        }
         
         switch(strtolower($platform)) {
             case 'nintendo':
@@ -36,7 +40,7 @@ class ProcessPlayer implements ShouldQueue
                 $this->platform = 10;
                 break;
             default:
-                $this->platform = null;
+                $this->platform = 5;
         }
     }
 
@@ -56,8 +60,8 @@ class ProcessPlayer implements ShouldQueue
         $playerData = $playerData[0];
         $playerLoadouts = resolve('PaladinsAPI')->getPlayerLoadouts($playerData['Id']);
         $playerFriends = resolve('PaladinsAPI')->getPlayerFriends($playerData['Id']);
-        $playerMatchHistory = resolve('PaladinsAPI')->getMatchHistory($playerData['Id']);
-        $playerChampionRanks = resolve('PaladinsAPI')->getChampionRanks($playerData['Id']);
+        $playerMatchHistory = resolve('PaladinsAPI')->getPlayerMatchHistory($playerData['Id']);
+        $playerChampionRanks = resolve('PaladinsAPI')->getPlayerChampionRanks($playerData['Id']);
         $player = [];
         $matchHistory = [];
 
