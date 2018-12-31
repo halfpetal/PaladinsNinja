@@ -10,6 +10,7 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueEcho from 'vue-echo-laravel'
+import Toasted from 'vue-toasted'
 
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
@@ -43,6 +44,7 @@ Vue.prototype.$moment = moment
 
 Vue.use(VueRouter);
 Vue.use(VueEcho, EchoInstance);
+Vue.use(Toasted, { VueRouter });
 
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)));
