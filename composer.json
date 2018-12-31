@@ -17,6 +17,7 @@
         "laravel/tinker": "^1.0",
         "myclabs/php-enum": "^1.6",
         "paladinsdev/php-api": "^1.0",
+        "pragmarx/version": "^0.2.8",
         "predis/predis": "~1.0",
         "pusher/pusher-php-server": "~3.0",
         "sentry/sentry-laravel": "^0.11.0",
@@ -63,6 +64,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan version:refresh",
             "@php artisan package:discover --ansi"
         ],
         "post-root-package-install": [
