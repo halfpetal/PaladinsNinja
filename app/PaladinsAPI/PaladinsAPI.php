@@ -111,13 +111,23 @@ class PaladinsAPI
         return json_decode($response->getBody(), true);
     }
 
-    public function getPlayer(string $playerName, int $platform = null)
+    public function getPlayer(string $playerName, int $platform)
     {
-        // if ($platform) {
-        //     $this->getPlayerIdByPortalUserId($playerName, $platform);
-        // }
+        if(!$platform) {
+            throw new PaladinsException('The getPlayer method must have a platform.');
+        }
 
-        $response = $this->guzzleClient->get($this->buildUrl('getplayer', $playerName));
+        $players = $this->getPlayerIdByName($playerName);
+        
+        $firstPlayer = array_first($players, function($value, $key) {
+            return $value['portal_id'] == $platform;
+        }, null);
+
+        if ($firstPlayer == null) {
+            return [];
+        }
+
+        $response = $this->guzzleClient->get($this->buildUrl('getplayer', $firstplayer['player_id']));
 
         return json_decode($response->getBody(), true);
     }
