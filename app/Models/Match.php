@@ -2,10 +2,13 @@
 
 namespace PaladinsNinja\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
 {
+    use Filterable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +29,10 @@ class Match extends Model
     protected $casts = [
         'task_force_1' => 'array',
         'task_force_2' => 'array',
+    ];
+
+    protected $hidden = [
+        'id',
     ];
 
     public function getRouteKeyName()

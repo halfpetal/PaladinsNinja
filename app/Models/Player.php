@@ -35,6 +35,10 @@ class Player extends Model
         'data' => 'array',
     ];
 
+    protected $hidden = [
+        'id'
+    ];
+
     public function matches()
     {
         return $this->hasMany(MatchPlayer::class, 'playerId', 'player_id');
