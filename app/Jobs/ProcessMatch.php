@@ -65,7 +65,7 @@ class ProcessMatch implements ShouldQueue
             }
 
             $player = array_add($player, 'champion_role', Champion::where('name', $player['Reference_Name'])->first()->role);
-
+            
             MatchPlayer::create($player);
         }
 

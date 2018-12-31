@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <span class="float-left">
                         <span :class="'badge badge-' + (m.Win_Status === 'Winner' ? 'success' : 'danger')">{{ m.Win_Status }}</span>
-                        {{ m.Name }} ( {{ m.Map_Game.replace('LIVE ', '').replace('WIP ', '').replace('Ranked ', '').replace('Practice ', '') }} ) - {{ m.Region }}
+                        {{ m.name }} ( {{ m.Map_Game.replace('LIVE ', '').replace('WIP ', '').replace('Ranked ', '').replace('Practice ', '') }} ) - {{ m.Region }}
                     </span>
 
                     <span class="float-right">
