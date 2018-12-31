@@ -42,7 +42,7 @@ $app->singleton(
 );
 
 $app->singleton('PaladinsAPI', function($app) {
-    return PaladinsNinja\PaladinsAPI\PaladinsAPI::getInstance(env('PALADINS_DEVID'), env('PALADINS_AUTHKEY'));
+    return PaladinsDev\PHP\PaladinsAPI::getInstance(env('PALADINS_DEVID'), env('PALADINS_AUTHKEY'));
 });
 
 /*

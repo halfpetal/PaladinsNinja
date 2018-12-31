@@ -16,6 +16,7 @@
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
         "myclabs/php-enum": "^1.6",
+        "paladinsdev/php-api": "^1.0",
         "predis/predis": "~1.0",
         "pusher/pusher-php-server": "~3.0",
         "sentry/sentry-laravel": "^0.11.0",
