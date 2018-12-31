@@ -1,6 +1,6 @@
 <?php
 
-namespace PaladinsNinja\Http\Controllers\API\Champions\v1;
+namespace PaladinsNinja\Http\Controllers\API\Champion\v1;
 
 use Illuminate\Http\Request;
 use PaladinsNinja\Http\Controllers\Controller;
