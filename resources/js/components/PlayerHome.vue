@@ -140,7 +140,7 @@
 
                     <div class="card-body text-center">
                         <div class="card-text d-flex flex-column justify-content-around">
-                            <div v-for="index in 5" :key="index" class="row w-100">
+                            <div v-for="index in 5" :key="index" v-if="player.champion_ranks[index - 1] != undefined" class="row w-100">
                                 <div class="col-sm col-sm-auto pr-0">
                                     <img class="card-img-left mt-4" :src="getChampion(player.champion_ranks[index - 1].champion_id).icon_url" height="75px"/>
                                 </div>
