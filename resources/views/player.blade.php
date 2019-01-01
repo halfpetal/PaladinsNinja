@@ -49,6 +49,8 @@
         </div>
     @endif
 
+    <player-page playername="{{ $player->name }}" playerid="{{ $player->player_id }}"></player-page>
+
     <div>
         <form class="text-right mb-4" action="{{ route('player.delete', ['player' => $player->player_id]) }}" method="POST" role="form">
             {{ method_field('DELETE') }}
@@ -56,7 +58,5 @@
             <button class="btn btn-outline-danger" role="button" type="submit">Re-Process Account</button>
         </form>
     </div>
-
-    <player-page playername="{{ $player->name }}" playerid="{{ $player->player_id }}"></player-page>
 </div>
 @endsection
