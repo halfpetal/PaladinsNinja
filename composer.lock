@@ -2105,16 +2105,16 @@
         },
         {
             "name": "paladinsdev/php-api",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PaladinsDev/PHP-API.git",
-                "reference": "339e1d23ab7ce61224d44a3973e9e7138ad245b1"
+                "reference": "d821d90db7eb21513ce49c0681a92e2050499036"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/339e1d23ab7ce61224d44a3973e9e7138ad245b1",
-                "reference": "339e1d23ab7ce61224d44a3973e9e7138ad245b1",
+                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/d821d90db7eb21513ce49c0681a92e2050499036",
+                "reference": "d821d90db7eb21513ce49c0681a92e2050499036",
                 "shasum": ""
             },
             "require": {
@@ -2156,7 +2156,7 @@
                 "mojo",
                 "paladins"
             ],
-            "time": "2018-12-31T16:13:00+00:00"
+            "time": "2019-01-01T02:38:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
