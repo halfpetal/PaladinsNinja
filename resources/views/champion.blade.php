@@ -165,6 +165,17 @@
 
         <div class="card">
             <div class="card-body">
+                <h5 class="card-title">Available Skins</h5>
+                <div class="card-text">
+                    @foreach($champion->skins as $skin)
+                    <h6>{{ $skin->skin_name_english }} <small class="text-muted">{{ $skin->rarity }}</small></h6>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
                 <h5 class="card-title">Cards</h5>
                 <div class="card-text">
                     @foreach(array_where($champion->cards, function($value, $key) { return ($value['rarity'] != 'Legendary') && ($value['rank'] != 0);}) as $card)
@@ -182,17 +193,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Available Skins</h5>
-                <div class="card-text">
-                    @foreach($champion->skins as $skin)
-                    <h6>{{ $skin->skin_name_english }} <small class="text-muted">{{ $skin->rarity }}</small></h6>
                     @endforeach
                 </div>
             </div>
