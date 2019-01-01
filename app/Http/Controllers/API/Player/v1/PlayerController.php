@@ -7,6 +7,7 @@ use PaladinsNinja\Http\Controllers\Controller;
 use PaladinsNinja\Models\Player;
 use Illuminate\Support\Facades\Cache;
 use PaladinsNinja\Jobs\ProcessMatch;
+use PaladinsNinja\Jobs\ProcessPlayer;
 use PaladinsNinja\Models\MatchPlayer;
 
 class PlayerController extends Controller
@@ -26,6 +27,16 @@ class PlayerController extends Controller
         return Player::where('player_id', $player)->firstOrFail()->champion_ranks;
     }
 
+    public function update($player)
+    {
+        $model = Player::where('player_id', $player)->firstOrFail();
+
+        ProcessPlayer::dispatch($player)->onQueue('players');
+
+        return response()->json([
+            'message' => 'Profile update has been requested. We\'ll refresh the page when it\'s done.'
+        ]);
+    }
 
     public function status($player)
     {
