@@ -129,10 +129,7 @@
 
                     <div class="card-body text-center">
                         <p class="card-text">
-                            <form method="POST" :action="'/player/' + this.$route.params.id + '/update'">
-                                <input type="hidden" name="_token" :value="csrf">
-                                <button role="submit" class="btn btn-outline-primary">Request Profile Update</button>
-                            </form>
+                            <button v-on:click="requestUpdate" class="btn btn-outline-primary">Request Profile Update</button>
                         </p>
                     </div>
                 </div>
@@ -182,7 +179,6 @@
 
             <h4 class="text-center">We're getting all the player details from the archives.</h4>
         </div>
-
     </div>
 </template>
 
@@ -211,6 +207,23 @@
 
                         this.$nextTick(function () {
                             $('[data-toggle="tooltip"]').tooltip()
+                        })
+                    });
+            },
+
+            requestUpdate() {
+                axios.post('/api-player/v1/' + this.$route.params.id + '/update')
+                    .then(r => {
+                        this.$toasted.show(r.data.message, {
+                            position: 'bottom-right',
+                            duration: 5000,
+                            closeOnSwipe: true,
+                            action : {
+                                text : 'Close',
+                                onClick : (e, toastObject) => {
+                                    toastObject.goAway(0);
+                                }
+                            },
                         })
                     });
             },

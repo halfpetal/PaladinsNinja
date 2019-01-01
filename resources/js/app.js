@@ -10,7 +10,7 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueEcho from 'vue-echo-laravel'
-import Toasted from 'vue-toasted'
+    import Toasted from 'vue-toasted'
 
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
