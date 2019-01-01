@@ -51,7 +51,7 @@
 
     <player-page playername="{{ $player->name }}" playerid="{{ $player->player_id }}"></player-page>
 
-    <div>
+    <div class="mt-3">
         <form class="text-right mb-4" action="{{ route('player.delete', ['player' => $player->player_id]) }}" method="POST" role="form">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
