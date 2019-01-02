@@ -30,6 +30,10 @@ class Champion extends Model
         'cards' => 'array',
     ];
 
+    protected $hidden = [
+        'id',
+    ];
+
     public function getRouteKeyName()
     {
         return 'champion_id';
