@@ -11,6 +11,10 @@ class ChampionController extends Controller
 {
     public function index(Request $request)
     {
+        if ($request->has('nopaginate')) {
+            return Champion::all();
+        }
+
         return Champion::filter($request->all())->paginate();
     }
 
