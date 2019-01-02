@@ -79,4 +79,9 @@ class PlayerController extends Controller
 
         return $matches;
     }
+
+    public function loadouts($player)
+    {
+        return Player::where('player_id', $player)->firstOrFail()->loadouts;
+    }
 }

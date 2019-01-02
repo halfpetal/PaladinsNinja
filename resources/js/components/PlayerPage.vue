@@ -18,6 +18,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <router-link class="nav-link" :to="{ name: 'player.loadouts' }">Champion Loadouts</router-link>
+                    </li>
+
+                    <li class="nav-item">
                         <router-link class="nav-link" :to="{ name: 'player.matches' }">Recent Matches</router-link>
                     </li>
 
@@ -38,8 +42,15 @@
     export default {
         props: ['playername', 'playerid'],
 
+        data() {
+            return {
+                champions: [],
+            }
+        },
+
         mounted() {
             this.mountEcho();
+            this.getChampions();
         },
 
         methods: {
@@ -51,6 +62,13 @@
 
             reloadRouter(payload) {
                 this.$router.go();
+            },
+
+            getChampions() {
+                axios.get('/api-champion/v1/list?nopaginate=true')
+                    .then(r => {
+                        this.champions = r.data;
+                    });
             }
         }
     }
