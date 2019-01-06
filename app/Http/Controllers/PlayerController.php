@@ -10,7 +10,7 @@ class PlayerController extends Controller
 {
     public function search(SearchPlayer $request)
     {
-        $players = \Cache::remember("search.name.{$request->name}", now()->addHours(1), function() use ($request) {
+        $players = \Cache::remember("search.name.{$request->name}", 1, function() use ($request) {
             $players = resolve('PaladinsAPI')->getPlayerIdByName($request->name);
             $playersXbox = resolve('PaladinsAPI')->getPlayerIdsByGamertag($request->name, 10);
             $playersSwitch = resolve('PaladinsAPI')->getPlayerIdsByGamertag($request->name, 22);
