@@ -46,7 +46,7 @@
                                                     </div>
                                                     <div class="modal-body row">
                                                         <div v-for="item in deck.LoadoutItems" :key="item.ItemId" class="col">
-                                                            <img class="img-fluid rounded mb-3" v-if="getCardById(champion.cards, item.ItemId).length > 0" :src="getCardById(champion.cards, item.ItemId)[0].championCard_URL">
+                                                            <img class="img-fluid rounded mb-3" v-if="getCardById(champion.cards, item.ItemId).length" :src="getCardById(champion.cards, item.ItemId)[0].championCard_URL">
                                                             <h4 class="text-muted">{{ item.ItemName}}</h4>
                                                             <h5 class="text-muted">Level {{ item.Points }}</h5>
                                                         </div>
