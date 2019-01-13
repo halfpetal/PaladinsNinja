@@ -42,6 +42,16 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'valid_hirez_auth' => [
+            'auth',
+            'hirez_link',
+        ],
+
+        'valid_hirez_auth_api' => [
+            'auth:api',
+            'hirez_link',
+        ],
     ];
 
     /**
@@ -61,6 +71,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+        'hirez_link' => \PaladinsNinja\Http\Middleware\CheckHiRezLink::class,
     ];
 
     /**

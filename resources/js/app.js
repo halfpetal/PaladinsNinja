@@ -10,13 +10,17 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueEcho from 'vue-echo-laravel'
-    import Toasted from 'vue-toasted'
+import Toasted from 'vue-toasted'
+import Popover from 'vue-js-popover'
 
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
 import PlayerChampionsView from './components/PlayerChampions'
 import PlayerFriendsView from './components/PlayerFriends'
 import PlayerLoadoutsView from './components/PlayerLoadouts'
+
+import UserSettingsHomeView from './components/user/UserSettingsHome'
+import UserSettingsPasswordView from './components/user/UserSettingsPassword'
 
 import moment from 'moment-timezone'
 
@@ -46,6 +50,7 @@ Vue.prototype.$moment = moment
 Vue.use(VueRouter);
 Vue.use(VueEcho, EchoInstance);
 Vue.use(Toasted, { VueRouter });
+Vue.use(Popover);
 
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)));
@@ -77,6 +82,18 @@ const router = new VueRouter({
             path: '/player/:id/loadouts',
             name: 'player.loadouts',
             component: PlayerLoadoutsView
+        },
+
+        // User Settings
+        {
+            path: '/settings',
+            name: 'user.settings.home',
+            component: UserSettingsHomeView
+        },
+        {
+            path: '/settings/password',
+            name: 'user.settings.password',
+            component: UserSettingsPasswordView
         }
     ],
 });

@@ -2,13 +2,22 @@
 
 namespace PaladinsNinja\Models;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable, HasRoles;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['linked_hirez_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password', 
+        'linked_hirez_at', 'paladins_player_id', 'hirez_account_id'
     ];
 
     /**

@@ -2,10 +2,13 @@
 
 namespace PaladinsNinja\Models;
 
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
+    use Rateable;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -42,6 +45,7 @@ class Player extends Model
     protected $appends = [
         'registered_at_relative',
         'last_login_at_relative',
+        'average_community_rating',
     ];
 
     public function matches()
@@ -57,5 +61,10 @@ class Player extends Model
     public function getLastLoginAtRelativeAttribute()
     {
         return \Carbon\Carbon::parse($this->last_login_at)->diffForHumans();
+    }
+
+    public function getAverageCommunityRatingAttribute()
+    {
+        return $this->averageRating();
     }
 }

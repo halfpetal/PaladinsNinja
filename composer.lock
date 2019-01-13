@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "866e00657955a52ba0e05a8204a67963",
+    "content-hash": "3a793ccda3a95036e7a127ced251bf40",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -945,6 +945,57 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
+        },
+        {
+            "name": "halfpetal/laravel-identifiable",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/halfpetal/laravel-module-identifiable.git",
+                "reference": "55bfea149ba9980dd2924c38c5459edc5e1347b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/halfpetal/laravel-module-identifiable/zipball/55bfea149ba9980dd2924c38c5459edc5e1347b4",
+                "reference": "55bfea149ba9980dd2924c38c5459edc5e1347b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.3.2",
+                "doctrine/dbal": "^2.5",
+                "fzaninotto/faker": "~1.4",
+                "laravel/laravel": "5.*",
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Halfpetal\\Laravel\\Identifiable\\IdentifiableServiceProdiver"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Halfpetal\\Laravel\\Identifiable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A simple way to create identifiers for Laravel models.",
+            "keywords": [
+                "id",
+                "laravel",
+                "models"
+            ],
+            "time": "2018-02-10T07:37:11+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -4637,6 +4688,65 @@
             "time": "2018-07-29T20:33:41+00:00"
         },
         {
+            "name": "willvincent/laravel-rateable",
+            "version": "1.07",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willvincent/laravel-rateable.git",
+                "reference": "010bcbf8d12cec79ba106d85ad7baeae48faa96c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/010bcbf8d12cec79ba106d85ad7baeae48faa96c",
+                "reference": "010bcbf8d12cec79ba106d85ad7baeae48faa96c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "willvincent\\Rateable\\RateableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "willvincent\\Rateable\\": "src/Rateable"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Will Vincent",
+                    "email": "tcindie@gmail.com"
+                }
+            ],
+            "description": "Allows multiple models to be rated with a fivestar like system.",
+            "keywords": [
+                "Rating",
+                "fivestar",
+                "laravel",
+                "laravel 5",
+                "rateable",
+                "vote"
+            ],
+            "time": "2018-08-27T16:13:28+00:00"
+        },
+        {
             "name": "zendframework/zend-diactoros",
             "version": "1.8.6",
             "source": {
@@ -4702,6 +4812,74 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/9d5caf43c5f3a3aea2178942f281054805872e7c",
+                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "5.5.x|5.6.x|5.7.x",
+                "illuminate/session": "5.5.x|5.6.x|5.7.x",
+                "illuminate/support": "5.5.x|5.6.x|5.7.x",
+                "maximebf/debugbar": "~1.15.0",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4",
+                "symfony/finder": "^3|^4"
+            },
+            "require-dev": {
+                "laravel/framework": "5.5.x"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2018-11-09T08:37:55+00:00"
+        },
         {
             "name": "beyondcode/laravel-dump-server",
             "version": "1.2.2",
@@ -4975,6 +5153,67 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.14-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2017-12-15T11:13:46+00:00"
         },
         {
             "name": "mockery/mockery",

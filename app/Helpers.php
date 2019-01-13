@@ -1,5 +1,18 @@
 <?php
 
+if (!function_exists('apiErrorResponse')) {
+    function apiErrorResponse($errors) 
+    {
+        if (is_string($errors)) {
+            $errors = [$errors];
+        }
+
+        return response()->json([
+            'errors' => $errors
+        ]);
+    }
+}
+
 if (!function_exists('properize')) {
     function properize($string) {
         return $string.'\''.($string[strlen($string) - 1] != 's' ? 's' : '');

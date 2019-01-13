@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // \Laravel\Passport\Passport::routes();
+        \Laravel\Passport\Passport::routes();
+
+        Gate::before(function($user, $ability) {
+            if ($user->hasPermissionTo('super-admin')) {
+                return true;
+            }
+        });
     }
 }
