@@ -13,11 +13,14 @@ import VueEcho from 'vue-echo-laravel'
 import Toasted from 'vue-toasted'
 import Popover from 'vue-js-popover'
 
+import StarRating from 'vue-star-rating'
+
 import PlayerHomeView from './components/PlayerHome'
 import PlayerMatchesView from './components/PlayerMatches'
 import PlayerChampionsView from './components/PlayerChampions'
 import PlayerFriendsView from './components/PlayerFriends'
 import PlayerLoadoutsView from './components/PlayerLoadouts'
+import PlayerReviewsView from './components/PlayerReviews'
 
 import UserSettingsHomeView from './components/user/UserSettingsHome'
 import UserSettingsPasswordView from './components/user/UserSettingsPassword'
@@ -46,11 +49,15 @@ const EchoInstance = window.Echo = new Echo({
 
 
 Vue.prototype.$moment = moment
+Vue.prototype.$userAuthState = $('meta[name=login-status]').attr('content') === 'true';
 
 Vue.use(VueRouter);
 Vue.use(VueEcho, EchoInstance);
 Vue.use(Toasted, { VueRouter });
 Vue.use(Popover);
+
+Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('star-rating', StarRating);
 
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)));
@@ -82,6 +89,11 @@ const router = new VueRouter({
             path: '/player/:id/loadouts',
             name: 'player.loadouts',
             component: PlayerLoadoutsView
+        },
+        {
+            path: '/player/:id/reviews',
+            name: 'player.reviews',
+            component: PlayerReviewsView
         },
 
         // User Settings

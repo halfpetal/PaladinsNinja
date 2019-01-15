@@ -37,4 +37,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function player()
+    {
+        return $this->hasOne(Player::class, 'player_id', 'paladins_player_id');
+    }
 }

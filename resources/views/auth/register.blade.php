@@ -61,6 +61,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group form-check row col-6 offset-4">
+                            <input class="form-check-input" type="checkbox" value="" id="tos" name="tos" required>
+                            <label class="form-check-label" for="tos" name="tos">
+                                By registering you agree to our <a href="{{ route('tos') }}">Terms of Service</a> & <a href="{{ route('privacy-policy') }}">Privacy Policy</a>.
+                            </label>
+
+                            @if ($errors->has('tos'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('tos') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

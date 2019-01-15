@@ -6,6 +6,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('terms-of-service', function() {
+    return view('terms');
+})->name('tos');
+
+Route::get('privacy-policy', function() {
+    return view('privacy');
+})->name('privacy-policy');
+
 Route::post('search', 'PlayerController@search')->name('search');
 Route::get('hirez-link', 'UserController@getHirezLink')->name('hirez-link.show');
 Route::get('player/{player}/{any?}', 'HomeController@getPlayer')->name('player')->where('any', '.*');

@@ -22,6 +22,7 @@
     "dependencies": {
         "datatables.net-bs4": "^1.10.19",
         "laravel-echo": "^1.5.2",
+        "laravel-vue-pagination": "^2.2.0",
         "moment": "^2.23.0",
         "moment-timezone": "^0.5.23",
         "pusher-js": "^4.3.1",
@@ -30,6 +31,7 @@
         "vue-moment": "^4.0.0",
         "vue-number-input-spinner": "^2.1.0",
         "vue-router": "^3.0.2",
+        "vue-star-rating": "^1.6.1",
         "vue-toasted": "^1.1.26"
     }
 }

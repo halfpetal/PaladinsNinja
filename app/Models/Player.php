@@ -2,7 +2,7 @@
 
 namespace PaladinsNinja\Models;
 
-use willvincent\Rateable\Rateable;
+use PaladinsNinja\Traits\Rateable;
 use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
@@ -66,5 +66,10 @@ class Player extends Model
     public function getAverageCommunityRatingAttribute()
     {
         return $this->averageRating();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'player_id';
     }
 }

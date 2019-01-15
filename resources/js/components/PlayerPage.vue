@@ -28,6 +28,10 @@
                     <li class="nav-item">
                         <router-link class="nav-link" :to="{ name: 'player.friends' }">Friends</router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="{ name: 'player.reviews' }">Community Reviews</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>

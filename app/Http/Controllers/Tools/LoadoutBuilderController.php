@@ -9,7 +9,7 @@ class LoadoutBuilderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'hirez_link', 'permission:tools.loadout.builder.create'])->only('create');
+        $this->middleware(['auth', 'hirez_link', 'verified', 'permission:tools.loadout.builder.create'])->only('create');
     }
 
     public function create()
