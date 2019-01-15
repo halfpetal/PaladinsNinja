@@ -12,6 +12,7 @@ import VueRouter from 'vue-router'
 import VueEcho from 'vue-echo-laravel'
 import Toasted from 'vue-toasted'
 import Popover from 'vue-js-popover'
+import VueResource from 'vue-resource'
 
 import StarRating from 'vue-star-rating'
 
@@ -24,6 +25,9 @@ import PlayerReviewsView from './components/PlayerReviews'
 
 import UserSettingsHomeView from './components/user/UserSettingsHome'
 import UserSettingsPasswordView from './components/user/UserSettingsPassword'
+
+import PNHomeView from './components/paladins-news/PaladinsNewsHome'
+import PNEntryView from './components/paladins-news/PaladinsNewsEntry'
 
 import moment from 'moment-timezone'
 
@@ -55,6 +59,7 @@ Vue.use(VueRouter);
 Vue.use(VueEcho, EchoInstance);
 Vue.use(Toasted, { VueRouter });
 Vue.use(Popover);
+Vue.use(VueResource);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('star-rating', StarRating);
@@ -106,6 +111,18 @@ const router = new VueRouter({
             path: '/settings/password',
             name: 'user.settings.password',
             component: UserSettingsPasswordView
+        },
+
+        // Paladins News
+        {
+            path: '/paladins-news',
+            name: 'paladins-news.home',
+            component: PNHomeView
+        },
+        {
+            path: '/paladins-news/:slug',
+            name: 'paladins-news.entry',
+            component: PNEntryView
         }
     ],
 });

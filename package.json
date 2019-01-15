@@ -30,6 +30,7 @@
         "vue-js-popover": "^1.1.7",
         "vue-moment": "^4.0.0",
         "vue-number-input-spinner": "^2.1.0",
+        "vue-resource": "^1.5.1",
         "vue-router": "^3.0.2",
         "vue-star-rating": "^1.6.1",
         "vue-toasted": "^1.1.26"

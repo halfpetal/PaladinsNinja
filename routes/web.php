@@ -14,6 +14,10 @@ Route::get('privacy-policy', function() {
     return view('privacy');
 })->name('privacy-policy');
 
+Route::get('paladins-news/{any?}', function() {
+    return view('paladins-news');
+})->name('paladins-news')->where('any', '.*');
+
 Route::post('search', 'PlayerController@search')->name('search');
 Route::get('hirez-link', 'UserController@getHirezLink')->name('hirez-link.show');
 Route::get('player/{player}/{any?}', 'HomeController@getPlayer')->name('player')->where('any', '.*');
