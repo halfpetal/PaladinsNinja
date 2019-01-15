@@ -16,7 +16,7 @@
 
                                 <p class="col-6">
                                     <strong class="text-muted">Community Rating</strong> <br/>
-                                    <strong>{{ parseFloat(player.average_community_rating).toFixed(1) }} <i class="fas fa-star"></i></strong> 
+                                    <strong>{{ isNaN(parseFloat(player.average_community_rating)) ? '0': parseFloat(player.average_community_rating).toFixed(1) }} <i class="fas fa-star"></i></strong> 
                                 </p>
 
                                 <p class="col-6">
