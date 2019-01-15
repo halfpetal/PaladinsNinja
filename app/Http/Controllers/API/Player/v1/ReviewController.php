@@ -46,6 +46,10 @@ class ReviewController extends Controller
         $team1 = $match->task_force_1;
         $team2 = $match->task_force_2;
 
+        if ($match->gamemode != 'Ranked') {
+            return apiErrorResponse('The match must be a ranked game for you to submit a review.');
+        }
+
         if (!$this->isInTeam($team1, $player->player_id) && !$this->isInTeam($team2, $player->player_id)) {
             return apiErrorResponse('The player does not seem to be present in that match.');
         }
