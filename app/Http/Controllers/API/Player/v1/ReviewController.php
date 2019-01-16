@@ -59,7 +59,7 @@ class ReviewController extends Controller
         }
 
         $matchAt = \Carbon\Carbon::parse($match->match_date);
-        $matchMax = $matchAt->addDays(2);
+        $matchMax = \Carbon\Carbon::parse($matchAt)->addDays(2);
 
         if (!now()->between($matchAt, $matchMax)) {
             return apiErrorResponse('That match is too old to make a review for. It has to be within 2 days of the match date.');
@@ -70,7 +70,7 @@ class ReviewController extends Controller
         $rating->title = $request->title;
         $rating->body = $request->body;
         $rating->rating = $request->rating;
-        $rating->user_id = $request->user->id;
+        $rating->user_id = \Auth::user()->id;
 
         $player->ratings()->save($rating);
 
