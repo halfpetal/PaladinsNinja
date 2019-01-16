@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group form-check row col-6 offset-4">
-                            <input class="form-check-input" type="checkbox" value="" id="tos" name="tos" required>
+                            <input class="form-check-input" type="checkbox" id="tos" name="tos" required>
                             <label class="form-check-label" for="tos" name="tos">
                                 By registering you agree to our <a href="{{ route('tos') }}">Terms of Service</a> & <a href="{{ route('privacy-policy') }}">Privacy Policy</a>.
                             </label>
