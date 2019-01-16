@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'alpha_dash', 'max:255', 'unique:users,username'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'tos' => ['required']
+            'tos' => ['accepted']
         ]);
     }
 
