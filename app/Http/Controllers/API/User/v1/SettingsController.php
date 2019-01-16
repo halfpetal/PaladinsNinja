@@ -10,7 +10,7 @@ class SettingsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api', 'verified', 'hirez_link']);
+        $this->middleware(['auth:api', 'hirez_link']);
     }
 
     public function changePassword(ChangeUserPasswordRequest $request)

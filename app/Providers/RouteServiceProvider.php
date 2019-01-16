@@ -89,7 +89,7 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/API/v1/Player.php'));
 
         Route::prefix('api-user/v1')
-             ->middleware(['api', 'auth:api', 'verified'])
+             ->middleware(['api', 'auth:api'])
              ->namespace($this->namespace . '\API\User\v1')
              ->name('api.user.v1.')
              ->group(base_path('routes/API/v1/User.php'));
