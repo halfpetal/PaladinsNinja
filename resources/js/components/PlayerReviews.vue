@@ -31,7 +31,7 @@
 
                     <div class="form-group">
                         <label>Rating</label>
-                        <star-rating v-model="reviewForm.rating" :increment="0.5" :star-size="25"></star-rating>
+                        <star-rating v-model="reviewForm.rating" :star-size="25"></star-rating>
                     </div>
                 </form>
 
