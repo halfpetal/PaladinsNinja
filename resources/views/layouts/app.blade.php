@@ -33,7 +33,7 @@
     <meta name="author" content="Halfpetal LLC">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-alt.png') }}" />
 
-    <title>{{ (isset($pageTitle) ? $pageTitle . ' | ' : '') . config('app.name', 'Laravel') }}</title>
+    <title>{{ (isset($pageTitle) ? $pageTitle . ' / ' : '') . config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
