@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         return view('user.show', [
             'user' => $user,
-            'pageTitle' => properize($user->username) . ' (@' . properize($user->username) . ')'
+            'pageTitle' => properize($user->username) . ' Profile'
         ]);
     }
 }

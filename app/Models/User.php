@@ -47,4 +47,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return 'username';
     }
+
+    public function loadouts()
+    {
+        return $this->hasMany(Loadout::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }
