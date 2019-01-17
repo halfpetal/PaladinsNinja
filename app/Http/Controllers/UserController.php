@@ -3,6 +3,7 @@
 namespace PaladinsNinja\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PaladinsNinja\Models\User;
 
 class UserController extends Controller
 {
@@ -21,6 +22,14 @@ class UserController extends Controller
     {
         return view('user.settings', [
            'pageTitle' => 'My Settings' 
+        ]);
+    }
+
+    public function show(User $user)
+    {
+        return view('user.show', [
+            'user' => $user,
+            'pageTitle' => properize($user->username) . ' (@' . properize($user->username) . ')'
         ]);
     }
 }

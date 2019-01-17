@@ -18,6 +18,8 @@ Route::get('paladins-news/{any?}', function() {
     return view('paladins-news');
 })->name('paladins-news')->where('any', '.*');
 
+Route::get('/@{user}', 'UserController@show')->name('user.show');
+
 Route::get('loadout/{loadout}', 'Tools\LoadoutBuilderController@show')->name('tools.loadout-builder.show');
 
 Route::post('search', 'PlayerController@search')->name('search');

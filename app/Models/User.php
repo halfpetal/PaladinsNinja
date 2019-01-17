@@ -42,4 +42,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Player::class, 'player_id', 'paladins_player_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 }
