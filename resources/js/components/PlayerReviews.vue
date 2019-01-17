@@ -102,12 +102,12 @@
                             return;
                         }
 
-                        // this.creatingReview = false;
-                        // this.reviewForm.errors = [];
-                        // this.reviewForm.match_id = null;
-                        // this.reviewForm.rating = 2.5;
-                        // this.reviewForm.title = '';
-                        // this.reviewForm.body = '';
+                        this.creatingReview = false;
+                        this.reviewForm.errors = [];
+                        this.reviewForm.match_id = null;
+                        this.reviewForm.rating = 2.5;
+                        this.reviewForm.title = '';
+                        this.reviewForm.body = '';
 
                         this.getReviews();
 
