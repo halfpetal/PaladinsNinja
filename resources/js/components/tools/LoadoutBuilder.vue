@@ -70,9 +70,15 @@
         </div>
 
         <div v-else-if="step == 3">
-            <h5 class="text-muted">
-                Now it's time for the actual building of the loadouts. It's similar to the in-game loadout builder, so you should know what's happening.
-            </h5>
+            <div class="row">
+                <h5 class="text-muted col">
+                    Now it's time for the actual building of the loadouts. It's similar to the in-game loadout builder, so you should know what's happening. Once you're done, just hit that "Create Loadout" button and we'll take care of the rest.
+                </h5>
+
+                <div class="col-3">
+                    <button class="btn btn-success float-right">Create Loadout</button>
+                </div>
+            </div>
 
             <div class="row mt-5">
                 <div class="col-12 mb-4">
@@ -86,17 +92,20 @@
                         <div v-if="card[index].id > 0">
                             <img :src="getCardById(card[index].id)[0].championCard_URL" class="card-img-top">
                             <div class="card-body">
-                                <p class="card-text">
-                                    <div class="pb-5">
-                                        <NumberInputSpinner
-                                            :min="1"
-                                            :max="5"
-                                            :step="1"
-                                            :integerOnly="true"
-                                            v-model="card[index].points"
-                                        />
+                                <div class="card-text">
+                                    <h4>{{ getCardById(card[index].id)[0].card_name }}</h4>
+                                    <div class="pb-2 w-100">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-outline-primary" @click="changePoint(index, -1)">-</button>
+                                            <button type="button" disabled class="btn btn-outline-dark">{{ card[index].points }}</button>
+                                            <button type="button" class="btn btn-outline-primary" @click="changePoint(index, 1)">+</button>
+                                        </div>
                                     </div>
-                                </p>
+
+                                    <p>
+                                        {{ getCardById(card[index].id)[0].card_description }}
+                                    </p>
+                                </div>
                                 <button type="button" class="btn btn-primary btn-block" @click="setCurrentCardSlot(index)">
                                     Change card
                                 </button>
@@ -197,12 +206,6 @@
             };
         },
 
-        watch: {
-            card: function() {
-                this.currentPoints = this.totalPoints();
-            }
-        },
-
         mounted() {
             this.getChampions();
         },
@@ -213,21 +216,21 @@
                 };
             },
 
-            totalPoints() {
-                let total = 0;
-
-                for(index in 5) {
-                    total += this.card[index].points;
-                    console.log('index: ' + index + ' | total: ' + total);
+            changePoint(cardIndex, change) {
+                if (change <= 0 && this.card[cardIndex].points <= 1) {
+                    return;
                 }
 
-                // this.card.forEach(element => {
-                //     if (points in element) {
-                //         total += points;
-                //     }
-                // });
+                if (change >= 0 && this.card[cardIndex].points >= 5) {
+                    return;
+                }
 
-                return total;
+                if (change >= 0 && this.currentPoints >= 15) {
+                    return;
+                }
+
+                this.currentPoints += change;
+                this.card[cardIndex].points += change;
             },
 
             getChampions() {
@@ -251,8 +254,6 @@
                     this.availableCards.sort(this.sortAlpha('card_name'));
                 }
             },
-
-            // TODO: Add a method to add a card back in it's original index.
 
             removeCardById(cardId) {
                 this.availableCards = this.availableCards.filter((el) => {
