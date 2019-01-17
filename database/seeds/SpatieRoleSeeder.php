@@ -14,7 +14,7 @@ class SpatieRoleSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'tools.loadout.builder.create', 'tools.loadout.builder.edit', 'tools.loadout.builder.delete',
+            'tools.loadout-builder.create', 'tools.loadout-builder.edit', 'tools.loadout-builder.delete',
             'tools.match.search.view',
             //'player.friends.view', 'player.status live.view', 'player.loadouts.view', 'player.match archives.view', 'player.statistics.view',
             'horizon.view', 

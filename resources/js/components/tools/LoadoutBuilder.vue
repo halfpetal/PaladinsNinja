@@ -1,5 +1,14 @@
 <template>
     <div>
+        <div class="alert alert-danger" v-if="errors.length > 0">
+            <p class="mb-0"><strong>Whoops!</strong> Something went wrong!</p>
+            <br>
+            <ul>
+                <li v-for="error in errors">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
         <div v-if="step == 1" class="row">
             <p class="col-4">
                 Howdy! <br/>
@@ -76,7 +85,7 @@
                 </h5>
 
                 <div class="col-3">
-                    <button class="btn btn-success float-right">Create Loadout</button>
+                    <button class="btn btn-success float-right" @click="storeLoadout">Create Loadout</button>
                 </div>
             </div>
 
@@ -158,15 +167,10 @@
 </template>
 
 <script>
-    import NumberInputSpinner from 'vue-number-input-spinner'
-
     export default {
-        components: {
-            NumberInputSpinner,
-        },
-
         data() {
             return {
+                errors: [],
                 step: 1,
                 champions: [],
                 availableCards: [],
@@ -209,6 +213,7 @@
         mounted() {
             this.getChampions();
         },
+
         methods: {
             sortAlpha(property) {
                 return function(a, b) {
@@ -316,12 +321,12 @@
                     return;
                 }
 
-                if (this.buildName < 5) {
+                if (this.buildName.length < 5) {
                     this.showToast('The loadout name must be 5 characters or more.');
                     return;
                 }
 
-                if (this.buildName.length > 32) {
+                if (this.buildName.length > 45) {
                     this.showToast('Whoa there cowboy. The loadout name has to be less than 32 characters.');
                     return;
                 }
@@ -336,6 +341,34 @@
                 }
 
                 this.step++;
+            },
+
+            storeLoadout() {
+                let form = {
+                    champion: this.champion.champion_id,
+                    cards: this.card,
+                    description: this.buildDescription,
+                    name: this.buildName,
+                };
+
+                axios.post('/api-tool/v1/loadout-builder', form)
+                    .then(r => {
+                        if (r.data.errors) {
+                            this.errors = r.data.errors;
+                            return;
+                        }
+
+                        showToast('Loadout has been created. Redirecting to the loadout page now.');
+
+                        window.location.href = `/loadout/${r.data.id}`;
+                    })
+                    .catch(error => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = _.flatten(_.toArray(error.response.data.errors));
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
             },
 
             showToast(message) {

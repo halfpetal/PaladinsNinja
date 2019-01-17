@@ -65,33 +65,39 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
-
-        Route::prefix('api-champion/v1')
-             ->middleware('api')
-             ->namespace($this->namespace . '\API\Champion\v1')
-             ->name('api.champion.v1.')
-             ->group(base_path('routes/API/v1/Champion.php'));
-
-        Route::prefix('api-match/v1')
-             ->middleware('api')
-             ->namespace($this->namespace . '\API\Match\v1')
-             ->name('api.match.v1.')
-             ->group(base_path('routes/API/v1/Match.php'));
-
-        Route::prefix('api-player/v1')
-             ->middleware('api')
-             ->namespace($this->namespace . '\API\Player\v1')
-             ->name('api.player.v1.')
-             ->group(base_path('routes/API/v1/Player.php'));
-
-        Route::prefix('api-user/v1')
-             ->middleware(['api', 'auth:api'])
-             ->namespace($this->namespace . '\API\User\v1')
-             ->name('api.user.v1.')
-             ->group(base_path('routes/API/v1/User.php'));
+          Route::prefix('api')
+               ->middleware('api')
+               ->namespace($this->namespace)
+               ->group(base_path('routes/api.php'));
+          
+          Route::prefix('api-champion/v1')
+               ->middleware('api')
+               ->namespace($this->namespace . '\API\Champion\v1')
+               ->name('api.champion.v1.')
+               ->group(base_path('routes/API/v1/Champion.php'));
+          
+          Route::prefix('api-match/v1')
+               ->middleware('api')
+               ->namespace($this->namespace . '\API\Match\v1')
+               ->name('api.match.v1.')
+               ->group(base_path('routes/API/v1/Match.php'));
+          
+          Route::prefix('api-player/v1')
+               ->middleware('api')
+               ->namespace($this->namespace . '\API\Player\v1')
+               ->name('api.player.v1.')
+               ->group(base_path('routes/API/v1/Player.php'));
+          
+          Route::prefix('api-tool/v1')
+               ->middleware(['api'])
+               ->namespace($this->namespace . '\API\Tool\v1')
+               ->name('api.tool.v1.')
+               ->group(base_path('routes/API/v1/Tool.php'));
+          
+          Route::prefix('api-user/v1')
+               ->middleware(['api', 'auth:api'])
+               ->namespace($this->namespace . '\API\User\v1')
+               ->name('api.user.v1.')
+               ->group(base_path('routes/API/v1/User.php'));
     }
 }
