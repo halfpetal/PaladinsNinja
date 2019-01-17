@@ -15,11 +15,6 @@
                                 </p>
 
                                 <p class="col-6">
-                                    <strong class="text-muted">Community Rating</strong> <br/>
-                                    <strong>{{ isNaN(parseFloat(player.average_community_rating)) ? '0': parseFloat(player.average_community_rating).toFixed(1) }} <i class="fas fa-star"></i></strong> 
-                                </p>
-
-                                <p class="col-6">
                                     <strong class="text-muted">Platform</strong> <br/>
                                     <strong>{{ player.platform }}</strong>
                                 </p>
@@ -52,6 +47,19 @@
                                 <p class="col-6">
                                     <strong class="text-muted">Last Profile Update</strong> <br/>
                                     <strong>{{ this.$moment(player.updated_at).fromNow() }}</strong>
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <p class="col-6">
+                                    <strong class="text-muted">Community Rating</strong> <br/>
+                                    <strong><router-link :to="{ name: 'player.reviews' }" class="btn btn-outline-dark">{{ isNaN(parseFloat(player.average_community_rating)) ? '0': parseFloat(player.average_community_rating).toFixed(1) }} <i class="fas fa-star"></i></router-link></strong> 
+                                </p>
+
+                                <p class="col-6">
+                                    <strong class="text-muted">Ninja Profile</strong> <br/>
+                                    <strong v-if="player.ninja_username != null"><a :href="player.ninja_profile_link" class="btn btn-outline-dark"><i class="fas fa-user-ninja"></i> {{ `@${player.ninja_username}` }}</a></strong> 
+                                    <strong v-else>Unclaimed</strong>
                                 </p>
                             </div>
                         </p>

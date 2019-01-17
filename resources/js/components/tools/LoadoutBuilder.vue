@@ -358,9 +358,9 @@
                             return;
                         }
 
-                        showToast('Loadout has been created. Redirecting to the loadout page now.');
+                        this.showToast('Loadout has been created. Redirecting to the loadout page now.');
 
-                        window.location.href = `/loadout/${r.data.id}`;
+                        window.location.replace(`/loadout/${r.data.id}`);
                     })
                     .catch(error => {
                         if (typeof error.response.data === 'object') {

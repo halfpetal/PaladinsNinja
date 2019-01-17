@@ -46,6 +46,8 @@ class Player extends Model
         'registered_at_relative',
         'last_login_at_relative',
         'average_community_rating',
+        'ninja_username',
+        'ninja_profile_link',
     ];
 
     public function matches()
@@ -66,6 +68,21 @@ class Player extends Model
     public function getAverageCommunityRatingAttribute()
     {
         return $this->averageRating();
+    }
+
+    public function getNinjaUsernameAttribute()
+    {
+        return (isset($this->user) ? $this->user->username : null);
+    }
+
+    public function getNinjaProfileLinkAttribute()
+    {
+        return (isset($this->user) ? route('user.show', ['user' => $this->user]) : null);
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'paladins_player_id', 'player_id');
     }
 
     public function getRouteKeyName()

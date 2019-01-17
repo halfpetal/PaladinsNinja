@@ -108,6 +108,10 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('user.show', ['user' => Auth::user()->username]) }}">
+                                {{ __('My Profile') }}
+                            </a>
+
                             <a class="dropdown-item" href="{{ route('player', ['player' => Auth::user()->paladins_player_id]) }}">
                                 {{ __('My Player Profile') }}
                             </a>

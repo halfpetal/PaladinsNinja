@@ -19,6 +19,25 @@ if (!function_exists('properize')) {
     }
 }
 
+if (!function_exists('calculate_card_scaling')) {
+    function calculate_card_scaling($formula, $points) {
+        if (strtolower(substr($formula, 0, 6)) != 'scale=') {
+            return 0;
+        }
+
+        $formula = substr($formula, 6, strlen($formula));
+        
+        $baseNumber = explode('|', $formula)[0];
+        $scaling = explode('|', $formula)[1];
+
+        if ($points <= 1) {
+            return $baseNumber;
+        }
+
+        return $points * $scaling;
+    }
+}
+
 if (!function_exists('delete_all_between')) {
     function delete_all_between($beginning, $end, $string) {
         $beginningPos = strpos($string, $beginning);
@@ -30,6 +49,17 @@ if (!function_exists('delete_all_between')) {
         $textToDelete = substr($string, $beginningPos, ($endPos + strlen($end)) - $beginningPos);
 
         return delete_all_between($beginning, $end, str_replace($textToDelete, '', $string)); // recursion to ensure all occurrences are replaced
+    }
+}
+
+if (!function_exists('get_all_between')) {
+    function get_all_between($beginning, $end, $string) {
+        $string = ' ' . $string;
+    $ini = strpos($string, $beginning);
+    if ($ini == 0) return '';
+    $ini += strlen($beginning);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
     }
 }
 
