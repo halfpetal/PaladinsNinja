@@ -12,7 +12,7 @@ class LoadoutBuilderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api', 'hirez_link', 'permission:tools.loadout-builder.create'])->only('store');
+        $this->middleware(['auth:api', 'hirez_link'])->only('store');
         // $this->middleware(['auth:api', 'hirez_link', 'permission:tools.loadout-builder.create'])->only('store');
     }
 
