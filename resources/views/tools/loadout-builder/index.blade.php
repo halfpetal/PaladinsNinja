@@ -21,6 +21,7 @@
         </div>
 
         <div class="col-md-4 col-sm-12">
+            <a href="{{ route('tools.loadout-builder.create') }}" class="btn btn-outline-success btn-block mb-4">Create a Build</a>
             <div class="card">
                 <div class="card-header">
                     Filtering

@@ -13,7 +13,8 @@ class StoreLoadoutRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::check() && \Auth::user()->hasPermissionTo('tools.loadout-builder.create');
+        //return \Auth::check() && \Auth::user()->hasPermissionTo('tools.loadout-builder.create');
+        return \Auth::check();
     }
 
     /**
