@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use PaladinsNinja\Console\Commands\GetMatchesInQueue;
 use PaladinsNinja\Console\Commands\GetAllChampions;
+use PaladinsNinja\Console\Commands\GetInGameItems;
 
 class Kernel extends ConsoleKernel
 {
@@ -34,6 +35,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(GetMatchesInQueue::class, [437])->cron('*/10 * * * *')->onOneServer();
         $schedule->command(GetMatchesInQueue::class, [445])->cron('*/10 * * * *')->onOneServer();
         $schedule->command(GetAllChampions::class)->daily()->onOneServer();
+        $schedule->command(GetInGameItems::class)->daily()->onOneServer();
         $schedule->command('horizon:snapshot')->everyFiveMinutes()->onOneServer();
     }
 
