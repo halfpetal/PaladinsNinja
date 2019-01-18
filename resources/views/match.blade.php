@@ -56,6 +56,15 @@
         @forelse ($match->task_force_1 as $p)
         @php
             $c = \PaladinsNinja\Models\Champion::where('champion_id', $p['ChampionId'])->firstOrFail();
+            $player = \PaladinsNinja\Models\Player::where('player_id', $p['playerId'])->first();
+
+            $playerChamp = null;
+
+            if (isset($player)) {
+                $playerChamp = array_first($player->champion_ranks, function($value, $key) use ($p) {
+                    return $value['champion_id'] == $p['ChampionId'];
+                }, null);
+            }
         @endphp
         <div class="card">
 
@@ -86,6 +95,16 @@
 
 
                     <div class="row">
+                        <div class="col-6 text-center mb-4">
+                            <strong class="text-muted">ACCOUNT LEVEL</strong> <br/>
+                            <strong>{{ isset($player) ? $player->level : 'Not Stored' }}</strong>
+                        </div>
+
+                        <div class="col-6 text-center mb-4">
+                            <strong class="text-muted">CHAMP LEVEL</strong> <br/>
+                            <strong>{{ isset($playerChamp) ? $playerChamp['Rank'] : 'Not Stored' }}</strong>
+                        </div>
+
                         <div class="col-12">
                             <strong class="text-muted">LOADOUT</strong>
                         </div>
@@ -165,9 +184,15 @@
         @forelse ($match->task_force_2 as $p)
         @php
             $c = \PaladinsNinja\Models\Champion::where('champion_id', $p['ChampionId'])->firstOrFail();
+            $player = \PaladinsNinja\Models\Player::where('player_id', $p['playerId'])->first();
+
+            if (isset($player)) {
+                $playerChamp = array_first($player->champion_ranks, function($key, $value) use ($p) {
+                    return $value['champion_id'] == $p['ChampionId'];
+                }, null);
+            }
         @endphp
         <div class="card">
-
             <div class="card-body">
                 <div class="card-title">
                     <h4><a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
@@ -193,8 +218,17 @@
                         </div>
                     </div>
 
-
                     <div class="row">
+                        <div class="col-6 text-center mb-4">
+                            <strong class="text-muted">ACCOUNT LEVEL</strong> <br/>
+                            <strong>{{ isset($player) ? $player->level : 'Not Stored' }}</strong>
+                        </div>
+
+                        <div class="col-6 text-center mb-4">
+                            <strong class="text-muted">CHAMP LEVEL</strong> <br/>
+                            <strong>{{ isset($playerChamp) ? $playerChamp['Rank'] : 'Not Stored' }}</strong>
+                        </div>
+
                         <div class="col-12">
                             <strong class="text-muted">LOADOUT</strong>
                         </div>
