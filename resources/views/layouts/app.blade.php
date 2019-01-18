@@ -22,7 +22,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="login-status" content="{{ Auth::check() ? 'true' : 'false' }}">
-    <meta name="keywords" content="paladins, champions of the realm, champions, ninja, master, trends, player, guru, meta, discord, twitter, community">
+    <meta name="keywords" content="paladins, champions of the realm, champions, ninja, master, trends, player, guru, meta, discord, twitter, community, reviews, review, esports, recruitment, stats, statistics, coach, tp, elo, mobile, bot, app, mobile app">
     <meta name="description" content="Giving Paladins player the information they want and need about their games, profile, loadouts, and trends.">
     <meta name="author" content="Halfpetal LLC">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-alt.png') }}" />
