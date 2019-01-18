@@ -17,6 +17,10 @@ class CheckHiRezLink
     public function handle($request, Closure $next)
     {
         if (Auth::user()->paladins_player_id == null || Auth::user()->paladins_player_id <= 0) {
+            if ($request->expectsJson()) {
+                return apiErrorResponse('There is no Hi-Rez account linked to this account.');
+            }
+
             return redirect()->route('hirez-link.show');
         }
 
