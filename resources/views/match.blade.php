@@ -67,7 +67,6 @@
             }
         @endphp
         <div class="card">
-
             <div class="card-body">
                 <div class="card-title">
                     <h4><a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
@@ -142,6 +141,27 @@
                                         </a>
                                     </div>
                                     @endif
+                                @endfor
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <strong class="text-muted">ITEMS</strong>
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <div class="row">
+                                @for ($i = 1; $i < 5; $i++)
+                                <div class="col-3">
+                                    @if ($p['ActiveId' . $i] > 0)
+                                    @php
+                                        $item = \PaladinsNinja\Models\InGameItem::where('ItemId', $p['ActiveId' . $i])->firstOrFail();
+                                    @endphp
+                                    <a href="#" title="{{ $item['DeviceName'] }} - Level {{ $p['ActiveLevel' . $i] + 1}}">
+                                        <img class="img-fluid rounded" src="{{ $item['itemIcon_URL'] }}" />
+                                    </a>
+                                    @endif
+                                </div>
                                 @endfor
                             </div>
                         </div>
@@ -266,6 +286,27 @@
                                         </a>
                                     </div>
                                     @endif
+                                @endfor
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <strong class="text-muted">ITEMS</strong>
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <div class="row">
+                                @for ($i = 1; $i < 5; $i++)
+                                <div class="col-3">
+                                    @if ($p['ActiveId' . $i] > 0)
+                                    @php
+                                        $item = \PaladinsNinja\Models\InGameItem::where('ItemId', $p['ActiveId' . $i])->firstOrFail();
+                                    @endphp
+                                    <a href="#" title="{{ $item['DeviceName'] }} - Level {{ $p['ActiveLevel' . $i] + 1}}">
+                                        <img class="img-fluid rounded" src="{{ $item['itemIcon_URL'] }}" />
+                                    </a>
+                                    @endif
+                                </div>
                                 @endfor
                             </div>
                         </div>
