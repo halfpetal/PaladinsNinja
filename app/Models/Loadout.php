@@ -6,10 +6,11 @@ use Halfpetal\Laravel\Identifiable\Traits\Identifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PaladinsNinja\Traits\Rateable;
+use EloquentFilter\Filterable;
 
 class Loadout extends Model
 {
-    use SoftDeletes, Identifiable, Rateable;
+    use SoftDeletes, Identifiable, Rateable, Filterable;
 
     /**
      * The attributes that should be cast to native types.

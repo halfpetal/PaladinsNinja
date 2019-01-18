@@ -137,7 +137,11 @@
                     <li class="nav-item divider-vertical"></li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('champion.index') }}">Champion List</a>
+                        <a class="nav-link" href="{{ route('champion.index') }}">{{ __('Champion List') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tools.loadout-builder.index') }}">{{ __('Builds') }}</a>
                     </li>
 
                     <li class="nav-item divider-vertical"></li>

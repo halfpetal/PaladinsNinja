@@ -13,6 +13,15 @@ class LoadoutBuilderController extends Controller
         $this->middleware(['auth', 'hirez_link', 'permission:tools.loadout-builder.create'])->only('create');
     }
 
+    public function index(Request $request)
+    {
+
+        return view('tools.loadout-builder.index', [
+            'loadouts' => Loadout::filter($request->all())->orderBy('created_at', 'desc')->paginate(),
+            'pageTitle' => 'All Loadouts'
+        ]);
+    }
+
     public function create()
     {
         return view('tools.loadout-builder.create');

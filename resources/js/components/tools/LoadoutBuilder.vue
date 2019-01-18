@@ -360,7 +360,7 @@
 
                         this.showToast('Loadout has been created. Redirecting to the loadout page now.');
 
-                        window.location.replace(`/loadout/${r.data.id}`);
+                        window.location.replace(`/loadouts/${r.data.id}`);
                     })
                     .catch(error => {
                         if (typeof error.response.data === 'object') {

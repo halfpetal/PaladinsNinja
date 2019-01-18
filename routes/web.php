@@ -20,7 +20,8 @@ Route::get('paladins-news/{any?}', function() {
 
 Route::get('/@{user}', 'UserController@show')->name('user.show');
 
-Route::get('loadout/{loadout}', 'Tools\LoadoutBuilderController@show')->name('tools.loadout-builder.show');
+Route::get('loadouts', 'Tools\LoadoutBuilderController@index')->name('tools.loadout-builder.index');
+Route::get('loadouts/{loadout}', 'Tools\LoadoutBuilderController@show')->name('tools.loadout-builder.show');
 
 Route::post('search', 'PlayerController@search')->name('search');
 Route::get('hirez-link', 'UserController@getHirezLink')->name('hirez-link.show');
