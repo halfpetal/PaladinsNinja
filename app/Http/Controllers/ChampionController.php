@@ -10,7 +10,7 @@ class ChampionController extends Controller
     public function index(Request $request)
     {
         return view('champions', [
-            'champions' => Champion::filter($request->all())->get(),
+            'champions' => Champion::filter($request->all())->orderBy('name')->get(),
             'pageTitle' => 'Champion List'
         ]);
     }
