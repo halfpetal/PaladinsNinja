@@ -56,17 +56,29 @@ class PlayerController extends Controller
         });
     }
 
-    public function matches($player)
+    public function matches(Request $request, $player)
     {
         $model = Player::where('player_id', $player)->firstOrFail();
         $matches = [];
 
+        $gameType = [];
+
+        if ($request->has('type')) {
+            $gameType = [
+                'name' => $request->type,
+            ];
+        }
+
         foreach ($model->match_history as $match)
         {
-            $match_player = MatchPlayer::where([
+            $query = [
                 'playerId' => $model->player_id,
-                'Match' => $match
-            ])->first();
+                'Match' => $match,
+            ];
+
+            $query = array_merge($query, $gameType);
+
+            $match_player = MatchPlayer::where($query)->first();
 
             if (!isset($match_player)) {
                 ProcessMatch::dispatch($match)->onQueue('match-history');
