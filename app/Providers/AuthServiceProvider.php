@@ -27,10 +27,22 @@ class AuthServiceProvider extends ServiceProvider
 
         \Laravel\Passport\Passport::routes();
 
+        $this->definePassportScopes();
+
         Gate::before(function($user, $ability) {
             if ($user->hasPermissionTo('super-admin')) {
                 return true;
             }
         });
+    }
+
+    private function definePassportScopes() {
+        \Laravel\Passport\Passport::tokensCan([
+           'user-info' => 'Get current user info.'
+        ]);
+
+        \Laravel\Passport\Passport::setDefaultScope([
+            'user-info'
+        ]);
     }
 }
