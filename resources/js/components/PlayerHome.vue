@@ -68,27 +68,7 @@
                     </div>
                 </div>
 
-                <!-- Playtime Card -->
-                <div class="card">
-                    <div class="card-header">Playtime</div>
-                    <div class="text-center">
-                        <p class="card-text">
-                            <h3>{{ player.hours_played }}H</h3>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Matches Card -->
-                <div class="card">
-                    <div class="card-header">Matches</div>
-                    <div class="text-center">
-                        <p class="card-text">
-                            <h3>{{ player.losses + player.wins }} ({{ player.wins }}W - {{ player.losses }}L)</h3>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Ranked Card -->
+                <!-- Ranked Card 
                 <div class="card">
                     <div class="card-header">Ranked <span class="text-muted">Season {{ player.ranked_conquest['Season'] }}</span></div>
                         
@@ -111,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <!-- KDA Card -->
                 <div class="card">
@@ -125,6 +105,26 @@
                             <h5 class="text-muted">
                                 {{ Number((sumOfObjectKey(player.champion_ranks, 'Kills') + (sumOfObjectKey(player.champion_ranks, 'Assists') / 2)) / sumOfObjectKey(player.champion_ranks, 'Deaths')).toFixed(2) }} RATIO
                             </h5>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Playtime Card -->
+                <div class="card">
+                    <div class="card-header">Playtime</div>
+                    <div class="text-center">
+                        <p class="card-text">
+                            <h3>{{ player.hours_played }}H</h3>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Matches Card -->
+                <div class="card">
+                    <div class="card-header">Matches</div>
+                    <div class="text-center">
+                        <p class="card-text">
+                            <h3>{{ player.losses + player.wins }} ({{ player.wins }}W - {{ player.losses }}L)</h3>
                         </p>
                     </div>
                 </div>
