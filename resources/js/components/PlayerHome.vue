@@ -217,7 +217,7 @@
             },
 
             mountEcho() {
-                this.$echo.channel('player.' + this.playerid)
+                this.$echo.channel('player.' + this.$parent.playerid)
                     .listen('PlayerUpdated', this.reloadRouter);
             },
 
