@@ -128,17 +128,25 @@
                     </li>
                     @endguest
 
-                    <li class="nav-item divider-vertical"></li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" v-pre>
+                            Tools / Related <span class="caret"></span>
+                        </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('champion.index') }}">{{ __('Champion List') }}</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <h6 class="dropdown-header">Tools</h6>
+                            <a class="dropdown-item" href="{{ route('champion.index') }}">{{ __('Champion List') }}</a>
+                            <a class="dropdown-item" href="{{ route('tools.tierlist.index') }}">{{ __('Tierlists') }}</a>
+                            <a class="dropdown-item" href="{{ route('tools.loadout-builder.index') }}">{{ __('Builds') }}</a>
+
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Related</h6>
+                            <a class="dropdown-item" href="https://www.thebettermeta.com/" target="_blank">The Better Meta</a>
+                            <a class="dropdown-item" href="http://paladinsworld.com" target="_blank" rel="noopener noreferrer">Paladins World</a>
+                            <a class="dropdown-item" href="https://reddit.com/r/Paladins" target="_blank" rel="noopener noreferrer">r/Paladins</a>
+                        </div>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tools.loadout-builder.index') }}">{{ __('Builds') }}</a>
-                    </li>
-
-                    <li class="nav-item divider-vertical"></li>
 
                     <li class="nav-item">
                         <a class="nav-link navbar-brand" href="https://discord.gg/C6zQ6Yj"><i class="fab fa-discord"></i></a>
@@ -147,8 +155,6 @@
                     <li class="nav-item">
                         <a class="nav-link navbar-brand" href="https://twitter.com/Paladins_Ninja"><i class="fab fa-twitter"></i></a>
                     </li>
-
-                    <li class="nav-item divider-vertical"></li>
 
                     <li class="nav-item">
                         <a class="nav-link navbar-brand" href="#" data-toggle="modal" data-target="#siteThemeSwitcher"><i
