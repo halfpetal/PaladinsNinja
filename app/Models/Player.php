@@ -21,7 +21,9 @@ class Player extends Model
         'platform', 'region', 'tier_conquest',
         'total_achievements', 'total_xp', 'wins',
         'ranked_conquest', 'match_history', 'friends',
-        'loadouts', 'champion_ranks', 'data'
+        'loadouts', 'champion_ranks', 'data', 
+        'ranked_kbm', 'ranked_controller', 'tier_ranked_kbm',
+        'tier_ranked_controller',
     ];
 
     /**
@@ -31,6 +33,8 @@ class Player extends Model
      */
     protected $casts = [
         'ranked_conquest' => 'array',
+        'ranked_kbm' => 'array',
+        'ranked_controller' => 'array',
         'match_history' => 'array',
         'friends' => 'array',
         'loadouts' => 'array',

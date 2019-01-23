@@ -96,6 +96,10 @@ class ProcessPlayer implements ShouldQueue
         $player = array_add($player, 'total_achievements', $playerData['Total_Achievements']);
         $player = array_add($player, 'total_xp', $playerData['Total_Worshippers']);
         $player = array_add($player, 'wins', $playerData['Wins']);
+        $player = array_add($player, 'ranked_kbm', $playerData['RankedKBM']);
+        $player = array_add($player, 'ranked_controller', $playerData['RankedController']);
+        $player = array_add($player, 'tier_ranked_kbm', $playerData['Tier_RankedKBM']);
+        $player = array_add($player, 'tier_ranked_controller', $playerData['Tier_RankedController']);
         $player = array_add($player, 'data', $playerData);
 
         $playerModel = Player::updateOrCreate(['player_id' => $player['player_id']], $player);
