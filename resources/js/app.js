@@ -22,6 +22,7 @@ import PlayerChampionsView from './components/PlayerChampions'
 import PlayerFriendsView from './components/PlayerFriends'
 import PlayerLoadoutsView from './components/PlayerLoadouts'
 import PlayerReviewsView from './components/PlayerReviews'
+import PlayerRankedView from './components/PlayerRanked'
 
 import UserSettingsHomeView from './components/user/UserSettingsHome'
 import UserSettingsPasswordView from './components/user/UserSettingsPassword'
@@ -99,6 +100,11 @@ const router = new VueRouter({
             path: '/player/:id/reviews',
             name: 'player.reviews',
             component: PlayerReviewsView
+        },
+        {
+            path: '/player/:id/ranked',
+            name: 'player.ranked',
+            component: PlayerRankedView
         },
 
         // User Settings
