@@ -18,6 +18,8 @@
                 </div>
                 @endforeach
             </div>
+
+            {{ $loadouts->links() }}
         </div>
 
         <div class="col-md-4 col-sm-12">
