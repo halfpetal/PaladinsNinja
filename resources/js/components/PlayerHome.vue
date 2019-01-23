@@ -7,7 +7,7 @@
                     <div class="card-header">Player Info</div>
 
                     <div class="card-body text-center">
-                        <p class="card-text">
+                        <div class="card-text">
                             <div class="row">
                                 <p class="col-6">
                                     <strong class="text-muted">Player Name</strong> <br/>
@@ -62,7 +62,9 @@
                                     <strong v-else>Unclaimed</strong>
                                 </p>
                             </div>
-                        </p>
+
+                            <button v-on:click="requestUpdate" class="btn btn-outline-primary btn-block mt-3">Request Profile Update</button>
+                        </div>
                     </div>
                 </div>
 
@@ -133,17 +135,6 @@
 
                     <div class="card-body">
                         <player-status></player-status>
-                    </div>
-                </div>
-
-                <!-- Profile Actions Card -->
-                <div class="card">
-                    <div class="card-header">Profile Actions</div>
-
-                    <div class="card-body text-center">
-                        <p class="card-text">
-                            <button v-on:click="requestUpdate" class="btn btn-outline-primary">Request Profile Update</button>
-                        </p>
                     </div>
                 </div>
 
