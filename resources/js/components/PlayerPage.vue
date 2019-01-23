@@ -53,21 +53,10 @@
         },
 
         mounted() {
-            this.mountEcho();
             this.getChampions();
         },
 
         methods: {
-            mountEcho() {
-                console.log("mounting echo instance.");
-                this.$echo.channel('player.' + this.playerid)
-                    .listen('PlayerUpdated', this.reloadRouter);
-            },
-
-            reloadRouter(payload) {
-                this.$router.go();
-            },
-
             getChampions() {
                 axios.get('/api-champion/v1/list?nopaginate=true')
                     .then(r => {
