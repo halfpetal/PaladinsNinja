@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists('apiErrorResponse')) {
-    function apiErrorResponse($errors) 
+    function apiErrorResponse($errors, $code = 422) 
     {
         if (is_string($errors)) {
             $errors = [$errors];
@@ -9,7 +9,7 @@ if (!function_exists('apiErrorResponse')) {
 
         return response()->json([
             'errors' => $errors
-        ]);
+        ], $code);
     }
 }
 

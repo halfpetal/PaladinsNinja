@@ -13,9 +13,9 @@ class ChampionTierlist extends Model
     use SoftDeletes, Identifiable, Rateable, Filterable;
 
     protected $fillable = [
-        'name', 'description', 'tier_s',
-        'tier_a', 'tier_b', 'tier_c',
-        'tier_d', 'user_id'
+        'name', 'description', 'tier_ss',
+        'tier_s', 'tier_a', 'tier_b', 
+        'tier_c', 'tier_d', 'user_id'
     ];
 
     public function user()
