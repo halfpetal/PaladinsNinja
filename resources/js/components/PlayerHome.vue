@@ -207,6 +207,7 @@
         },
 
         mounted() {
+            this.mountEcho();
             this.getPlayer();
         },
 
@@ -222,6 +223,15 @@
                             $('[data-toggle="tooltip"]').tooltip()
                         })
                     });
+            },
+
+            mountEcho() {
+                this.$echo.channel('player.' + this.playerid)
+                    .listen('PlayerUpdated', this.reloadRouter);
+            },
+
+            reloadRouter(payload) {
+                this.$router.go();
             },
 
             requestUpdate() {
