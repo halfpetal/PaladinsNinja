@@ -7,6 +7,8 @@ Route::get('{player}/status', 'PlayerController@status')->name('status');
 Route::get('{player}/live/{match}', 'PlayerController@live')->name('live');
 Route::get('{player}/matches', 'PlayerController@matches')->name('matches');
 Route::get('{player}/loadouts', 'PlayerController@loadouts')->name('loadouts');
+Route::get('{player}/ranked', 'PlayerController@ranked')->name('ranked');
+Route::get('{player}/ranked/matches', 'PlayerController@rankedMatches')->name('ranked.matches');
 Route::post('{player}/update', 'PlayerController@update')->name('update');
 
 Route::get('{player}/review', 'ReviewController@index')->name('review.index');

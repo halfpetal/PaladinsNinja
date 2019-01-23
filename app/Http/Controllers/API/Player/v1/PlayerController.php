@@ -96,4 +96,22 @@ class PlayerController extends Controller
     {
         return Player::where('player_id', $player)->firstOrFail()->loadouts;
     }
+
+    public function ranked(Player $player)
+    {
+        
+        return response()->json([
+            'tier_kbm' => $player->tier_ranked_kbm,
+            'tier_controller' => $player->tier_ranked_controller,
+            'ranked_kbm' => $player->ranked_kbm,
+            'ranked_controller' => $player->ranked_controller,
+        ]);
+    }
+
+    public function rankedMatches(Player $player)
+    {
+        return MatchPlayer::where([
+            ['playerId', $player->player_id],
+            ['name', 'Ranked']])->orderBy('created_at', 'desc')->paginate();
+    }
 }
