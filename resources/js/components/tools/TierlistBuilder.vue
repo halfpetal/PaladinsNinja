@@ -32,10 +32,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_ss" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_ss" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_ss" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -54,10 +54,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_s" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_s" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_s" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -76,10 +76,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_a" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_a" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_a" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -98,10 +98,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_b" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_b" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_b" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -120,10 +120,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_c" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_c" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_c" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -142,10 +142,10 @@
                                 <div class="col">
                                     <div class="card-body p-0">
                                         <draggable class="row" v-model="tierForm.tier_d" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                                            <div class="col-2" v-for="champion in tierForm.tier_d" :key="champion.champion_id">
+                                            <div class="col-2" v-for="champion in tierForm.tier_d" :key="champion">
                                                 <div class="card" style="width:75px;height:75px;">
-                                                    <img :src="champion.icon_url" class="card-img-top">
-                                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                                 </div>
                                             </div>
                                         </draggable>
@@ -167,10 +167,10 @@
                     <div class="card-body">
                         <button class="btn btn-outline-secondary btn-block mb-4" @click="resetTiers">Reset Tiers</button>
                         <draggable class="card-columns" v-model="tierForm.champions" :options="{group:'champions'}" @start="drag=true" @end="drag=false">
-                            <div v-for="champion in tierForm.champions" :key="champion.champion_id">
+                            <div v-for="champion in tierForm.champions" :key="champion">
                                 <div class="card" style="width:75px;height:75px;">
-                                    <img :src="champion.icon_url" class="card-img-top">
-                                    <div class="champion-image-content w-100 text-center text-white">{{ champion.name }}</div>
+                                    <img :src="getChampion(champion).icon_url" class="card-img-top">
+                                    <div class="champion-image-content w-100 text-center text-white">{{ getChampion(champion).name }}</div>
                                 </div>
                             </div>
                         </draggable>
@@ -191,6 +191,8 @@
 
         data() {
             return {
+                allChampions: [],
+
                 tierForm: {
                     errors: [],
                     champions: [],
@@ -214,8 +216,22 @@
             getChampions() {
                 axios.get('/api-champion/v1/list?nopaginate=true')
                     .then(r => {
-                        this.tierForm.champions = r.data;
+                        this.allChampions = r.data;
+
+                        let champions = [];
+
+                        this.allChampions.forEach(el => {
+                            champions.push(el.champion_id);
+                        });
+
+                        this.tierForm.champions = champions;
                     });
+            },
+
+            getChampion(championId) {
+                return this.allChampions.find(el => {
+                    return championId == el.champion_id;
+                });
             },
 
             store() {

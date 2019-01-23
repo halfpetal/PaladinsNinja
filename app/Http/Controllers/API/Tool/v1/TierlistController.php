@@ -26,7 +26,7 @@ class TierlistController extends Controller
         $tierlist = ChampionTierlist::create($data);
 
         return response()->json([
-            'id' => $tierlist->indentifier->identifier,
+            'id' => $tierlist->identifier->identifier,
         ]);
     }
 }
