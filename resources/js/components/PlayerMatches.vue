@@ -207,7 +207,7 @@
                 }
 
                 return _string;
-                }
+            }
         }
     }
 </script>
