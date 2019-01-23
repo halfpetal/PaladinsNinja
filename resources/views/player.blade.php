@@ -2,12 +2,6 @@
 
 @section('head')
 <style>
-    .container-fluid
-    {
-        padding-right: 150px !important;
-        padding-left: 150px !important;
-    }
-
     nav > .nav.nav-tabs
     {
         border: none;
@@ -39,7 +33,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show">
             {{ session('status') }}
