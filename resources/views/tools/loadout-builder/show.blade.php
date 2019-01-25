@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ $loadout->name }} <small class="text-muted">{{ $loadout->champion->name }}</small></h1>
+    <h1>
+        {{ $loadout->name }} 
+        <small class="text-muted">{{ $loadout->champion->name }}</small>
+        <small>
+            {!! \Share::page('https://pcor.pw/b/' . $loadout->identifier->identifier, 'Check out this loadout for Paladins.', [], '<div>', '</div>')->facebook()->twitter()->whatsapp() !!}
+        </small>
+    </h1>
 
     <blockquote class="blockquote card card-body">
         <p class="mb-0">

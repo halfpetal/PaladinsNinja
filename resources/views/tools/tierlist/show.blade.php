@@ -2,7 +2,14 @@
 
 @section('content')
 <div class="container-fluid">
-    <h1>{{ $tierlist->name }}</h1>
+    <h1>
+        {{ $tierlist->name }} 
+        <small>
+            {!! \Share::page('https://pcor.pw/t/' . $tierlist->identifier->identifier, 'Check out this tierlist for Paladins.', [], '<div>', '</div>')->facebook()->twitter()->whatsapp() !!}
+        </small>
+    </h1>
+
+
 
     <blockquote class="blockquote card card-body">
         <p class="mb-0">
