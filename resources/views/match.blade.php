@@ -11,7 +11,7 @@
             <div class="col-3 mb-4">
                 <strong class="text-muted">GAMEMODE</strong> <br/>
                 <strong>{{ $match->gamemode }}</strong>
-            </div> 
+            </div>
 
             <div class="col-3 mb-4">
                 <strong class="text-muted">MATCH TIME</strong> <br/>
@@ -46,7 +46,48 @@
             <div class="col-3 mb-4">
                 <strong class="text-muted">MATCH DATE</strong> <br/>
                 <strong data-toggle="tooltip" title="" data-original-title="{{ \Carbon\Carbon::parse($match->match_date)->toDayDateTimeString() }} UTC">{{ \Carbon\Carbon::parse($match->match_date)->diffForHumans() }}</strong>
+            </div>
+
+            @if (strcmp($match->gamemode, 'Ranked') == 0)
+            <div class="col-3 mb-4">
+                <strong class="text-muted">BANS</strong> <br/>
+                <div class="row">
+                    @php
+                        $c1 = PaladinsNinja\Models\Champion::where('champion_id', $match->task_force_1[0]['BanId1'])->first();
+
+                        $c2 = PaladinsNinja\Models\Champion::where('champion_id', $match->task_force_1[0]['BanId2'])->first();
+
+                        $c3 = PaladinsNinja\Models\Champion::where('champion_id', $match->task_force_1[0]['BanId3'])->first();
+
+                        $c4 = PaladinsNinja\Models\Champion::where('champion_id', $match->task_force_1[0]['BanId4'])->first();
+                    @endphp
+
+                    @if (isset($c1))
+                    <div class="col-3 p-3">
+                        <img src="{{ $c1->icon_url }}" class="img-fluid w-auto" title="{{ $c1->name }}">
+                    </div>
+                    @endif
+
+                    @if (isset($c2))
+                    <div class="col-3 p-3">
+                        <img src="{{ $c2->icon_url }}" class="img-fluid w-auto" title="{{ $c2->name }}">
+                    </div>
+                    @endif
+
+                    @if (isset($c3))
+                    <div class="col-3 p-3">
+                        <img src="{{ $c3->icon_url }}" class="img-fluid w-auto" title="{{ $c3->name }}">
+                    </div>
+                    @endif
+
+                    @if (isset($c4))
+                    <div class="col-3 p-3">
+                        <img src="{{ $c4->icon_url }}" class="img-fluid w-auto" title="{{ $c4->name }}">
+                    </div>
+                    @endif
+                </div>
             </div> 
+            @endif
         </div>
     </div>
 
