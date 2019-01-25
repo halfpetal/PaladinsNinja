@@ -27,13 +27,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(GetMatchesInQueue::class, [424])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [452])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [428])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [465])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [469])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [437])->cron('*/10 * * * *')->onOneServer();
-        $schedule->command(GetMatchesInQueue::class, [445])->cron('*/10 * * * *')->onOneServer();
+        // TODO: Whenever I get approval, update this.
+        // $schedule->command(GetMatchesInQueue::class, [424])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [452])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [428])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [486])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [465])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [469])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [437])->cron('*/10 * * * *')->onOneServer();
+        // $schedule->command(GetMatchesInQueue::class, [445])->cron('*/10 * * * *')->onOneServer();
         $schedule->command(GetAllChampions::class)->daily()->onOneServer();
         $schedule->command(GetInGameItems::class)->daily()->onOneServer();
         $schedule->command('horizon:snapshot')->everyFiveMinutes()->onOneServer();
