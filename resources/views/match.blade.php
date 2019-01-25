@@ -1,5 +1,53 @@
 @extends('layouts.app')
 
+@php
+$parties = [];
+$currentParty = 1;
+
+foreach ($match->task_force_1 as $p) {
+    if (isset($p['PartyId']) && $p['PartyId'] > 0) {
+        if (array_has($parties, $p['PartyId'])) {
+            $party = $parties[$p['PartyId']];
+        } else {
+            $party = [
+                'members' => [],
+            ];
+
+        }
+
+        array_push($party['members'], $p['playerId']);
+
+        $parties[$p['PartyId']] = $party;
+    }
+}
+
+foreach ($match->task_force_2 as $p) {
+    if (isset($p['PartyId']) && $p['PartyId'] > 0) {
+        if (array_has($parties, $p['PartyId'])) {
+            $party = $parties[$p['PartyId']];
+        } else {
+            $party = [
+                'members' => [],
+            ];
+        }
+
+        array_push($party['members'], $p['playerId']);
+
+        $parties[$p['PartyId']] = $party;
+    }
+}
+
+foreach ($parties as $key => $party) {
+    if (count($party['members']) <= 1) {
+        array_forget($parties, $key);
+        continue;
+    } else {
+        $parties[$key] = array_add($party, 'display_id', $currentParty);
+        $currentParty++;
+    }
+}
+@endphp
+
 @section('content')
 <div class="container">
     <h4 class="text-muted"><i>This page is a preview and is going under more testing and development. Please report any issues on the Discord server.</i></h4>
@@ -110,7 +158,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h4><a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
+                    <h4>
+                        <a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> 
+                        <small class="text-muted">{{ $p['Reference_Name'] }}</small>
+                        <br/>
+                        @if (array_has($parties, $p['PartyId']))
+                            <small class="text-muted"><strong>Party {{ $parties[$p['PartyId']]['display_id'] }}</strong></small>
+                        @else
+                            <small class="text-muted"><em>No party</em></small>
+                        @endif
+                    </h4>
                 </div>
                 
                 <div class="card-body">
@@ -256,7 +313,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h4><a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> <small class="text-muted">{{ $p['Reference_Name'] }}</small></h4>
+                    <h4>
+                        <a href="/player/{{ $p['playerId'] }}">{{ $p['playerName'] }}</a> 
+                        <small class="text-muted">{{ $p['Reference_Name'] }}</small>
+                        <br/>
+                        @if (array_has($parties, $p['PartyId']))
+                            <small class="text-muted"><strong>Party {{ $parties[$p['PartyId']]['display_id'] }}</strong></small>
+                        @else
+                            <small class="text-muted"><em>No party</em></small>
+                        @endif
+                    </h4>
                 </div>
                 
                 <div class="card-body">
