@@ -25,13 +25,14 @@
     <meta name="keywords" content="paladins, champions of the realm, champions, ninja, master, trends, player, guru, meta, discord, twitter, community, reviews, review, esports, recruitment, stats, statistics, coach, tp, elo, mobile, bot, app, mobile app">
     <meta name="description" content="Giving Paladins player the information they want and need about their games, profile, loadouts, and trends.">
     <meta name="author" content="Halfpetal LLC">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-alt.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/new-alt.png') }}" />
 
     <title>{{ (isset($pageTitle) ? $pageTitle . ' / ' : '') . config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('js/share.js') }}" type="text/javascript" defer></script>
+    <script src="{{ asset('js/particles.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -208,6 +209,8 @@
 
         <adblock-detector></adblock-detector>
     </div>
+
+    @yield('footer')
 </body>
 
 </html>
