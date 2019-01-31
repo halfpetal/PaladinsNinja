@@ -1,5 +1,8 @@
 <?php
 
+use Halfpetal\Onoi\Illuminate\Cache;
+use Illuminate\Cache\Repository;
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -42,7 +45,8 @@ $app->singleton(
 );
 
 $app->singleton('PaladinsAPI', function($app) {
-    return PaladinsDev\PHP\PaladinsAPI::getInstance(env('PALADINS_DEVID'), env('PALADINS_AUTHKEY'));
+    $cacheDriver = new Cache(app(Repository::class));
+    return PaladinsDev\PHP\PaladinsAPI::getInstance(env('PALADINS_DEVID'), env('PALADINS_AUTHKEY'), $cacheDriver);
 });
 
 /*
