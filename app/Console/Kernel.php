@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(GetAllChampions::class)->daily()->onOneServer();
         $schedule->command(GetInGameItems::class)->daily()->onOneServer();
         $schedule->command('horizon:snapshot')->everyFiveMinutes()->onOneServer();
-        $schedule->command('sitemap:generate')->daily()->onOneServer();
+        $schedule->command('sitemap:generate')->daily();
     }
 
     /**
