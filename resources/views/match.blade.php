@@ -50,8 +50,6 @@ foreach ($parties as $key => $party) {
 
 @section('content')
 <div class="container">
-    <h4 class="text-muted"><i>This page is a preview and is going under more testing and development. Please report any issues on the Discord server.</i></h4>
-
     <div class="card mb-5">
         <h5 class="card-header">Game Info</h5>
 
