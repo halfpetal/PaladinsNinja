@@ -292,6 +292,8 @@ foreach ($parties as $key => $party) {
         @empty
         <h4>No players on team 1.</h4>
         @endforelse
+
+        @include('includes.ad')
     </div>
     
     <hr>
@@ -446,6 +448,8 @@ foreach ($parties as $key => $party) {
         @empty
         <h4>No players on team 2.</h4>
         @endforelse
+
+        @include('includes.ad')
     </div>
 </div>
 @endsection
