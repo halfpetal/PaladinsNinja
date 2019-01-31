@@ -45,6 +45,15 @@
 
     <player-page playername="{{ $player->name }}" playerid="{{ $player->player_id }}"></player-page>
 
+    <div class="row mt-5">
+        <div class="col">
+            @include('includes.ad')
+        </div>
+        <div class="col">
+            @include('includes.ad')
+        </div>
+    </div>
+
     <div class="mt-3">
         <form class="text-right mb-4" action="{{ route('player.delete', ['player' => $player->player_id]) }}" method="POST" role="form">
             {{ method_field('DELETE') }}

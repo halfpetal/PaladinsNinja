@@ -17,6 +17,10 @@
                         </div>
                 </div>
                 @endforeach
+
+                <div class="col-12">
+                    @include('includes.ad')
+                </div>
             </div>
 
             {{ $tierlists->links() }}
@@ -24,7 +28,7 @@
 
         <div class="col-md-4 col-sm-12">
             <a href="{{ route('tools.tierlist.create') }}" class="btn btn-outline-success btn-block mb-4">Create a Tierlist</a>
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header">
                     Filtering
                 </div>
@@ -33,6 +37,8 @@
                     <span class="text-muted">No filtering available for tierlists.</span>
                 </div>
             </div>
+
+            @include('includes.ad')
         </div>
     </div>
 </div>

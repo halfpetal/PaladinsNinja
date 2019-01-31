@@ -44,5 +44,14 @@
         </div>
         @endforeach
     </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            @include('includes.ad')
+        </div>
+        <div class="col">
+            @include('includes.ad')
+        </div>
+    </div>
 </div>
 @endsection

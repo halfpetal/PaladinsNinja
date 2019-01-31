@@ -18,7 +18,8 @@
         </div>
     </div>
     <hr/>
-    <div class="card-columns">
+    <div class="card-columns champion-card-columns">
+        @include('includes.ad')
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">General Info</h5>

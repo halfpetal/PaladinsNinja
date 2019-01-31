@@ -54,8 +54,11 @@
         @else
         <p>Invalid card data.</p>
         @endif
-
         @endforeach
+
+        <div class="col-md-4 col-sm-12 mb-5">
+            @include('includes.ad')
+        </div>
     </div>
 </div>
 @endsection
