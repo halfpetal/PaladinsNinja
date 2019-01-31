@@ -39,7 +39,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid mb-5">
     <div id="particles-home"></div>
     <div>
         <section class="pb-5 pt-3 text-center text-white">
