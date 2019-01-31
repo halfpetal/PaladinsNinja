@@ -29,6 +29,7 @@
         "pusher/pusher-php-server": "~3.0",
         "sentry/sentry-laravel": "^0.11.0",
         "spatie/laravel-permission": "^2.29",
+        "spatie/laravel-sitemap": "^5.2",
         "tucker-eric/eloquentfilter": "^1.3"
     },
     "require-dev": {
