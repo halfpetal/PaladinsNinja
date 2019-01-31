@@ -146,56 +146,6 @@
                             <a class="dropdown-item" href="https://reddit.com/r/Paladins" target="_blank" rel="noopener noreferrer">r/Paladins</a>
                         </div>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link navbar-brand" href="https://discord.gg/C6zQ6Yj"><i class="fab fa-discord"></i></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link navbar-brand" href="https://twitter.com/Paladins_Ninja"><i class="fab fa-twitter"></i></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link navbar-brand" href="#" data-toggle="modal" data-target="#siteThemeSwitcher"><i
-                                data-toggle="tooltip" data-placement="bottom" title="Change to a new theme." class="fa fa-tint"></i></a>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="siteThemeSwitcher" tabindex="-1" role="dialog" aria-labelledby="siteThemeSwitcherLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="siteThemeSwitcherLabel">Change Site Theme</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body row mr-3 text-center">
-                                        <form class="col-6 mb-3" method="POST" action="{{ route('theme.remove') }}">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button class="btn btn-outline-primary" type="submit">
-                                                Remove Custom Theme
-                                            </button>
-                                        </form>
-
-                                        @foreach (['cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal',
-                                        'litera', 'lumen', 'lux', 'materia', 'minty', 'pulse', 'sandstone', 'simplex',
-                                        'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'yeti'] as
-                                        $theme)
-                                        <form class="col-6 mb-3" method="POST" action="{{ route('theme.change', ['theme' => $theme]) }}">
-                                            {{ csrf_field() }}
-                                            <button class="btn btn-outline-primary" type="submit">
-                                                Switch to {{ title_case($theme) }}
-                                            </button>
-                                        </form>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -203,6 +153,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        @if(!isset($noFooter))
+            @include('includes.footer')
+        @endif
 
         <adblock-detector></adblock-detector>
     </div>

@@ -11,6 +11,9 @@
 // DataTables BS4
 @import '~datatables.net-bs4/css/dataTables.bootstrap4.css';
 
+// Other imports
+@import "footer";
+
 .champion-card-columns {
   @include media-breakpoint-only(xl) {
     column-count: 2;
