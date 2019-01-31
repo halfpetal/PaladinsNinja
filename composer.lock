@@ -1199,16 +1199,16 @@
         },
         {
             "name": "halfpetal/illuminate-onoi-cache",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/halfpetal/illuminate-onoi-cache.git",
-                "reference": "aaf0c479ceadc7345a4dfcc0863e24621af408ac"
+                "reference": "79925ca98f5715cba12c0a0dc0d37176be5ba0c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/halfpetal/illuminate-onoi-cache/zipball/aaf0c479ceadc7345a4dfcc0863e24621af408ac",
-                "reference": "aaf0c479ceadc7345a4dfcc0863e24621af408ac",
+                "url": "https://api.github.com/repos/halfpetal/illuminate-onoi-cache/zipball/79925ca98f5715cba12c0a0dc0d37176be5ba0c9",
+                "reference": "79925ca98f5715cba12c0a0dc0d37176be5ba0c9",
                 "shasum": ""
             },
             "require": {
@@ -1243,7 +1243,7 @@
                 "laravel",
                 "onoi"
             ],
-            "time": "2019-01-27T01:46:54+00:00"
+            "time": "2019-01-31T17:18:26+00:00"
         },
         {
             "name": "halfpetal/laravel-artisan-commands",
@@ -2929,16 +2929,16 @@
         },
         {
             "name": "paladinsdev/php-api",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PaladinsDev/PHP-API.git",
-                "reference": "426b5d9da26ee21d4bd3d0c771b317bcb4a4c9ce"
+                "reference": "0c8a63caca78952ec89c054d1222857db51d7163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/426b5d9da26ee21d4bd3d0c771b317bcb4a4c9ce",
-                "reference": "426b5d9da26ee21d4bd3d0c771b317bcb4a4c9ce",
+                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/0c8a63caca78952ec89c054d1222857db51d7163",
+                "reference": "0c8a63caca78952ec89c054d1222857db51d7163",
                 "shasum": ""
             },
             "require": {
@@ -2980,7 +2980,7 @@
                 "mojo",
                 "paladins"
             ],
-            "time": "2019-01-29T15:15:30+00:00"
+            "time": "2019-01-31T17:37:31+00:00"
         },
         {
             "name": "paragonie/random_compat",
