@@ -11,6 +11,21 @@
 // DataTables BS4
 @import '~datatables.net-bs4/css/dataTables.bootstrap4.css';
 
+.champion-card-columns {
+  @include media-breakpoint-only(xl) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 1;
+  }
+  @include media-breakpoint-only(sm) {
+    column-count: 1;
+  }
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
