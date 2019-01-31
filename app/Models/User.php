@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Webpatser\Uuid\Uuid;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Boot method.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model) {
+            $model->uuid = Uuid::generate()->string;
+        });
+    }
 
     public function player()
     {
