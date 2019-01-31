@@ -15,8 +15,15 @@
         </div>
 
         <div class="col">
-            <div class="row">
-                <h1 class="col">{{ $user->username }}</h1>
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{{ $user->username }}</h1>
+                    <h5>
+                        @foreach($user->roles as $role)
+                        <span class="badge badge-primary p-2">{{ title_case($role->name) }}</span>
+                        @endforeach
+                    </h5>
+                </div>
 
                 @if(Auth::check() && $user->id == Auth::user()->id)
                 <div class="col-3 float-right">
