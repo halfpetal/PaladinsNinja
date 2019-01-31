@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08e39665b4de823e09ccdd96854c995e",
+    "content-hash": "e5fc8be92eff1c22c51e302a485d90d8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1196,6 +1196,54 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
+        },
+        {
+            "name": "halfpetal/illuminate-onoi-cache",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/halfpetal/illuminate-onoi-cache.git",
+                "reference": "aaf0c479ceadc7345a4dfcc0863e24621af408ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/halfpetal/illuminate-onoi-cache/zipball/aaf0c479ceadc7345a4dfcc0863e24621af408ac",
+                "reference": "aaf0c479ceadc7345a4dfcc0863e24621af408ac",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": ">=5.0",
+                "onoi/cache": "^1.2",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Halfpetal\\Onoi\\Illuminate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Hatcher",
+                    "email": "matthewh@halfpetal.com",
+                    "homepage": "https://halfpetal.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Illuminate cache driver for onoi cache",
+            "homepage": "https://github.com/halfpetal/illuminate-onoi-cache",
+            "keywords": [
+                "cache",
+                "driver",
+                "illuminate",
+                "laravel",
+                "onoi"
+            ],
+            "time": "2019-01-27T01:46:54+00:00"
         },
         {
             "name": "halfpetal/laravel-artisan-commands",
@@ -5206,7 +5254,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
