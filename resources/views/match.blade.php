@@ -444,7 +444,7 @@ foreach ($parties as $key => $party) {
             </div>
         </div>
         @empty
-        <h4>No players on team 1.</h4>
+        <h4>No players on team 2.</h4>
         @endforelse
     </div>
 </div>
