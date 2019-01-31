@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-@section('head')
-<style>
-    .card-columns {
-        column-count: 2;
-    }
-</style>
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row w-100">
