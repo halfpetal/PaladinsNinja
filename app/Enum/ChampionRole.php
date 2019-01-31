@@ -27,6 +27,7 @@ class ChampionRole extends Enum
             case 2285:
             case 2480:
             case 2393:
+            case 2509:
                 return self::DAMAGE;
             case 2205:
             case 2147:
