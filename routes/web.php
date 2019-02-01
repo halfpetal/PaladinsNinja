@@ -14,6 +14,17 @@ Route::get('privacy-policy', function() {
     return view('privacy');
 })->name('privacy-policy');
 
+Route::get('game-server-status', function() {
+    $status = \Cache::remember('paladins.server.status', 30, function() {
+        return resolve('PaladinsAPI')->getServerStatus();
+    });
+
+    return view('paladins-server-status', [
+        'pageTitle' => 'Paladins Game Server Status',
+        'status' => $status
+    ]);
+})->name('game-server-status');
+
 Route::get('paladins-news/{any?}', function() {
     return view('paladins-news');
 })->name('paladins-news')->where('any', '.*');
