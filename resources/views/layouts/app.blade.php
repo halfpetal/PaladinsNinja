@@ -138,6 +138,7 @@
                             <a class="dropdown-item" href="{{ route('champion.index') }}">{{ __('Champion List') }}</a>
                             <a class="dropdown-item" href="{{ route('tools.tierlist.index') }}">{{ __('Tierlists') }}</a>
                             <a class="dropdown-item" href="{{ route('tools.loadout-builder.index') }}">{{ __('Builds') }}</a>
+                            <a class="dropdown-item" href="{{ route('game-server-status') }}">{{ __('Game Server Status') }}</a>
 
                             <div class="dropdown-divider"></div>
                             <h6 class="dropdown-header">Related</h6>
