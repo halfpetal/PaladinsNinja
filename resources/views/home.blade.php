@@ -43,7 +43,7 @@
     <div id="particles-home"></div>
     <div>
         <section class="pb-5 pt-3 text-center text-white">
-            <img src="{{ asset('images/new-logo.png') }}" class="img-fluid" style="width:10%;"/>
+            <img src="{{ asset('images/new-alt.png') }}" class="img-fluid" style="width:10%;"/>
             <h1>
                 Paladins Ninja
             </h1>
