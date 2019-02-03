@@ -102,7 +102,7 @@
                                                     @click="toggleScope(scope.id)"
                                                     :checked="scopeIsAssigned(scope.id)">
 
-                                                    {{ scope.id }}
+                                                    {{ makeTitle(scope.id) }}
                                             </label>
                                         </div>
                                     </div>
@@ -292,7 +292,19 @@
                         .then(response => {
                             this.getTokens();
                         });
+            },
+
+            makeTitle(slug) {
+                let words = slug.split('-');
+
+                for(let i = 0; i < words.length; i++) {
+                    let word = words[i];
+                    words[i] = word.charAt(0).toUpperCase() + word.slice(1);
+                }
+
+                return words.join(' ');
             }
+
         }
     }
 </script>

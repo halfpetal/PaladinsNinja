@@ -40,7 +40,7 @@
                         <tr v-for="client in clients">
                             <!-- ID -->
                             <td style="vertical-align: middle;">
-                                {{ client.id }}
+                                {{ client.client_id }}
                             </td>
 
                             <!-- Name -->
