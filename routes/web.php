@@ -59,3 +59,7 @@ Route::get('settings/{any?}', 'UserController@getSettings')->name('settings')->w
 
 Route::post('theme/{theme}', 'ThemeController@set')->name('theme.change');
 Route::delete('theme', 'ThemeController@remove')->name('theme.remove');
+
+Route::get('developer', function() {
+    return view('user.developer');
+})->middleware(['auth', 'hirez_link', 'permission:developer.view'])->name('developer.index');

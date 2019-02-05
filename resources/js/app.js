@@ -26,6 +26,7 @@ import PlayerRankedView from './components/PlayerRanked'
 
 import UserSettingsHomeView from './components/user/UserSettingsHome'
 import UserSettingsPasswordView from './components/user/UserSettingsPassword'
+import UserSettingsOAuthView from './components/user/UserSettingsOAuth'
 
 import PNHomeView from './components/paladins-news/PaladinsNewsHome'
 import PNEntryView from './components/paladins-news/PaladinsNewsEntry'
@@ -117,6 +118,11 @@ const router = new VueRouter({
             path: '/settings/password',
             name: 'user.settings.password',
             component: UserSettingsPasswordView
+        },
+        {
+            path: '/settings/oauth',
+            name: 'user.settings.oauth',
+            component: UserSettingsOAuthView
         },
 
         // Paladins News

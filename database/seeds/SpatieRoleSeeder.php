@@ -19,6 +19,7 @@ class SpatieRoleSeeder extends Seeder
             //'player.friends.view', 'player.status live.view', 'player.loadouts.view', 'player.match archives.view', 'player.statistics.view',
             'horizon.view', 
             'nova.view', 
+            'developer.view',
             'super-admin'
         ];
 

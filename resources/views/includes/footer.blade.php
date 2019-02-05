@@ -61,7 +61,13 @@
 
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Other Resources</h5>
-                <p class="text-white"><i>Coming soon...</i></p>
+                <ul class="list-unstyled quick-links ml-2">
+                    <li>
+                        <a href="{{ route('developer.index') }}">
+                            <i class="fa fa-angle-right"></i> Developers
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
