@@ -14,14 +14,21 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
-        return [
+        $user = [];
+
+        if (\Route::current()->getName() === 'api.user.v1.show') {
+            $user = [
+                'email' => $this->email
+            ];
+        }
+
+        return array_merge($user, [
             'id' => $this->uuid,
             'username' => $this->username,
             'avatar_url' => \Gravatar::get($this->email),
             'paladins_id' => $this->paladins_player_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-        ];
+        ]);
     }
 }
