@@ -1,4 +1,4 @@
-<div class="card border-dark">
+{{--<div class="card border-dark">
   <div class="card-header">Ad Unit</div>
   <div class="card-body text-dark">
     <div class="card-text">
@@ -15,4 +15,4 @@
         </script>
     </div>
   </div>
-</div>
+</div>--}}
