@@ -16,6 +16,7 @@ class UserResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            'id' => $this->uuid,
             'username' => $this->username,
             'avatar_url' => \Gravatar::get($this->email),
             'paladins_id' => $this->paladins_player_id,
