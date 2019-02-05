@@ -5,7 +5,7 @@
             <div class="row pb-4">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">Ranked Keyboard & Mouse <span class="text-muted">Season {{ ranked.ranked_kbm['Season'] }}</span></div>
+                        <div class="card-header">Ranked Keyboard & Mouse <span class="text-muted">Season {{ ranked.ranked_kbm['Season'] - 1 }}</span></div>
                             
                         <div class="card-body">
                             <div class="card-text d-flex justify-content-start">
@@ -31,7 +31,7 @@
 
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">Ranked Controller <span class="text-muted">Season {{ ranked.ranked_controller['Season'] }}</span></div>
+                        <div class="card-header">Ranked Controller <span v-if="ranked.ranked_controller['Season'] > 0" class="text-muted">Season {{ ranked.ranked_controller['Season'] }}</span></div>
                             
                         <div class="card-body">
                             <div class="card-text d-flex justify-content-start">
