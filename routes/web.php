@@ -15,7 +15,7 @@ Route::get('privacy-policy', function() {
 })->name('privacy-policy');
 
 Route::get('game-server-status', function() {
-    $status = \Cache::remember('paladins.server.status', 30, function() {
+    $status = \Cache::remember('paladins.server.status', 1, function() {
         return resolve('PaladinsAPI')->getServerStatus();
     });
 
