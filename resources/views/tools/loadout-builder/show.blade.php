@@ -6,7 +6,7 @@
         {{ $loadout->name }} 
         <small class="text-muted">{{ $loadout->champion->name }}</small>
         <small>
-            {!! \Share::page('https://pcor.pw/b/' . $loadout->identifier->identifier, 'Check out this loadout for Paladins.', [], '<div>', '</div>')->facebook()->twitter()->whatsapp() !!}
+            {!! \Share::page('https://pcor.pw/l/' . $loadout->identifier->identifier, 'Check out this loadout for Paladins.', [], '<div>', '</div>')->facebook()->twitter()->whatsapp() !!}
         </small>
     </h1>
 
