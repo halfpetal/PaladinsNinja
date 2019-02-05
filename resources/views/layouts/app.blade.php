@@ -159,7 +159,7 @@
             @include('includes.footer')
         @endif
 
-        <adblock-detector></adblock-detector>
+        {{--<adblock-detector></adblock-detector>--}}
     </div>
 
     @yield('footer')
