@@ -13,6 +13,7 @@
         "creativeorange/gravatar": "~1.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "halfpetal/hashed-passport": "^7.0",
         "halfpetal/illuminate-onoi-cache": "^1.0",
         "halfpetal/laravel-artisan-commands": "^1.0",
         "halfpetal/laravel-identifiable": "^1.0",
