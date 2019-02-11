@@ -47,7 +47,7 @@ Route::delete('player/{player}', 'HomeController@deletePlayer')->name('player.de
 Route::get('champion/{champion}', 'ChampionController@show')->name('champion.show');
 Route::get('champions', 'ChampionController@index')->name('champion.index');
 
-Route::get('match/{match}', 'HomeController@getMatch')->name('match');
+Route::get('match/{match}', 'MatchController@show')->name('match');
 
 Route::get('home', 'HomeController@index')->name('home');
 
