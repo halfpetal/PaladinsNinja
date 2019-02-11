@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.87.6",
+            "version": "3.87.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7245290e24968744cb2a6c8cbc7dfd19abed4454"
+                "reference": "52e0590429cf6a80909a93636fed9c929224a2f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7245290e24968744cb2a6c8cbc7dfd19abed4454",
-                "reference": "7245290e24968744cb2a6c8cbc7dfd19abed4454",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/52e0590429cf6a80909a93636fed9c929224a2f6",
+                "reference": "52e0590429cf6a80909a93636fed9c929224a2f6",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-02-07T21:38:53+00:00"
+            "time": "2019-02-08T22:10:20+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -1888,16 +1888,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "104a43c49b77c9f3b6b378d8d3d0514ceef6723f"
+                "reference": "fa9e68f33b19a3577f3acb6d7c1cc4f05227f4b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/104a43c49b77c9f3b6b378d8d3d0514ceef6723f",
-                "reference": "104a43c49b77c9f3b6b378d8d3d0514ceef6723f",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/fa9e68f33b19a3577f3acb6d7c1cc4f05227f4b4",
+                "reference": "fa9e68f33b19a3577f3acb6d7c1cc4f05227f4b4",
                 "shasum": ""
             },
             "require": {
@@ -1952,7 +1952,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-01-22T14:26:48+00:00"
+            "time": "2019-02-11T18:25:13+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -3104,16 +3104,16 @@
         },
         {
             "name": "paladinsdev/php-api",
-            "version": "v1.1.3",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PaladinsDev/PHP-API.git",
-                "reference": "7d6529f6ec1cbc210bd57a2d9221dbaf45e87eb4"
+                "reference": "4644e2550941d26ce86bfb67671af2f4d4bc5269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/7d6529f6ec1cbc210bd57a2d9221dbaf45e87eb4",
-                "reference": "7d6529f6ec1cbc210bd57a2d9221dbaf45e87eb4",
+                "url": "https://api.github.com/repos/PaladinsDev/PHP-API/zipball/4644e2550941d26ce86bfb67671af2f4d4bc5269",
+                "reference": "4644e2550941d26ce86bfb67671af2f4d4bc5269",
                 "shasum": ""
             },
             "require": {
@@ -3155,7 +3155,7 @@
                 "mojo",
                 "paladins"
             ],
-            "time": "2019-02-08T19:09:33+00:00"
+            "time": "2019-02-11T19:32:41+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4616,16 +4616,16 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "5.2.8",
+            "version": "5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "5fa183bb7a3e39235ddd7cd4732ac1bec3dc1264"
+                "reference": "2344ce434d014c6a6eac51e71bdb97871de93ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/5fa183bb7a3e39235ddd7cd4732ac1bec3dc1264",
-                "reference": "5fa183bb7a3e39235ddd7cd4732ac1bec3dc1264",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/2344ce434d014c6a6eac51e71bdb97871de93ccd",
+                "reference": "2344ce434d014c6a6eac51e71bdb97871de93ccd",
                 "shasum": ""
             },
             "require": {
@@ -4671,7 +4671,7 @@
                 "laravel-sitemap",
                 "spatie"
             ],
-            "time": "2019-02-06T21:58:53+00:00"
+            "time": "2019-02-11T07:41:55+00:00"
         },
         {
             "name": "spatie/robots-txt",
