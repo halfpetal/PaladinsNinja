@@ -138,8 +138,10 @@ foreach ($parties as $key => $party) {
     </div>
 
     @if(isset($tableView))
+        <a href="{{ route('match', ['match' => $match]) }}" class="btn btn-outline-primary mb-4">Panel View</a>
         @include('includes.match.view.table', ['match' => $match, 'parties' => $parties])
     @else
+        <a href="{{ route('match', ['match' => $match, 'tableView' => true]) }}" class="btn btn-outline-primary mb-4">Table View</a>
         @include('includes.match.view.panel', ['match' => $match, 'parties' => $parties])
     @endif
 </div>
