@@ -34,7 +34,7 @@
                 <h5>Connect with Us</h5>
                 <ul class="list-unstyled quick-links ml-2">
                     <li>
-                        <a href="https://discord.gg/C6zQ6YjV" target="_blank" rel="noopener noreferrer">
+                        <a href="https://discord.gg/C6zQ6Yj" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-discord mr-1"></i> Discord
                         </a>
                     </li>
