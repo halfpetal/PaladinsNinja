@@ -44,10 +44,10 @@
     <div>
         <section class="pb-5 pt-3 text-center text-white">
             <img src="{{ asset('images/new-alt.png') }}" class="img-fluid" style="width:10%;"/>
-            <h1>
+            <h1 class="text-white">
                 Paladins Ninja
             </h1>
-            <h4>Specially designed for Paladins players.<br>Built on community feedback and needs.</h4>
+            <h4 class="text-white">Specially designed for Paladins players.<br>Built on community feedback and needs.</h4>
 
             @if ($errors->any())
             <div class="alert alert-danger">

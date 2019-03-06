@@ -12,9 +12,16 @@ class PlayerController extends Controller
     {
         $players = \Cache::remember("search.name.{$request->name}", 1, function() use ($request) {
             $players = resolve('PaladinsAPI')->getPlayerIdByName($request->name);
+            $playersPS4 = resolve('PaladinsAPI')->getPlayerIdsByGamertag($request->name, 9);
             $playersXbox = resolve('PaladinsAPI')->getPlayerIdsByGamertag($request->name, 10);
             $playersSwitch = resolve('PaladinsAPI')->getPlayerIdsByGamertag($request->name, 22);
 
+            if (!empty($playersPS4)) {
+                foreach($playersPS4 as $pps) {
+                    array_push($players, $pps);
+                }
+            }
+            
             if (!empty($playersXbox)) {
                 foreach($playersXbox as $px) {
                     array_push($players, $px);
