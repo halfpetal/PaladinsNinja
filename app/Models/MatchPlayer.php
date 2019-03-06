@@ -40,6 +40,15 @@ class MatchPlayer extends Model
         'Towers_Destroyed', 'Wards_Placed', 'Winning_TaskForce', 
         'playerId', 'match_queue_id','Entry_Datetime', 
         'Map_Game', 'Platform', 'Reference_Name', 
-        'Region', 'Skin', 'Win_Status', 'champion_role', 'name'
+        'Region', 'Skin', 'Win_Status', 'champion_role', 'name',
+        'Ban_1', 'Ban_2', 'Ban_3',
+        'Ban_4', 'Team_Name', 'hasReplay',
+        'playerName', 'Item_Purch_1', 'Item_Purch_2',
+        'Item_Purch_3', 'Item_Purch_4', 'Item_Purch_5',
+        'Item_Purch_6', 'Item_Active_1', 'Item_Active_2',
+        'Item_Active_3', 'Item_Active_4', 'Minutes',
+        'Input_Type', 'Account_Level',
+        'Mastery_Level', 'Platform_Type', 'Match_Duration',
+        'playerPortalId', 'playerPortalUserId', 
     ];
 }
