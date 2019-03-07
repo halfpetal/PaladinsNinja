@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <pagination :data="reviews" @pagiation-change-page="getReviews"></pagination>
+        <pagination :data="reviews" @pagination-change-page="getReviews"></pagination>
     </div>
 </template>
 
@@ -66,6 +66,7 @@
     export default {
         data() {
             return {
+                me: {},
                 reviews: {},
                 creatingReview: false,
                 reviewForm: {
@@ -80,6 +81,15 @@
 
         mounted() {
             this.getReviews();
+            this.getMe();
+        },
+
+        watch: {
+            creatingReview: function() {
+                if (this.creatingReview) {
+                    //this.getRecentRankedMatches();
+                }
+            }
         },
 
         methods: {
@@ -88,6 +98,20 @@
                     .then(r => {
                         this.reviews = r.data;
                     });
+            },
+
+            getMe() {
+                axios.get('/api-user/v1/me')
+                    .then(r => {
+                        this.me = r.data.data;
+                    });
+            },
+
+            getRecentRankedMatches() {
+                axios.get(`/api-player/v1/${this.me.paladins_id}/matches?type=ranked`)
+                    .then(r => {
+                        this.me.recentMatches = r.data;
+                    })
             },
 
             toggleCreatingReview() {

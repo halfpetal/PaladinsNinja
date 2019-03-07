@@ -34,6 +34,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <router-link class="nav-link" :to="{ name: 'player.queue' }">Queue Stats</router-link>
+                    </li>
+
+                    <li class="nav-item">
                         <router-link class="nav-link" :to="{ name: 'player.reviews' }">Community Reviews</router-link>
                     </li>
                 </ul>
@@ -66,6 +70,12 @@
                     .then(r => {
                         this.champions = r.data;
                     });
+            },
+
+            getChampionById(championId) {
+                return this.champions.filter(el => {
+                    return el.champion_id == championId;
+                });
             }
         }
     }

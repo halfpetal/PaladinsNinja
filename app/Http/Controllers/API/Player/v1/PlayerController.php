@@ -114,4 +114,9 @@ class PlayerController extends Controller
             ['playerId', $player->player_id],
             ['name', 'Ranked']])->orderBy('created_at', 'desc')->paginate();
     }
+
+    public function getQueue(Player $player, $queue)
+    {
+        return resolve('PaladinsAPI')->getPlayerQueueStats($player->player_id, $queue);
+    }
 }

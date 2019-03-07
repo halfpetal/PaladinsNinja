@@ -23,6 +23,7 @@ import PlayerFriendsView from './components/PlayerFriends'
 import PlayerLoadoutsView from './components/PlayerLoadouts'
 import PlayerReviewsView from './components/PlayerReviews'
 import PlayerRankedView from './components/PlayerRanked'
+import PlayerQueueView from './components/PlayerQueue'
 
 import UserSettingsHomeView from './components/user/UserSettingsHome'
 import UserSettingsPasswordView from './components/user/UserSettingsPassword'
@@ -106,6 +107,11 @@ const router = new VueRouter({
             path: '/player/:id/ranked',
             name: 'player.ranked',
             component: PlayerRankedView
+        },
+        {
+            path: '/player/:id/queue/:qid?',
+            name: 'player.queue',
+            component: PlayerQueueView
         },
 
         // User Settings
