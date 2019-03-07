@@ -117,6 +117,8 @@ class PlayerController extends Controller
 
     public function getQueue(Player $player, $queue)
     {
-        return resolve('PaladinsAPI')->getPlayerQueueStats($player->player_id, $queue);
+        return \Cache::remember('paladins.player.' . $player->player_id . '.queue.' . $queue, 60, function() use ($player, $queue) {
+            return resolve('PaladinsAPI')->getPlayerQueueStats($player->player_id, $queue);
+        });
     }
 }
