@@ -1,4 +1,5 @@
 /node_modules
+/public/mix-manifest.json
 /public/sitemap.xml
 /public/css
 /public/js
