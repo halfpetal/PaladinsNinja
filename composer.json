@@ -17,6 +17,7 @@
         "halfpetal/illuminate-onoi-cache": "^1.0",
         "halfpetal/laravel-artisan-commands": "^1.0",
         "halfpetal/laravel-identifiable": "^1.0",
+        "igaster/laravel-theme": "^2.0",
         "jorenvanhocht/laravel-share": "^2.0",
         "laravel/framework": "5.7.*",
         "laravel/horizon": "^2.0",
