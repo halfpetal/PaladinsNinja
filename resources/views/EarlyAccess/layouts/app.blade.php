@@ -28,7 +28,7 @@
     <title>{{ (isset($pageTitle) ? $pageTitle . ' / ' : '') . config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
+    <script src="{{ asset(theme_url('js/app.js')) }}" type="text/javascript" defer></script>
     <script src="{{ asset('js/particles.js') }}"></script>
 
     <!-- Fonts -->
@@ -36,7 +36,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset(theme_url('css/app.css')) }}" rel="stylesheet">
 
     @if(session('user.theme') !== null)
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/{{ session('user.theme') }}/bootstrap.min.css" rel="stylesheet"

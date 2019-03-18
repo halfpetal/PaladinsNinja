@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+{{--<div class="container">
     <div class="float-right">
         @if(\Request::get('role'))
             <a href="{{ route('champion.index') }}" class="btn btn-outline-primary btn-block">Remove Filtering</a> <br/>
@@ -53,5 +53,5 @@
             @include('includes.ad')
         </div>
     </div>
-</div>
+</div>--}}
 @endsection

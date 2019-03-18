@@ -11,6 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .js('node_modules/particles.js/particles.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//    .js('node_modules/particles.js/particles.js', 'public/js')
+//    .sass('resources/sass/app.scss', 'public/css');
+
+// General Assets
+mix.js('node_modules/particles.js/particles.js', 'public/js');
+
+// EarlyAccess Theme
+mix.js('resources/views/EarlyAccess/js/app.js', 'public/EarlyAccess/js')
+   .sass('resources/views/EarlyAccess/sass/app.scss', 'public/EarlyAccess/css');
